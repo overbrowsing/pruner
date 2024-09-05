@@ -81,7 +81,9 @@ class Pruner {
   loadFallbackImage(el) {
     // Set a real fallback image path
     const fallbackImg = new Image();
-    fallbackImg.src = '/assets/before/landscape-desktop.jpg';  
+
+    // TODO FIX
+    fallbackImg.src = '/pruner/assets/before/landscape-desktop.jpg';  
     fallbackImg.onload = () => el.src = fallbackImg.src;
     fallbackImg.onerror = () => console.error("Failed to load fallback image.");
   }
