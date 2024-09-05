@@ -1,0 +1,20 @@
+{
+  "name": "prunerjs",
+  "version": "1.0.0",
+  "description": "A plugin to stitch multiple images into a single canvas.",
+  "main": "dist/pruner.min.js",
+  "scripts": {
+    "build": "terser src/pruner.js -o dist/pruner.min.js --compress --mangle"
+  },
+  "keywords": [
+    "pruner",
+    "data",
+    "unpkg",
+    "npm"
+  ],
+  "author": "Headless Horse and printer_scanner",
+  "license": "MIT",
+  "devDependencies": {
+    "terser": "^5.31.6"
+  }
+}
