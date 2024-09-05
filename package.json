@@ -1,6 +1,6 @@
 {
     "name": "prunerjs",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "A plugin to stitch multiple images into a single canvas.",
     "main": "dist/pruner.min.js",
     "scripts": {
