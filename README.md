@@ -1,7 +1,7 @@
 # pruner.js
 
-[![NPM version](https://img.shields.io/npm/v/prunerjs.svg)](https://www.npmjs.com/package/pruner)
-[![npm](https://img.shields.io/npm/dt/prunerjs.svg)](https://www.npmtrends.com/pruner)
+[![NPM version](https://img.shields.io/npm/v/prunerjs.svg)](https://www.npmjs.com/package/prunerjs)
+[![npm](https://img.shields.io/npm/dt/prunerjs.svg)](https://www.npmtrends.com/prunerjs)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://egghead.io/courses/how-to-contribute-to-an-open-source-project-on-github)
 
 ## Overview
