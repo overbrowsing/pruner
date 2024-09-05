@@ -58,27 +58,10 @@ npm install pruner --save
 
 ### Performance Results
 
-Before and After Using Pruner. 
+**Before and After Using Pruner.
 
 - **Original (Desktop and Mobile)**: 244 KB
 - **Optimized with Pruning**: 154 KB (36.89% reduction)
-
-Test were conducted using the example setup, the images can be found in the [`/assets`](/assets) folder. [Photograph by Keller, T. Unsplash.](https://unsplash.com/photos/landscape-photography-of-lake-and-mountain-73F4pKoUkM0)
-
-### Comparison of Image Sizes
-
-| Viewport Size   | Original Size | Optimized Size | Reduction Percentage |
-|--------------------|---------------|----------------|----------------------|
-| 📱 Mobile (px)     | 244 KB        | 154 KB         | 36.89%               |
-| 💻 Desktop (px)    | 244 KB        | 154 KB         | 36.89%               |
-
-### Tile Visibility by Viewport Size
-
-| Viewport Size   | Number of Tiles Visible | Image Size (Original) | Image Size (Optimized) |
-|-----------------|--------------------------|-----------------------|------------------------|
-| Mobile (768px)         | 6                        | 244 KB                | 154 KB                 |
-| Medium Desktop (px)  | 12                       | 244 KB                | 154 KB                 |
-| Large Desktop (px)  | 24                       | 244 KB                | 154 KB                 |
 
 *Note: The number of visible tiles can vary with viewport size. Additionally, the size reduction achieved through pruning depends on the amount of detail in the visible tiles; larger or less detailed tiles may affect the optimisation results. The optimized image size reflects the reduction achieved through pruning. Testing is ongoing to further optimize and verify the results.*
 

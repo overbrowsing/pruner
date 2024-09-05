@@ -26,10 +26,16 @@ function pruner() {
     }
 
     const scaleFactor = isMobileView ? mobileScale || 1.2 : 1;
-    const numTilesInViewportWidth = Math.ceil(viewportWidth / (tileWidth * scaleFactor));
-    const numTilesInViewportHeight = Math.ceil(viewportHeight / (tileHeight * scaleFactor));
+    const scaledTileWidth = tileWidth * scaleFactor;
+    const scaledTileHeight = tileHeight * scaleFactor;
 
-    const canvas = createCanvas(numTilesInViewportWidth * tileWidth * scaleFactor, numTilesInViewportHeight * tileHeight * scaleFactor);
+    const numTilesInViewportWidth = Math.min(Math.ceil(viewportWidth / scaledTileWidth), cols);
+    const numTilesInViewportHeight = Math.min(Math.ceil(viewportHeight / scaledTileHeight), rows);
+
+    const canvasWidth = numTilesInViewportWidth * scaledTileWidth;
+    const canvasHeight = numTilesInViewportHeight * scaledTileHeight;
+
+    const canvas = createCanvas(canvasWidth, canvasHeight);
     const ctx = canvas.getContext('2d');
     el.src = '';
 
@@ -50,9 +56,9 @@ function pruner() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       images.forEach((img, i) => {
-        const x = (i % numTilesInViewportWidth) * tileWidth * scaleFactor;
-        const y = Math.floor(i / numTilesInViewportWidth) * tileHeight * scaleFactor;
-        ctx.drawImage(img, x, y, tileWidth * scaleFactor, tileHeight * scaleFactor);
+        const x = (i % numTilesInViewportWidth) * scaledTileWidth;
+        const y = Math.floor(i / numTilesInViewportWidth) * scaledTileHeight;
+        ctx.drawImage(img, x, y, scaledTileWidth, scaledTileHeight);
       });
 
       el.src = canvas.toDataURL('image/jpeg');
