@@ -53,14 +53,34 @@ npm install pruner --save
   - **Name**: Ensure that `imageName` matches the base name used for the pruner tile images. For instance, if `imageName` is `landscape`, the images should be named `landscape 1.webp`, `landscape 2.webp`, and so on.
   - **File**: All image formats are supported; however, we recommend using a modern image format like WebP for improved optimisation and a more sustainable web design.
 
+
+## Pruning Results
+
 ### Performance Results
 
-**Before and After Using Pruner. [Photograph by Keller, T. Unsplash.](https://unsplash.com/photos/landscape-photography-of-lake-and-mountain-73F4pKoUkM0)**
+Before and After Using Pruner. 
 
 - **Original (Desktop and Mobile)**: 244 KB
 - **Optimized with Pruning**: 154 KB (36.89% reduction)
 
-*Note: Testing is ongoing to further optimize and verify the results.*
+Test were conducted using the example setup, the images can be found in the [`/assets`](/assets) folder. [Photograph by Keller, T. Unsplash.](https://unsplash.com/photos/landscape-photography-of-lake-and-mountain-73F4pKoUkM0)
+
+### Comparison of Image Sizes
+
+| Viewport Size   | Original Size | Optimized Size | Reduction Percentage |
+|--------------------|---------------|----------------|----------------------|
+| 📱 Mobile (px)     | 244 KB        | 154 KB         | 36.89%               |
+| 💻 Desktop (px)    | 244 KB        | 154 KB         | 36.89%               |
+
+### Tile Visibility by Viewport Size
+
+| Viewport Size   | Number of Tiles Visible | Image Size (Original) | Image Size (Optimized) |
+|-----------------|--------------------------|-----------------------|------------------------|
+| Mobile (768px)         | 6                        | 244 KB                | 154 KB                 |
+| Medium Desktop (px)  | 12                       | 244 KB                | 154 KB                 |
+| Large Desktop (px)  | 24                       | 244 KB                | 154 KB                 |
+
+*Note: The number of visible tiles can vary with viewport size. Additionally, the size reduction achieved through pruning depends on the amount of detail in the visible tiles; larger or less detailed tiles may affect the optimisation results. The optimized image size reflects the reduction achieved through pruning. Testing is ongoing to further optimize and verify the results.*
 
 ## Initialize
 
@@ -79,7 +99,7 @@ window.onload = () => {
 You can use the `data-pruner` attribute to configure how the image is processed.
 
 ```html
-<img id="landscape" alt="landscape photography of mountains" data-pruner='{"cols": 3, "rows": 1, "tileWidth": 500, "mobileBreakpoint": 768, "imagePath": "/assets/"}'>
+<img data-pruner='{"imageName": "landscape", "cols": 5, "rows": 5, "tileWidth": 300, "tileHeight": 200, "mobileBreakpoint": 768, "mobileScale":1.4, "imagePath": "assets/"}' alt="Landscape photography of mountains in New Zealand by Tobias Keller" loading="lazy">
 ```
 
 - **Attribute**: `data-pruner`
@@ -99,8 +119,8 @@ You can use the `data-pruner` attribute to configure how the image is processed.
    ```
 
 2. **Set Up Images**:
-   - Ensure images are named according to the base name set in the `id` attribute, followed by a number (e.g., `landscape 1.jpg`, `landscape 2.jpg`).
-   - Add the `data-pruner` attribute to the image, specifying the number of columns, rows, tile width, mobile breakpoint, and image path.
+   - Ensure that `imageName` matches the base name used for the pruner tile images. For instance, if `imageName` is `landscape`, the images should be named `landscape 1.webp`, `landscape 2.webp`, and so on.
+   - Add the `data-pruner` attributes to the image, specifying the name of the image, the number of columns, rows, tile width, tile height, mobile breakpoint, mobile scale factor, and image path.
 
 ### Mobile Optimization
 
