@@ -35,29 +35,30 @@ npm install pruner --save
 
 ## How It Works
 
-### Attribute and ID Requirements
+### Image and Attribute Requirements
 
 1. **Attribute (`data-pruner`)**
-   - **Purpose**: This attribute holds the configuration for each image element in JSON format.
-   - **Parameters**:
-     - `cols`: Number of columns (integer).
-     - `rows`: Number of rows (integer).
-     - `tileWidth`: Width of each tile in pixels (integer).
-     - `mobileBreakpoint`: The screen width in pixels below which the mobile image is loaded (integer).
-     - `imagePath`: Path to the directory where images are stored (string).
+  - **Purpose**: This attribute holds the configuration for each image element in JSON format.
+  - **Parameters**:
+    - `imageName`: The base name of the images used in conjunction with the image (string).
+    - `cols`: Number of columns (integer).
+    - `rows`: Number of rows (integer).
+    - `tileWidth`: Width of each tile in pixels (integer).
+    - `tileHeight`: Height of each tile in pixels (integer).
+    - `mobileBreakpoint`: The screen width in pixels below which the mobile image is loaded (integer).
+    - `mobileScale`: Scale factor for mobile view (optional, numeric).
+    - `imagePath`: Path to the directory where images are stored (string).
 
-2. **ID of the Image**
-   - **Purpose**: The `id` attribute of the image is used as the base name for generating image sources.
-   - **Format**: Ensure the image ID corresponds to the base name used for the pruner images. For example, if the ID is `landscape`, the images should be named `landscape 1.jpg`, `landscape 2.jpg`, etc.
+2. **Images**
+  - **Name**: Ensure that `imageName` matches the base name used for the pruner tile images. For instance, if `imageName` is `landscape`, the images should be named `landscape 1.webp`, `landscape 2.webp`, and so on.
+  - **File**: All image formats are supported; however, we recommend using a modern image format like WebP for improved optimisation and a more sustainable web design.
 
 ### Performance Results
 
-**Before and After Using the Script**
+**Before and After Using Pruner. [Photograph by Keller, T. Unsplash.](https://unsplash.com/photos/landscape-photography-of-lake-and-mountain-73F4pKoUkM0)**
 
-- **Original Landscape Image Sizes**:
-  - **Both desktop and mobile**: 244 KB
-- **Optimized with Slicing**:
-  - **pruner images**: 155 KB (36.5% reduction)
+- **Original (Desktop and Mobile)**: 244 KB
+- **Optimized with Pruning**: 154 KB (36.89% reduction)
 
 *Note: Testing is ongoing to further optimize and verify the results.*
 
@@ -81,11 +82,12 @@ You can use the `data-pruner` attribute to configure how the image is processed.
 <img id="landscape" alt="landscape photography of mountains" data-pruner='{"cols": 3, "rows": 1, "tileWidth": 500, "mobileBreakpoint": 768, "imagePath": "/assets/"}'>
 ```
 
-- **ID**: `landscape`
 - **Attribute**: `data-pruner`
-  - `cols`: `3` (3 columns)
-  - `rows`: `1` (1 row)
-  - `tileWidth`: `500` pixels
+  - `imageName`: `landscape` pixels
+  - `cols`: `5` (5 columns)
+  - `rows`: `5` (5 row)
+  - `tileWidth`: `300` pixels
+  - `tileHeight`: `200` pixels
   - `mobileBreakpoint`: `768` pixels
   - `imagePath`: `/assets/` (path to images)
 
@@ -102,7 +104,7 @@ You can use the `data-pruner` attribute to configure how the image is processed.
 
 ### Mobile Optimization
 
-On mobile devices (below the `mobileBreakpoint`), only the middle image of the grid will load for better performance. For larger screens, the full tiled image grid is stitched together into a canvas.
+On mobile devices (below the `mobileBreakpoint`), only the central tiles of the grid are loaded for improved performance. This is determined by the `mobileScale` parameter, which adjusts the scaling of the tiles based on the device’s screen size. For larger screens, the entire tiled image grid is constructed and displayed on a canvas.
 
 ## License
 

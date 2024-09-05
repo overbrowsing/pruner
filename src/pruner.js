@@ -1,94 +1,106 @@
-class Pruner {
-  constructor(selector) {
-    this.elements = document.querySelectorAll(`[${selector}]`);
-    this.init();
-  }
+function pruner() {
+  const elements = Array.from(document.querySelectorAll('[data-pruner]'));
 
-  init() {
-    window.addEventListener('resize', this.handleResize.bind(this));
-    this.handleResize();  // Initial load
-  }
+  const loadImage = src => new Promise((resolve, reject) => {
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.onload = () => resolve(img);
+    img.onerror = () => reject(`Failed to load image: ${src}`);
+    img.src = src;
+  });
 
-  handleResize() {
-    this.elements.forEach(el => {
-      const params = this.getParams(el);
-      if (!params) return;
-
-      const { cols, rows, tileWidth, mobileBreakpoint, imagePath } = params;
-      const srcs = this.generateImageSources(el.id, cols * rows);
-      const isMobileView = window.innerWidth <= mobileBreakpoint;
-      if (isMobileView) {
-        this.loadMiddleImage(el, srcs, imagePath);
-      } else {
-        this.loadTiledImages(el, srcs, cols, rows, tileWidth, imagePath);
-      }
-    });
-  }
-
-  getParams(el) {
-    try {
-      return JSON.parse(el.getAttribute('data-pruner'));
-    } catch (error) {
-      console.error('Invalid data-pruner JSON format:', error);
-      return null;
-    }
-  }
-
-  generateImageSources(baseName, count) {
-    return Array.from({ length: count }, (_, i) => `${baseName} ${i + 1}.jpg`);
-  }
-
-  loadMiddleImage(el, srcs, imagePath) {
-    const middleImg = new Image();
-    middleImg.onerror = () => this.loadFallbackImage(el); // Fallback in case of CORS error
-    middleImg.onload = () => el.src = middleImg.src;
-    middleImg.src = imagePath + srcs[Math.floor(srcs.length / 2)];
-  }
-
-  loadTiledImages(el, srcs, cols, rows, tileWidth, imagePath) {
+  const createCanvas = (width, height) => {
     const canvas = document.createElement('canvas');
+    canvas.width = width;
+    canvas.height = height;
+    return canvas;
+  };
+
+  const processImages = async (el, isMobileView, viewportWidth, viewportHeight) => {
+    const data = JSON.parse(el.getAttribute('data-pruner') || '{}');
+    const { cols, rows, tileWidth, tileHeight, imagePath, imageName, mobileScale } = data;
+
+    if (!cols || !rows || !tileWidth || !tileHeight || !imagePath || !imageName) {
+      console.error('Missing required data attributes.');
+      return;
+    }
+
+    const scaleFactor = isMobileView ? mobileScale || 1.2 : 1;
+    const numTilesInViewportWidth = Math.ceil(viewportWidth / (tileWidth * scaleFactor));
+    const numTilesInViewportHeight = Math.ceil(viewportHeight / (tileHeight * scaleFactor));
+
+    const canvas = createCanvas(numTilesInViewportWidth * tileWidth * scaleFactor, numTilesInViewportHeight * tileHeight * scaleFactor);
     const ctx = canvas.getContext('2d');
-    let maxHeight = 0;
-    let loadedCount = 0;
-    const images = [];
+    el.src = '';
 
-    canvas.width = cols * tileWidth;
+    const srcs = Array.from({ length: cols * rows }, (_, i) => `${imagePath}${imageName} ${i + 1}.jpg`);
 
-    srcs.forEach((src, i) => {
-      const img = new Image();
-      img.onerror = () => this.loadFallbackImage(el); 
-      img.onload = () => {
-        images[i] = img;
-        maxHeight = Math.max(maxHeight, img.height);
-        if (++loadedCount === srcs.length) {
-          canvas.height = rows * maxHeight;
-          images.forEach((img, j) => {
-            ctx.drawImage(img, (j % cols) * tileWidth, Math.floor(j / cols) * maxHeight, tileWidth, maxHeight);
-          });
-
-          try {
-            el.src = canvas.toDataURL();  
-          } catch (error) {
-            console.error("Canvas tainted, unable to convert to data URL. Falling back to single image.");
-            this.loadFallbackImage(el); // Fallback to the middle image if CORS issue
+    try {
+      const imagesToLoad = [];
+      for (let row = 0; row < numTilesInViewportHeight; row++) {
+        for (let col = 0; col < numTilesInViewportWidth; col++) {
+          const index = row * cols + col;
+          if (index < srcs.length) {
+            imagesToLoad.push(loadImage(srcs[index]));
           }
         }
-      };
-      img.src = imagePath + src;
+      }
+
+      const images = await Promise.all(imagesToLoad);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      images.forEach((img, i) => {
+        const x = (i % numTilesInViewportWidth) * tileWidth * scaleFactor;
+        const y = Math.floor(i / numTilesInViewportWidth) * tileHeight * scaleFactor;
+        ctx.drawImage(img, x, y, tileWidth * scaleFactor, tileHeight * scaleFactor);
+      });
+
+      el.src = canvas.toDataURL('image/jpeg');
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleResize = debounce(() => {
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+    elements.forEach(el => {
+      const { mobileBreakpoint } = JSON.parse(el.getAttribute('data-pruner') || '{}');
+      const isMobileView = mobileBreakpoint && viewportWidth <= mobileBreakpoint;
+      processImages(el, isMobileView, viewportWidth, viewportHeight);
     });
-  }
+  }, 200);
 
-  loadFallbackImage(el) {
-    // Set a real fallback image path
-    const fallbackImg = new Image();
+  const processOnLoad = () => {
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+    elements.forEach(el => {
+      const { mobileBreakpoint } = JSON.parse(el.getAttribute('data-pruner') || '{}');
+      const isMobileView = mobileBreakpoint && viewportWidth <= mobileBreakpoint;
+      processImages(el, isMobileView, viewportWidth, viewportHeight);
+    });
+  };
 
-    // TODO FIX
-    fallbackImg.src = 'https://overbrowsing.com/pruner/assets/before/landscape-desktop.jpg';  
-    fallbackImg.onload = () => el.src = fallbackImg.src;
-    fallbackImg.onerror = () => console.error("Failed to load fallback image.");
-  }
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        processOnLoad();
+        observer.unobserve(entry.target);
+      }
+    });
+  });
+
+  elements.forEach(el => observer.observe(el));
+  window.addEventListener('resize', handleResize);
+  window.addEventListener('load', processOnLoad);
 }
 
-window.onload = () => {
-  new Pruner('data-pruner');
+const debounce = (func, wait) => {
+  let timeout;
+  return (...args) => {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func(...args), wait);
+  };
 };
+
+window.onload = pruner;
