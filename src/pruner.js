@@ -18,7 +18,7 @@ function pruner() {
 
   const processImages = async (el, isMobileView, viewportWidth, viewportHeight) => {
     const data = JSON.parse(el.getAttribute('data-pruner') || '{}');
-    const { cols, rows, tileWidth, tileHeight, imagePath, imageName, mobileScale } = data;
+    const { imageName, cols, rows, tileWidth, tileHeight,  mobileScale, imagePath } = data;
 
     if (!cols || !rows || !tileWidth || !tileHeight || !imagePath || !imageName) {
       console.error('Missing required data attributes.');
