@@ -109,7 +109,7 @@ To evaluate the performance improvements from using `pruner.js` compared to load
 
 This experiment compared two approaches to image loading:
 
-- **Using Full Images**: Loading two images 1500 x 1000px for desktop and 1000 x 800px for mobile.
+- **Using Full Images**: Loading two images 1500 x 1000px for desktop and 500 x 1000px for mobile.
 - **Using `pruner.js`**: Loading 25 tiles (300 x 200px) plus the 2 KB minified script.
 
 To ensure consistent and accurate results, the following factors were considered:
