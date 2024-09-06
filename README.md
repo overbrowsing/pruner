@@ -108,7 +108,7 @@ To assess the performance gains from using `pruner.js` compared to loading two i
 #### Example HTML Setup Test
 
 The experiment compared two image-loading approaches:
-- **Using `pruner.js`**: Loading 25 smaller tiles (300 x 200px).
+- **Using `pruner.js`**: Loading 25 smaller tiles (300 x 200px) + 2 KB for the minified script.
 - **Using Full Images**: Loading two images for desktop and mobile (1500 x 1000px and 1000 x 800px, respectively).
 
 Additional considerations were taken into account to ensure accurate and consistent testing results:
@@ -128,18 +128,22 @@ Additional considerations were taken into account to ensure accurate and consist
 
 ### Performance Comparison: Before and After Using `pruner.js`
 
-|                              | 📱 — 650px              | 💻 — 1100px              | 🖥️ — 1680px             | 📁 — All Files            |
-|------------------------------|-------------------------|-------------------------|-------------------------|-------------------------|
-| **Before**                   | 50 KB                   | 194 KB                  | 194 KB                  | 244 KB (2 Images)       |
-| **CO₂e Before (g)**          | 0.013 g                 | 0.053 g                 | 0.053 g                 | 0.067 g                 |
-| ✂️                            |                         |                         |                         |                         |
-| **Tiles Shown**              | 6                       | 16                      | 20                      | 25                      |
-| **After + `pruner.js` 2 KB** | 26 KB                   | 83 KB                   | 105 KB                  | 156 KB                  |
-| **CO₂e After (g)**           | 0.007 g                 | 0.022 g                 | 0.029 g                 | 0.043 g                 |
-| **% Saved**                  | **46%**                 | **57.1%**               | **45.4%**               | **36.1%**               |
+|                               | 📱 Small 650px          | 💻 Medium 1100px         | 🖥️ Large 1680px         | 📁 All Assets           |
+|-------------------------------|-------------------------|-------------------------|-------------------------|-------------------------|
+| Before                        |                         |                         |                         |                         |
+| **📁 Size** (KB)              | 50 KB                   | 194 KB                  | 194 KB                  | 244 KB (2 Images)       |
+| **🌱 CO₂e** (g)               | 0.013 g                 | 0.053 g                 | 0.053 g                 | 0.067 g                 |
+| After                         |                         |                         |                         |                         |
+| **🧩 Tiles**                  | 6                       | 16                      | 20                      | 25                      |
+| **📁 Size** (KB)              | 26 KB                   | 83 KB                   | 105 KB                  | 156 KB                  |
+| **🌱 CO₂e** (g)               | 0.007 g                 | 0.022 g                 | 0.029 g                 | 0.043 g                 |
+| Savings                       |                         |                         |                         |                         |
+| **📁 ∆ Size** (KB)            | -24 KB                  | -111 KB                 | -89 KB                  | -88 KB                  |
+| **🌱 ∆ CO₂e** (g)             | -0.006 g                | -0.031 g                | -0.024 g                | -0.024 g                |
+| **✂️ Reduction** (%)           | **46 %**                | **57.1 %**              | **45.4 %**              | **36.1 %**              |
 
 *Ongoing testing is being conducted to expand the sample size and further verify the results.*
 
 ## License
 
-`pruner.js` is released under the MIT license. Feel free to use and modify it as needed.
+`pruner.js` is released under the [MIT](/LICENSE) license. Feel free to use and modify it as needed.
