@@ -128,7 +128,7 @@ Additional considerations were taken into account to ensure accurate and consist
 
 ### Performance Comparison: Before and After Using `pruner.js`
 
-|                              | 📱 650px                | 💻 1100px                | 🖥️ 1680px               | 📁 All Files            |
+|                              | 📱 — 650px              | 💻 — 1100px              | 🖥️ — 1680px             | 📁 — All Files            |
 |------------------------------|-------------------------|-------------------------|-------------------------|-------------------------|
 | **Before**                   | 50 KB                   | 194 KB                  | 194 KB                  | 244 KB (2 Images)       |
 | **CO₂e Before (g)**          | 0.013 g                 | 0.053 g                 | 0.053 g                 | 0.067 g                 |
@@ -136,7 +136,7 @@ Additional considerations were taken into account to ensure accurate and consist
 | **Tiles Shown**              | 6                       | 16                      | 20                      | 25                      |
 | **After + `pruner.js` 2 KB** | 26 KB                   | 83 KB                   | 105 KB                  | 156 KB                  |
 | **CO₂e After (g)**           | 0.007 g                 | 0.022 g                 | 0.029 g                 | 0.043 g                 |
-| **% Saved**                  | **46%**                 | **57.1%%**              | **45.4%**               | **36.1%**               |
+| **% Saved**                  | **46%**                 | **57.1%**               | **45.4%**               | **36.1%**               |
 
 *Ongoing testing is being conducted to expand the sample size and further verify the results.*
 
