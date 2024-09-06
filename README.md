@@ -103,7 +103,7 @@ On mobile devices (below the `mobileBreakpoint`), only the central tiles of the 
 
 ### Methodology
 
-To evaluate the performance improvements from using `pruner.js` compared to loading two full images for desktop and mobile, tests were conducted using the [Example HTML Setup](#example-html-setup). The test image (1500 x 1000px) was split into a 5x5 grid, with each tile measuring 300 x 200px. All image assets are available in the [`/assets`](/assets) folder. The original image was sourced from [T. Keller on Unsplash](https://unsplash.com/photos/landscape-photography-of-lake-and-mountain-73F4pKoUkM0).
+To evaluate the performance improvements from using **`pruner.js`** compared to loading two full images for desktop and mobile, tests were conducted using the [Example HTML Setup](#example-html-setup). The test image (1500 x 1000px) was split into a 5x5 grid, with each tile measuring 300 x 200px. All image assets are available in the [`/assets`](/assets) folder. The original image was sourced from [T. Keller on Unsplash](https://unsplash.com/photos/landscape-photography-of-lake-and-mountain-73F4pKoUkM0).
 
 #### Example HTML Setup Test
 
@@ -126,9 +126,9 @@ To Note:
 
 ##### Objectives
 
-1. Measure the number of visible tiles when using `pruner.js` across different viewport sizes (mobile, medium desktop, large desktop).
-2. Compare the total data transferred before and after implementing `pruner.js` across each viewport size.
-3. Evaluate the total file size reduction by comparing the conventional approach of using separate images for different viewport sizes with the tile-based approach using `pruner.js`, including the size of the minified script itself.
+1. Measure the number of visible tiles when using **`pruner.js`** across different viewport sizes (mobile, medium desktop, large desktop).
+2. Compare the total data transferred before and after implementing **`pruner.js`** across each viewport size.
+3. Evaluate the total file size reduction by comparing the conventional approach of using separate images for different viewport sizes with the tile-based approach using **`pruner.js`**, including the size of the minified script itself.
 4. Estimate CO₂ emissions before and after optimisation.
 
 ### Results
@@ -151,4 +151,4 @@ To Note:
 
 ## License
 
-`pruner.js` is released under the [MIT](/LICENSE) license. Feel free to use and modify it as needed.
+**`pruner.js`** is released under the [MIT](/LICENSE) license. Feel free to use and modify it as needed.
