@@ -99,34 +99,39 @@ You can use the `data-pruner` attribute to configure how the image is processed.
 
 On mobile devices (below the `mobileBreakpoint`), only the central tiles of the grid are loaded for improved performance. This is determined by the `mobileScale` parameter, which adjusts the scaling of the tiles based on the device’s screen size. For larger screens, the entire tiled image grid is constructed and displayed on a canvas.
 
-## Results
+## Performance
 
 ### Methodology
 
-To assess the performance gains from using `pruner.js` compared to loading two images for desktop and mobile, tests were conducted using the [Example HTML Setup](#example-html-setup). The example image (1500 x 1000px) was divided into a 5x5 grid, with each tile sized at 300 x 200px. All image assets are available in the [`/assets`](/assets) folder. The original image was sourced from [T. Keller on Unsplash](https://unsplash.com/photos/landscape-photography-of-lake-and-mountain-73F4pKoUkM0).
+To evaluate the performance improvements from using `pruner.js` compared to loading two full images for desktop and mobile, tests were conducted using the [Example HTML Setup](#example-html-setup). The test image (1500 x 1000px) was split into a 5x5 grid, with each tile measuring 300 x 200px. All image assets are available in the [`/assets`](/assets) folder. The original image was sourced from [T. Keller on Unsplash](https://unsplash.com/photos/landscape-photography-of-lake-and-mountain-73F4pKoUkM0).
 
 #### Example HTML Setup Test
 
-The experiment compared two image-loading approaches:
-- **Using `pruner.js`**: Loading 25 smaller tiles (300 x 200px) + 2 KB for the minified script.
-- **Using Full Images**: Loading two images for desktop and mobile (1500 x 1000px and 1000 x 800px, respectively).
+This experiment compared two approaches to image loading:
 
-Additional considerations were taken into account to ensure accurate and consistent testing results:
-- Google Chrome DevTools were used to standardise viewport sizes, ensuring consistency across all tests.
-- The viewport height was set to 750px as an approximation for a 'banner' image.
-- The number of visible tiles is dependent on viewport size and by device.
-- Data savings vary based on the complexity and detail within the image tiles. Less detailed or compressed tiles result in more significant optimisation.
-- JPEGs were used for this test, though a modern format like WebP is recommended for further optimisation.
-- Estimated CO₂e emissions were generated using the [EcoPing 'Convert Bytes to CO2 grams' calculator](https://ecoping.earth/tools/convert-bytes-to-co2-grams/), with the Device Country and Data Centre set to the United States. These are just an approximation, but you can refer to the [Sustainable Web Design Model](https://sustainablewebdesign.org/estimating-digital-emissions/) on which the calculator's results are based.
+- **Using Full Images**: Loading two images 1500 x 1000px for desktop and 1000 x 800px for mobile.
+- **Using `pruner.js`**: Loading 25 tiles (300 x 200px) plus the 2 KB minified script.
 
-#### Objectives
+To ensure consistent and accurate results, the following factors were considered:
+
+- Google Chrome DevTools was used to standardise viewport sizes for all tests.
+- The viewport height was set to 750px, simulating a typical 'banner' image.
+- CO₂e emissions were estimated using the [EcoPing 'Convert Bytes to CO2 grams' calculator](https://ecoping.earth/tools/convert-bytes-to-co2-grams/), with the Device Country and Data Centre set to the United States. These estimates provide an approximation, based on the [Sustainable Web Design Model](https://sustainablewebdesign.org/estimating-digital-emissions/).
+
+To Note:
+
+- The number of visible tiles varied based on viewport size and device.
+- Data savings vary depending on the image's detail and compression; less detailed or more compressed tiles resulted in greater optimisation.
+- JPEG format was used in the test, though WebP or other modern formats are recommended for additional savings.
+
+##### Objectives
 
 1. Measure the number of visible tiles when using `pruner.js` across different viewport sizes (mobile, medium desktop, large desktop).
-2. Compare the total data transferred before and after implementing `pruner.js` for each viewport size.
-3. Evaluate total size reductions between the conventional approach of using separate images for different viewport sizes and the tile-based approach with `pruner.js`, including the size of the minified script itself.
+2. Compare the total data transferred before and after implementing `pruner.js` across each viewport size.
+3. Evaluate the total file size reduction by comparing the conventional approach of using separate images for different viewport sizes with the tile-based approach using `pruner.js`, including the size of the minified script itself.
 4. Estimate CO₂ emissions before and after optimisation.
 
-### Performance Comparison: Before and After Using `pruner.js`
+### Results
 
 |                               | 📱 Small 650px          | 💻 Medium 1100px         | 🖥️ Large 1680px         | 📁 All Assets           |
 |-------------------------------|-------------------------|-------------------------|-------------------------|-------------------------|
