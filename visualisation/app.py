@@ -35,7 +35,7 @@ breakpoint_line_color = '#FF3F26'
 mobile_line_color = '#000000'
 desktop_line_color = '#000000'
 target_distribution_line_color = '#60A22D'
-current_distribution_line_color = 'orange'
+current_distribution_line_color = '#FFAE00'
 
 # Plot Graph
 plt.figure(figsize=(10, 6))
