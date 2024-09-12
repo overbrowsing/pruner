@@ -58,9 +58,9 @@ pip install numpy matplotlib
 ## Usage
 
 1. **Clone or Download** the repository.
-2. Run the `app.py` script to generate the graph.
+2. Run the `app.py` application to generate the graph.
 
-### Running the Script
+### Running the Application
 
 ```bash
 python app.py
@@ -80,13 +80,13 @@ The code calculates and plots how many image tiles fit within different viewport
 
 ## Example Graph
 
-When you run the script, you should see a graph like this:
+When you run the application, you should see a graph like this:
 
 ![Graph Example](./example.png)
 
 ## Customisation
 
-You can adjust the following parameters in the script to fine-tune the visualisation:
+You can adjust the following parameters in the application to fine-tune the visualisation:
 
 - `viewport_widths`: Range of viewport widths (pixels), defined using `np.linspace(start, end, num_points)`. Modify `start`, `end`, and `num_points` for custom ranges and step sizes.
 - `viewport_height`: Viewport height (in pixels).
