@@ -15,8 +15,10 @@ This Python application generates a graph to visualise the number of image tiles
 
 The "Target Distribution Line" illustrates the optimal arrangement of image tiles. It emulates the CSS `background-size: cover` behaviour, providing a benchmark for the most effective distribution of image tiles across different viewport sizes.
 
-<div style="background-color: #fff; border-radius: 5px; padding: 5px 30px; color: #000; font-family: georgia; ">
-  
+<style>@media (prefers-color-scheme: dark) { #Equation img { filter: invert(1); } }</style>
+
+<div id="Equation" style="font-family: Georgia;">
+
 ### Aspect Ratios
 
   ![Aspect Ratio of the Image](https://latex.codecogs.com/svg.latex?\text{Aspect%20Ratio%20Image}%20=%20\frac{W_i}{H_i})
