@@ -16,27 +16,22 @@ This Python application generates a graph to visualise the number of image tiles
 The "Target Distribution Line" illustrates the optimal arrangement of image tiles. It emulates the CSS `background-size: cover` behaviour, providing a benchmark for the most effective distribution of image tiles across different viewport sizes.
 
 ### Aspect Ratios
-
-  ![Aspect Ratio of the Image](https://latex.codecogs.com/svg.latex?{\color{white}\text{Aspect%20Ratio%20Image}%20=%20\frac{W_i}{H_i}})<br>
-  ![Aspect Ratio of the Viewport](https://latex.codecogs.com/svg.latex?{\color{white}\text{Aspect%20Ratio%20Viewport}%20=%20\frac{W_v}{H_v}})
+![Aspect Ratio of the Image](https://latex.codecogs.com/svg.latex?{\color{white}\text{Aspect%20Ratio%20Image}%20=%20\frac{W_i}{H_i}})<br>
+![Aspect Ratio of the Viewport](https://latex.codecogs.com/svg.latex?{\color{white}\text{Aspect%20Ratio%20Viewport}%20=%20\frac{W_v}{H_v}})
 
 ### Determine Scaling Factor
-
-![\frac{W_v}{H_v} > \frac{W_i}{H_i}](https://latex.codecogs.com/svg.latex?{\color{white}\text{If%20}\frac{W_v}{H_v}%20>%20\frac{W_i}{H_i}})<br>
+![Scaling Setup](https://latex.codecogs.com/svg.latex?{\color{white}\text{If%20}\frac{W_v}{H_v}%20>%20\frac{W_i}{H_i}})<br>
 ![Scale Factor](https://latex.codecogs.com/svg.latex?{\color{white}\text{Scale%20Factor}%20=%20\frac{W_v}{W_i}})<br>
 ![Scaled Height](https://latex.codecogs.com/svg.latex?{\color{white}\text{Scaled%20Height}%20=%20\frac{W_v}{\text{Aspect%20Ratio}_{\text{image}}}})
 
 ### Otherwise
-
 ![Scale Factor](https://latex.codecogs.com/svg.latex?{\color{white}\text{Scale%20Factor}%20=%20\frac{H_v}{H_i}})<br>
 ![Scaled Height](https://latex.codecogs.com/svg.latex?{\color{white}\text{Scaled%20Height}%20=%20H_v})
 
 ### Coverage
-
 ![Coverage](https://latex.codecogs.com/svg.latex?{\color{white}\text{Coverage}%20=%20\left(\frac{W_v}{W_i}\right)%20\times%20\left(\frac{H_v}{H_i}\right)})
 
-### Where:
-
+### Where
 ![Width of the Image](https://latex.codecogs.com/svg.latex?{\color{white}W_i%20=%20\text{Width%20of%20the%20image}})<br>
 ![Height of the Image](https://latex.codecogs.com/svg.latex?{\color{white}H_i%20=%20\text{Height%20of%20the%20image}})<br>
 ![Width of the Viewport](https://latex.codecogs.com/svg.latex?{\color{white}W_v%20=%20\text{Width%20of%20the%20viewport}})<br>
