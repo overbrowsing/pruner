@@ -1,6 +1,6 @@
 # `pruner.js` Visualisation Tool
 
-This Python application generates a graph to visualise the number of image tiles that can fit in a viewport based on viewport width. The application calculates and then shows how many tiles fit in both mobile and desktop views, adjusting tile size for mobile based on a scaling factor. The `pruner.js` visualisation tool is designed to help determine the most efficient image tiling setup for your project based on the variables provided.
+The `pruner.js` visualisation tool is a Python application designed to optimise image tiling across different viewport sizes. It generates a graph displaying how many image tiles fit within a viewport, taking into account various variables defined in `pruner.js`. By comparing its weighted average with a simulated result from using the same size image using CSS `background-size: cover`, the tool identifies the most efficient tile configuration, ensuring optimal asset utilisation and performance across a range of viewport dimensions.
 
 ## Features
 

@@ -36,7 +36,7 @@ num_tiles_mobile = [calculate_tiles(w, viewport_height, mobile_scale) if w <= mo
 num_tiles_desktop = [calculate_tiles(w, viewport_height, 1) if w > mobile_breakpoint else None for w in viewport_widths]
 num_tiles_cover = [calculate_target_distribution_line(w, viewport_height, image_width, image_height) for w in viewport_widths]
 
-all_tiles = [t for t in (num_tiles_mobile + num_tiles_desktop) if t is not None]
+all_tiles = [t for t in (num_tiles_mobile + num_tiles_desktop + num_tiles_cover) if t is not None]
 average_tiles = np.mean(all_tiles)
 
 current_distribution = np.linspace(min(all_tiles), average_tiles + (max(all_tiles) - min(all_tiles)), len(viewport_widths))
@@ -54,17 +54,22 @@ current_distribution_line_color = '#FFAE00'
 target_distribution_line_color = '#4CAF50'
 
 # Plot Graph
-plt.figure(figsize=(10, 6))
-plt.plot(viewport_widths, num_tiles_mobile, color=mobile_line_color, linestyle=mobile_line_style)
-plt.plot(viewport_widths, num_tiles_desktop, color=desktop_line_color, linestyle=desktop_line_style)
-plt.plot(viewport_widths, current_distribution, color=current_distribution_line_color, linestyle=current_distribution_line_style, label='Current Distribution Line')
-plt.plot(viewport_widths, num_tiles_cover, color=target_distribution_line_color, linestyle=target_distribution_line_style, label='Target Distribution Line')
-plt.axvline(x=mobile_breakpoint, color=breakpoint_line_color, linestyle=breakpoint_line_style, label='Mobile Breakpoint')
-plt.title('Pruner.js Visualisation Tool')
-plt.xlabel('Viewport Width (px)')
-plt.ylabel('Number of Tiles Shown (W x H)')
-plt.legend()
-plt.grid(True)
+fig, ax1 = plt.subplots(figsize=(10, 6))
+
+# Plot primary y-axis data
+ax1.plot(viewport_widths, num_tiles_mobile, color=mobile_line_color, linestyle=mobile_line_style)
+ax1.plot(viewport_widths, num_tiles_desktop, color=desktop_line_color, linestyle=desktop_line_style)
+ax1.plot(viewport_widths, current_distribution, color=current_distribution_line_color, linestyle=current_distribution_line_style, label='Current Distribution Line')
+ax1.plot(viewport_widths, num_tiles_cover, color=target_distribution_line_color, linestyle=target_distribution_line_style, label='Target Distribution Line')
+ax1.axvline(x=mobile_breakpoint, color=breakpoint_line_color, linestyle=breakpoint_line_style, label='Mobile Breakpoint')
+
+ax1.set_title('Pruner.js Visualisation Tool')
+ax1.set_xlabel('Viewport Width (px)')
+ax1.set_ylabel('Number of Tiles Shown (W x H)', color='#FFAE00')
+ax1.legend()
+ax1.grid(True)
+ax2 = ax1.twinx()
+ax2.set_ylabel('Single Image Visibility ', color='#4CAF50')
 
 # Show Graph
 plt.show()
