@@ -11,13 +11,49 @@ This Python application generates a graph to visualise the number of image tiles
 - Includes a "Target Distribution" to represent an ideal tile distribution.
 - Adds an "Average Distribution Line" to show the average number of tiles across viewport widths for comparison.
 
-## Target Distribution Line
+## Target Distribution Line Equation
 
-The "Target Distribution Line" represents the ideal tile arrangement. It serves as a benchmark for the optimal distribution of image tiles across various viewport size. Our goal is to utilise a comprehensive dataset to illustrate this ideal distribution, taking into account factors such as CO2e savings across different viewports.
+The "Target Distribution Line" illustrates the optimal arrangement of image tiles. It emulates the CSS `background-size: cover` behaviour, providing a benchmark for the most effective distribution of image tiles across different viewport sizes.
+
+<div style="background-color: #fff; border-radius: 5px; padding: 5px 30px; color: #000; font-family: georgia; ">
+  
+### Aspect Ratios
+
+  ![Aspect Ratio of the Image](https://latex.codecogs.com/svg.latex?\text{Aspect%20Ratio%20Image}%20=%20\frac{W_i}{H_i})
+
+  ![Aspect Ratio of the Viewport](https://latex.codecogs.com/svg.latex?\text{Aspect%20Ratio%20Viewport}%20=%20\frac{W_v}{H_v})
+
+### Determine Scaling Factor
+
+![\frac{W_v}{H_v} > \frac{W_i}{H_i}](https://latex.codecogs.com/svg.latex?\text{If%20}\frac{W_v}{H_v}%20>%20\frac{W_i}{H_i}):
+
+![Scale Factor](https://latex.codecogs.com/svg.latex?\text{Scale%20Factor}%20=%20\frac{W_v}{W_i})
+
+![Scaled Height](https://latex.codecogs.com/svg.latex?\text{Scaled%20Height}%20=%20\frac{W_v}{\text{Aspect%20Ratio}_{\text{image}}})
+
+### Otherwise
+
+![Scale Factor](https://latex.codecogs.com/svg.latex?\text{Scale%20Factor}%20=%20\frac{H_v}{H_i})
+
+![Scaled Height](https://latex.codecogs.com/svg.latex?\text{Scaled%20Height}%20=%20H_v)
+
+### Coverage
+
+![Coverage](https://latex.codecogs.com/svg.latex?\text{Coverage}%20=%20\left(\frac{W_v}{W_i}\right)%20\times%20\left(\frac{H_v}{H_i}\right))
+
+### Where:
+
+![Width of the Image](https://latex.codecogs.com/svg.latex?W_i%20=%20\text{Width%20of%20the%20image})<br>
+![Height of the Image](https://latex.codecogs.com/svg.latex?H_i%20=%20\text{Height%20of%20the%20image})<br>
+![Width of the Viewport](https://latex.codecogs.com/svg.latex?W_v%20=%20\text{Width%20of%20the%20viewport})<br>
+![Height of the Viewport](https://latex.codecogs.com/svg.latex?H_v%20=%20\text{Height%20of%20the%20viewport})<br>
+
+</div>
+
 
 ## Current Distribution Line
 
-The "Current Distribution Line" illustrates the actual number of tiles displayed across different viewport sizes. It allows for a comparison with the "Target Distribution Line," helping users assess how closely their layout aligns with the ideal or average distribution. This comparison aids in making adjustments to the layout to better match the target distribution.
+The "Current Distribution Line" illustrates the number of tiles displayed across different viewport sizes. It allows for a comparison with the "Target Distribution Line," helping users assess how closely their layout aligns with the ideal or average distribution. This comparison aids in making adjustments to the layout to better match the target distribution.
 
 ## Installation
 
