@@ -153,12 +153,10 @@ To Note:
 
 ![Graph Example](visualisation/example.png)
 
-There is also a Python visualisation tool designed to determine the optimal combination of tile count, row height, and tile size, and mobile scaling. This tool ensures efficient asset usage and performance across various common viewport dimensions. The ultimate goal is to leverage a comprehensive dataset to illustrate the ideal arrangement and use this graph as a target for optimising variables.
+There is also a Python visualisation tool designed to determine the optimal combination of tile count, row height, and tile size, and mobile scaling. This tool ensures efficient asset usage and performance across various common viewport dimensions.
 
 For more information on installation and usage instructions, please refer to [this document](/visualisation/README.md).  
-The Python code for the tool can also be found in [this directory](/visualisation/).
-
-*Please note: this visualisation tool is a work in progress!*
+The application can also be found in [this directory](/visualisation/).
 
 ## License
 
