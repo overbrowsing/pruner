@@ -57,7 +57,7 @@ pip install numpy matplotlib
 
 ## Usage
 
-1. **Clone or Download** the repository.
+1. Clone or Download the repository.
 2. Run the `app.py` application to generate the graph.
 
 ### Running the Application
