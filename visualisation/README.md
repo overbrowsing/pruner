@@ -7,13 +7,13 @@ This Python application generates a graph to visualise the number of image tiles
 - Calculates the number of tiles that can fit in a viewport for both mobile and desktop views.
 - Visualises the relationship between viewport width and the number of tiles displayed horizontally.
 - Handles dynamic scaling for mobile views by applying a scaling factor.
-- Highlights the mobile breakpoint (e.g., 768 pixels) on the graph.
-- Includes a "Target Distribution" to represent an ideal tile distribution.
-- Adds an "Average Distribution Line" to show the average number of tiles across viewport widths for comparison.
+- Highlights the mobile breakpoint on the graph in red.
+- Creates a orange "Current Distribution Line" to display the weighted average of visible tiles across various viewport widths for comparison.
+- Creates a green "Target Distribution Line" to represent an ideal tile distribution.
 
-## Target Distribution Line Equation
+## "Target Distribution Line" Equation
 
-The "Target Distribution Line" illustrates the optimal arrangement of image tiles. It emulates the CSS `background-size: cover` behaviour, providing a benchmark for the most effective distribution of image tiles across different viewport sizes.
+The "Target Distribution Line" illustrates the optimal tile arrangement by emulating the CSS `background-size: cover` behaviour. It simulates a single background image by reconstructing its full size from the tile properties specified in the application. This green line serves as a benchmark for the most efficient distribution of image tiles across different viewport sizes.
 
 ### Aspect Ratios
 ![Aspect Ratio of the Image](https://latex.codecogs.com/svg.latex?{\color{white}\text{Aspect%20Ratio%20Image}%20=%20\frac{W_i}{H_i}})<br>
