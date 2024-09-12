@@ -66,8 +66,15 @@ When you run the script, you should see a graph like this:
 
 You can adjust the following parameters in the script:
 
-- `tile_width`: Width of each tile.
-- `tile_height`: Height of each tile.
-- `mobile_scale`: Scale factor for mobile views.
-- `mobile_breakpoint`: Pixel width that defines when to switch to mobile scaling.
-- `cols` and `rows`: Number of columns and rows in the tile grid.
+Here’s an updated version of the README with customisation options for all parameters:
+
+## Customisation
+
+You can adjust the following parameters in the script to fine-tune the visualisation:
+
+- `viewport_widths`: Range of viewport widths (pixels), defined using `np.linspace(start, end, num_points)`. Modify `start`, `end`, and `num_points` for custom ranges and step sizes.
+- `viewport_height`: Viewport height (in pixels).
+- `cols`, `rows`: Maximum number of columns and rows in the tile grid.
+- `tile_width`, `tile_height`: Size of each tile (in pixels).
+- `mobile_scale`: Scale factor applied to tiles in mobile viewports (e.g., `1.2` = 120% scaling).
+- `mobile_breakpoint`: Pixel width threshold for switching to mobile scaling.
