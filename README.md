@@ -109,7 +109,7 @@ To evaluate the performance improvements from using **`pruner.js`** compared to 
 
 This experiment compared two approaches to image loading:
 
-- **Using Full Images**: Loading two images 1500 x 1000px for desktop and 500 x 1000px for mobile.
+- **Using [Srcset](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/srcset)**: Loading two images using the 1500 x 1000px for desktop and 500 x 1000px for mobile.
 - **Using `pruner.js`**: Loading 25 tiles (300 x 200px) plus the 2 KB minified script.
 
 To ensure consistent and accurate results, the following factors were considered:
@@ -148,6 +148,17 @@ To Note:
 | **✂️ Reduction** (%)     | **46 %**                | **57.1 %**              | **45.4 %**              | **36.1 %**              |
 
 *Ongoing testing is being conducted to expand the sample size and further verify the results.*
+
+## Visualisation
+
+![Graph Example](visualisation/example.png)
+
+There is also a Python visualisation tool designed to determine the optimal combination of tile count, row height, and tile size, and mobile scaling. This tool ensures efficient asset usage and performance across various common viewport dimensions. The ultimate goal is to leverage a comprehensive dataset to illustrate the ideal arrangement and use this graph as a target for optimising variables.
+
+For more information on installation and usage instructions, please refer to [this document](/visualisation/README.md).  
+The Python code for the tool can also be found in [this directory](/visualisation/).
+
+*Please note: this visualisation tool is a work in progress!*
 
 ## License
 
