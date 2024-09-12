@@ -51,7 +51,7 @@ breakpoint_line_color = '#FF3F26'
 mobile_line_color = '#000000'
 desktop_line_color = '#000000'
 current_distribution_line_color = '#FFAE00'
-target_distribution_line_color = '#FF00FF'
+target_distribution_line_color = '#4CAF50'
 
 # Plot Graph
 plt.figure(figsize=(10, 6))
@@ -61,8 +61,8 @@ plt.plot(viewport_widths, current_distribution, color=current_distribution_line_
 plt.plot(viewport_widths, num_tiles_cover, color=target_distribution_line_color, linestyle=target_distribution_line_style, label='Target Distribution Line')
 plt.axvline(x=mobile_breakpoint, color=breakpoint_line_color, linestyle=breakpoint_line_style, label='Mobile Breakpoint')
 plt.title('Pruner.js Visualisation Tool')
-plt.xlabel('Viewport Width (pixels)')
-plt.ylabel('Number of Tiles Shown (Width x Height)')
+plt.xlabel('Viewport Width (px)')
+plt.ylabel('Number of Tiles Shown (W x H)')
 plt.legend()
 plt.grid(True)
 

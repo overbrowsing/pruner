@@ -100,12 +100,6 @@ When you run the script, you should see a graph like this:
 
 ## Customisation
 
-You can adjust the following parameters in the script:
-
-Here’s an updated version of the README with customisation options for all parameters:
-
-## Customisation
-
 You can adjust the following parameters in the script to fine-tune the visualisation:
 
 - `viewport_widths`: Range of viewport widths (pixels), defined using `np.linspace(start, end, num_points)`. Modify `start`, `end`, and `num_points` for custom ranges and step sizes.
