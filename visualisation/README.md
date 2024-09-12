@@ -15,7 +15,7 @@ This Python application generates a graph to visualise the number of image tiles
 
 The "Target Distribution Line" illustrates the optimal arrangement of image tiles. It emulates the CSS `background-size: cover` behaviour, providing a benchmark for the most effective distribution of image tiles across different viewport sizes.
 
-<style>@media (prefers-color-scheme: dark) { #Equation img { filter: invert(1); } }</style>
+<style>#Equation img { filter: invert(1); }</style>
 
 <div id="Equation" style="font-family: Georgia;">
 
