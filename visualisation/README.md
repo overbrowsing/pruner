@@ -50,7 +50,6 @@ The "Target Distribution Line" illustrates the optimal arrangement of image tile
 
 </div>
 
-
 ## Current Distribution Line
 
 The "Current Distribution Line" illustrates the number of tiles displayed across different viewport sizes. It allows for a comparison with the "Target Distribution Line," helping users assess how closely their layout aligns with the ideal or average distribution. This comparison aids in making adjustments to the layout to better match the target distribution.
