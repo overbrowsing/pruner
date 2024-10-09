@@ -78,10 +78,10 @@ You can use the `data-pruner` attribute to configure how the image is processed.
   - `imageName`: `landscape`
   - `cols`: `5` (5 columns)
   - `rows`: `5` (5 rows)
-  - `tileWidth`: `300` pixels
-  - `tileHeight`: `200` pixels
-  - `mobileBreakpoint`: `768` pixels
-  - `mobileScale`: `1.4` 140%
+  - `tileWidth`: `300` (pixels)
+  - `tileHeight`: `200` (pixels)
+  - `mobileBreakpoint`: `768` (pixels)
+  - `mobileScale`: `1.4` (140%)
   - `imagePath`: `/assets/` (path to images)
 
 ### Usage
