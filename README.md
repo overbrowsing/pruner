@@ -52,7 +52,7 @@ npm install pruner --save
 2. **Images**
   - **Name**: Ensure that `imageName` matches the base name used for the pruner tile images. For instance, if `imageName` is `landscape`, the images should be named `landscape 1.webp`, `landscape 2.webp`, and so on.
   - **File**: All image formats are supported; however, using a modern image format like WebP is recommended for further optimisation.
-  - **Making Tiles**: For processing images into tiles, consider using an online tool such as [Split Image](https://pinetools.com/split-image).
+  - **Making Tiles**: For processing images into tiles, consider using a free online tool such as [Split Image](https://pinetools.com/split-image) or using the [Slice tool](https://helpx.adobe.com/content/help/uk/en/photoshop/using/slicing-web-pages.html) within Adobe Photoshop.
 
 ## Initialize
 
