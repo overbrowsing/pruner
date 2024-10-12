@@ -22,7 +22,7 @@ You can include **`pruner.js`** in your project either by downloading the files 
 Link directly to the minified version using Unpkg (we recommend downloading the file to reduce HTTP requests):
 
 ```html
-<script async src="https://unpkg.com/prunerjs@1.0.4/dist/pruner.min.js"></script>
+<script async src="https://unpkg.com/prunerjs@1.0.5/dist/pruner.min.js"></script>
 ```
 
 ### Package Managers
@@ -45,7 +45,8 @@ npm install pruner --save
     - `rows`: Number of rows (integer).
     - `tileWidth`: Width of each tile in pixels (integer).
     - `tileHeight`: Height of each tile in pixels (integer).
-    - `mobileBreakpoint`: The screen width in pixels below which the mobile image is loaded (integer).
+    - `roi`: Which tile number should be the region of interest (ROI) (integer).
+    - `mobileBreakpoint`: Viewport width in pixels below which the `mobileScale` is active (integer).
     - `mobileScale`: Scale factor for mobile view (optional, numeric).
     - `imagePath`: Path to the directory where images are stored (string).
 
@@ -80,6 +81,7 @@ You can use the `data-pruner` attribute to configure how the image is processed.
   - `rows`: `5` (5 rows)
   - `tileWidth`: `300` (pixels)
   - `tileHeight`: `200` (pixels)
+  - `roi`: 5 (tile image number)
   - `mobileBreakpoint`: `768` (pixels)
   - `mobileScale`: `1.4` (140%)
   - `imagePath`: `/assets/` (path to images)
@@ -98,6 +100,10 @@ You can use the `data-pruner` attribute to configure how the image is processed.
 ### Mobile Optimization
 
 On mobile devices (below the `mobileBreakpoint`), only the central tiles of the grid are loaded for improved performance. This is determined by the `mobileScale` parameter, which adjusts the scaling of the tiles based on the device’s screen size. For larger screens, the entire tiled image grid is constructed and displayed on a canvas.
+
+### Region of Interest (ROI)
+
+The Region of Interest `roi` attribute allows developers to shift the focal point of an image. ROI activates on smaller form factors and adjusts the image by shifting its focus based on the defined tile number, ensuring that off-centre subjects are the centre of attention within the viewport.
 
 ## Performance
 

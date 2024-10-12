@@ -1,7 +1,7 @@
 {
     "name": "prunerjs",
-    "version": "1.0.4",
-    "description": "A plugin to stitch multiple images into a single canvas.",
+    "version": "1.0.5",
+    "description": "Responsive images polyfill through viewport-based rendering.",
     "main": "dist/pruner.min.js",
     "scripts": {
       "build": "terser src/pruner.js -o dist/pruner.min.js --compress --mangle"
