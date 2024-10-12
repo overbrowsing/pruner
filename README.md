@@ -10,7 +10,7 @@
 
 ## Install
 
-You can include **`pruner.js`** in your project either by downloading the files or using a CDN.
+You can include **`pruner.js`** in your project either by downloading the files or using a CDN. While using a third-party CDN introduces an additional HTTP request, we ensured that it is hosted is using renewable energy.
 
 ### Download
 
