@@ -72,7 +72,7 @@ window.onload = () => {
 You can use the `data-pruner` attribute to configure how the image is processed.
 
 ```html
-<img data-pruner='{"imageName": "landscape", "cols": 5, "rows": 5, "tileWidth": 300, "tileHeight": 200, "mobileBreakpoint": 768, "mobileScale":1.4, "imagePath": "assets/"}' alt="Landscape photography of mountains in New Zealand by Tobias Keller" loading="lazy">
+<img data-pruner='{"imageName": "landscape", "cols": 5, "rows": 5, "tileWidth": 300, "tileHeight": 200, "roi": 5, "mobileBreakpoint": 768, "mobileScale":1.4, "imagePath": "assets/"}' alt="Landscape photography of mountains in New Zealand by Tobias Keller" loading="lazy">
 ```
 
 - **Attribute**: `data-pruner`
