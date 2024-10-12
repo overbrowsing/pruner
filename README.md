@@ -14,7 +14,7 @@ You can include **`pruner.js`** in your project either by downloading the files 
 
 ### Download
 
-- **Minified**: [Available via pruner.min.js on unpkg.](https://unpkg.com/prunerjs@1.0.4/dist/pruner.min.js)
+- **Minified**: [Available via pruner.min.js on unpkg.](https://unpkg.com/prunerjs@1.0.5/dist/pruner.min.js)
 - **Unminified**: [Available in the source repository.](/src/pruner.js)
 
 ### CDN
