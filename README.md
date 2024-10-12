@@ -45,7 +45,7 @@ npm install pruner --save
     - `rows`: Number of rows (integer).
     - `tileWidth`: Width of each 'tile' in pixels (integer).
     - `tileHeight`: Height of each 'tile' in pixels (integer).
-    - `roi`: Which 'tile' number should be the region of interest (ROI) (integer). ⭐️
+    - `roi`: Which 'tile' number should be the Region of Interest (ROI) (integer). ⭐️
     - `mobileBreakpoint`: Viewport width in pixels below which the `mobileScale` is active (integer). ⭐️
     - `mobileScale`: Scale factor for mobile view (optional, numeric). ⭐️
     - `imagePath`: Path to the directory where images are stored (string).
