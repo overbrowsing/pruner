@@ -6,7 +6,7 @@
 
 ## Overview
 
-**pruner.js** is a JavaScript utility that enhances image handling by stitching multiple images into a single canvas. It works by dividing large images into smaller tiles and only loading the necessary tiles based on the viewport size. This approach not only reduces the total amount of data transferred but also improves performance by ensuring that only visible parts of the image are processed. By minimising data transfer and leveraging efficient image management, **pruner.js** accelerates loading times and supports sustainable web design practices.
+**pruner.js** is a JavaScript utility for responsive images through viewport-based rendering. It works by splitting large images into smaller tiles and loading only the tiles needed for the current viewport. This method reduces the total data transferred and boosts performance by processing only the visible parts of the image. By cutting down on data usage and avoiding duplicate images often loaded with the traditional <picture> element.
 
 ## Install
 
