@@ -6,7 +6,7 @@
 
 ## Overview
 
-**pruner.js**: Responsive images polyfill through viewport-based rendering. It works by splitting large images into smaller tiles and loading only the tiles needed for the current viewport. This method reduces the total data transferred and boosts performance by processing only the visible parts of the image. By cutting down on data usage and avoiding duplicate images often loaded with the traditional `<picture>` element.
+**pruner.js**: Responsive images polyfill through viewport-based rendering. It works by splitting large images into smaller 'tiles' and loading only the 'tiles' needed for the current viewport. This method reduces the total data transferred and boosts performance by processing only the visible parts of the image. By cutting down on data usage and avoiding duplicate images often loaded with the traditional `<picture>` element.
 
 ## Install
 
@@ -35,25 +35,26 @@ npm install pruner --save
 
 ## How It Works
 
-### Image and Attribute Requirements
+### Attribute and Parameters
 
-1. **Attribute (`data-pruner`)**
+**Attribute (`data-pruner`)**
   - **Purpose**: This attribute holds the configuration for each image element in JSON format.
-  - **Parameters**:
+**Parameters**:
     - `imageName`: The base name of the images used in conjunction with the image (string).
     - `cols`: Number of columns (integer).
     - `rows`: Number of rows (integer).
-    - `tileWidth`: Width of each tile in pixels (integer).
-    - `tileHeight`: Height of each tile in pixels (integer).
-    - `roi`: Which tile number should be the region of interest (ROI) (integer).
+    - `tileWidth`: Width of each 'tile' in pixels (integer).
+    - `tileHeight`: Height of each 'tile' in pixels (integer).
+    - `roi`: Which 'tile' number should be the region of interest (ROI) (integer).
     - `mobileBreakpoint`: Viewport width in pixels below which the `mobileScale` is active (integer).
     - `mobileScale`: Scale factor for mobile view (optional, numeric).
     - `imagePath`: Path to the directory where images are stored (string).
 
-2. **Images**
-  - **Name**: Ensure that `imageName` matches the base name used for the pruner tile images. For instance, if `imageName` is `landscape`, the images should be named `landscape 1.webp`, `landscape 2.webp`, and so on.
-  - **File**: All image formats are supported; however, using a modern image format like WebP is recommended for further optimisation.
-  - **Making Tiles**: For processing images into tiles, consider using a free online tool such as [Split Image](https://pinetools.com/split-image) or using the [Slice Tool](https://helpx.adobe.com/content/help/uk/en/photoshop/using/slicing-web-pages.html) within Adobe Photoshop.
+### Images
+
+  - **Image File Name**: Ensure that `imageName` matches the base name used for the 'tile' images. For instance, if `imageName` is `landscape`, the images should be named `landscape 1.webp`, `landscape 2.webp`, and so on.
+  - **Image Format**: All image formats are supported; however, using a modern image format like WebP is recommended for further optimisation.
+  - **Making Image 'Tiles'**: For processing images into 'tiles', consider using a free online tool such as [Split Image](https://pinetools.com/split-image) or using the [Slice Tool](https://helpx.adobe.com/content/help/uk/en/photoshop/using/slicing-web-pages.html) within Adobe Photoshop.
 
 ## Initialize
 
@@ -81,7 +82,7 @@ You can use the `data-pruner` attribute to configure how the image is processed.
   - `rows`: `5` (5 rows)
   - `tileWidth`: `300` (pixels)
   - `tileHeight`: `200` (pixels)
-  - `roi`: 5 (image tile file number)
+  - `roi`: 5 (image 'tile' file number)
   - `mobileBreakpoint`: `768` (pixels)
   - `mobileScale`: `1.4` (140%)
   - `imagePath`: `/assets/` (path to images)
@@ -94,29 +95,29 @@ You can use the `data-pruner` attribute to configure how the image is processed.
    ```
 
 2. **Set Up Images**:
-   - Ensure that `imageName` matches the base name used for the pruner tile images. For instance, if `imageName` is `landscape`, the images should be named `landscape 1.webp`, `landscape 2.webp`, and so on.
-   - Add the `data-pruner` attributes to the image, specifying the name of the image, the number of columns, rows, tile width, tile height, mobile breakpoint, mobile scale factor, and image path.
+   - Ensure that `imageName` matches the base name used for the 'tile' images. For instance, if `imageName` is `landscape`, the images should be named `landscape 1.webp`, `landscape 2.webp`, and so on.
+   - Add the `data-pruner` attributes to the image, specifying the name of the image, the number of columns, rows, 'tile' width, 'tile' height, mobile breakpoint, mobile scale factor, and image path.
 
 ### Mobile Optimization
 
-On mobile devices (below the `mobileBreakpoint`), only the central tiles of the grid are loaded for improved performance. This is determined by the `mobileScale` parameter, which adjusts the scaling of the tiles based on the device’s screen size. For larger screens, the entire tiled image grid is constructed and displayed on a canvas.
+On mobile devices (below the `mobileBreakpoint`), only the central 'tiles' of the grid are loaded for improved performance. This is determined by the `mobileScale` parameter, which adjusts the scaling of the 'tiles' based on the device’s screen size. For larger screens, the entire 'tiled' image grid is constructed and displayed on a canvas.
 
 ### Region of Interest (ROI)
 
-The Region of Interest `roi` attribute allows developers to shift the focal point of an image. ROI activates on smaller form factors and adjusts the image by shifting its focus based on the defined tile number, ensuring that off-centre subjects are the centre of attention within the viewport.
+The Region of Interest `roi` attribute allows developers to shift the focal point of an image. ROI activates on smaller form factors and adjusts the image by shifting its focus based on the defined 'tile' number, ensuring that off-centre subjects are the centre of attention within the viewport.
 
 ## Performance
 
 ### Methodology
 
-To evaluate the performance improvements from using **`pruner.js`** compared to loading two full images for desktop and mobile, tests were conducted using the [Example HTML Setup](#example-html-setup). The test image (1500 x 1000px) was split into a 5x5 grid, with each tile measuring 300 x 200px. All image assets are available in the [`/assets`](/assets) folder. The original image was sourced from [T. Keller on Unsplash](https://unsplash.com/photos/landscape-photography-of-lake-and-mountain-73F4pKoUkM0).
+To evaluate the performance improvements from using **`pruner.js`** compared to loading two full images for desktop and mobile, tests were conducted using the [Example HTML Setup](#example-html-setup). The test image (1500 x 1000px) was split into a 5x5 grid, with each 'tile' measuring 300 x 200px. All image assets are available in the [`/assets`](/assets) folder. The original image was sourced from [T. Keller on Unsplash](https://unsplash.com/photos/landscape-photography-of-lake-and-mountain-73F4pKoUkM0).
 
 #### Example HTML Setup Test
 
 This experiment compared two approaches to image loading:
 
 - **Using [Srcset](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/srcset)**: Loading two images using the 1500 x 1000px for desktop and 500 x 1000px for mobile.
-- **Using `pruner.js`**: Loading 25 tiles (300 x 200px) plus the 3,189 bytes minified script.
+- **Using `pruner.js`**: Loading 25 'tiles' (300 x 200px) plus the 3,189 bytes minified script.
 
 To ensure consistent and accurate results, the following factors were considered:
 
@@ -126,15 +127,15 @@ To ensure consistent and accurate results, the following factors were considered
 
 To Note:
 
-- The number of visible tiles varied based on viewport size and device.
-- Data savings vary depending on the image's detail and compression; less detailed or more compressed tiles resulted in greater optimisation.
+- The number of visible 'tiles' varied based on viewport size and device.
+- Data savings vary depending on the image's detail and compression; less detailed or more compressed 'tiles' resulted in greater optimisation.
 - JPEG format was used in the test, though WebP or other modern formats are recommended for additional savings.
 
 ##### Objectives
 
-1. Measure the number of visible tiles when using **`pruner.js`** across different viewport sizes (mobile, medium desktop, large desktop).
+1. Measure the number of visible 'tiles' when using **`pruner.js`** across different viewport sizes (mobile, medium desktop, large desktop).
 2. Compare the total data transferred before and after implementing **`pruner.js`** across each viewport size.
-3. Evaluate the total file size reduction by comparing the conventional approach of using separate images for different viewport sizes with the tile-based approach using **`pruner.js`**, including the size of the minified script itself.
+3. Evaluate the total file size reduction by comparing the conventional approach of using separate images for different viewport sizes with the 'tile'-based approach using **`pruner.js`**, including the size of the minified script itself.
 4. Estimate CO₂ emissions before and after optimisation.
 
 ### Results
@@ -145,7 +146,7 @@ To Note:
 | **📁 Size** (KB)        | 50 KB                   | 194 KB                  | 194 KB                  | 244 KB (2 Images)       |
 | **🌱 CO₂e** (g)         | 0.013 g                 | 0.053 g                 | 0.053 g                 | 0.067 g                 |
 | After                   |                         |                         |                         |                         |
-| **🧩 Tiles**            | 6                       | 16                      | 20                      | 25                      |
+| **🧩 'Tile's**            | 6                       | 16                      | 20                      | 25                      |
 | **📁 Size** (KB)        | 26 KB                   | 83 KB                   | 105 KB                  | 156 KB                  |
 | **🌱 CO₂e** (g)         | 0.007 g                 | 0.022 g                 | 0.029 g                 | 0.043 g                 |
 | Savings                 |                         |                         |                         |                         |
@@ -159,7 +160,7 @@ To Note:
 
 ![Graph Example](visualisation/example.png)
 
-There is also a Python visualisation tool designed to determine the optimal combination of tile count, row height, and tile size, and mobile scaling. This tool ensures efficient asset usage and performance across various common viewport dimensions.
+There is also a Python visualisation tool designed to determine the optimal combination of 'tile' count, row height, and 'tile' size, and mobile scaling. This tool ensures efficient asset usage and performance across various common viewport dimensions.
 
 For more information on installation and usage instructions, please refer to [this document](/visualisation/README.md).  
 The application can also be found in [this directory](/visualisation/).
