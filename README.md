@@ -45,10 +45,12 @@ npm install pruner --save
     - `rows`: Number of rows (integer).
     - `tileWidth`: Width of each 'tile' in pixels (integer).
     - `tileHeight`: Height of each 'tile' in pixels (integer).
-    - `roi`: Which 'tile' number should be the region of interest (ROI) (integer).
-    - `mobileBreakpoint`: Viewport width in pixels below which the `mobileScale` is active (integer).
-    - `mobileScale`: Scale factor for mobile view (optional, numeric).
+    - `roi`: Which 'tile' number should be the region of interest (ROI) (integer). ⭐️
+    - `mobileBreakpoint`: Viewport width in pixels below which the `mobileScale` is active (integer). ⭐️
+    - `mobileScale`: Scale factor for mobile view (optional, numeric). ⭐️
     - `imagePath`: Path to the directory where images are stored (string).
+
+⭐️ Denotes which parameters are optional.
 
 ### Images
 
@@ -84,7 +86,7 @@ You can use the `data-pruner` attribute to configure how the image is processed.
   - `tileHeight`: `200` (pixels)
   - `roi`: 5 (image 'tile' file number)
   - `mobileBreakpoint`: `768` (pixels)
-  - `mobileScale`: `1.4` (140%)
+  - `mobileScale`: `1.2` (120%)
   - `imagePath`: `/assets/` (path to images)
 
 ### Usage

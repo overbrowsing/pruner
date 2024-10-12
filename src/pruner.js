@@ -19,83 +19,91 @@ function pruner() {
   const processImages = async (el, isMobileView, viewportWidth, viewportHeight) => {
     const data = JSON.parse(el.getAttribute('data-pruner') || '{}');
     const { imageName, cols, rows, tileWidth, tileHeight, mobileScale, imagePath, roi } = data;
-    if (!cols || !rows || !tileWidth || !tileHeight || !imagePath || !imageName) return;
+
+    if (!cols || !rows || !tileWidth || !tileHeight || !imagePath || !imageName) {
+      console.error('Missing required data attributes.');
+      return;
+    }
 
     const scaleFactor = isMobileView ? mobileScale || 1.2 : 1;
     const scaledTileWidth = tileWidth * scaleFactor;
     const scaledTileHeight = tileHeight * scaleFactor;
-    const numTilesInViewportWidth = Math.ceil(viewportWidth / scaledTileWidth);
-    const numTilesInViewportHeight = Math.ceil(viewportHeight / scaledTileHeight);
-    const canvas = createCanvas(viewportWidth, viewportHeight);
+
+    const numTilesInViewportWidth = Math.min(Math.ceil(viewportWidth / scaledTileWidth), cols);
+    const numTilesInViewportHeight = Math.min(Math.ceil(viewportHeight / scaledTileHeight), rows);
+
+    const canvas = createCanvas(numTilesInViewportWidth * scaledTileWidth, numTilesInViewportHeight * scaledTileHeight);
     const ctx = canvas.getContext('2d');
+    
+    ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, canvas.width, canvas.height);
     el.src = '';
 
     const srcs = Array.from({ length: cols * rows }, (_, i) => `${imagePath}${imageName} ${i + 1}.jpg`);
-    const images = await Promise.all(srcs.map(loadImage));
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    const roiIndex = roi - 1;
-    const roiRow = Math.floor(roiIndex / cols);
-    const roiCol = roiIndex % cols;
-    const startRow = Math.max(0, roiRow - Math.floor(numTilesInViewportHeight / 2));
-    const startCol = Math.max(0, roiCol - Math.floor(numTilesInViewportWidth / 2));
-    const finalStartRow = Math.min(startRow, rows - numTilesInViewportHeight);
-    const finalStartCol = Math.min(startCol, cols - numTilesInViewportWidth);
+    const calculateStartIndices = () => {
+      if (roi) {
+        const roiIndex = roi - 1;
+        const roiRow = Math.floor(roiIndex / cols);
+        const roiCol = roiIndex % cols;
+        const startRow = Math.max(0, roiRow - Math.floor(numTilesInViewportHeight / 2));
+        const startCol = Math.max(0, roiCol - Math.floor(numTilesInViewportWidth / 2));
+        return [Math.min(startRow, rows - numTilesInViewportHeight), Math.min(startCol, cols - numTilesInViewportWidth)];
+      }
+      return [
+        Math.max(0, Math.floor(rows / 2) - Math.floor(numTilesInViewportHeight / 2)),
+        Math.max(0, Math.floor(cols / 2) - Math.floor(numTilesInViewportWidth / 2))
+      ];
+    };
 
+    const [finalStartRow, finalStartCol] = calculateStartIndices();
+
+    const imagesToLoad = [];
     for (let row = 0; row < numTilesInViewportHeight; row++) {
       for (let col = 0; col < numTilesInViewportWidth; col++) {
         const sourceRow = finalStartRow + row;
         const sourceCol = finalStartCol + col;
-        if (sourceRow >= 0 && sourceRow < rows && sourceCol >= 0 && sourceCol < cols) {
-          const imgIndex = sourceRow * cols + sourceCol;
-          ctx.drawImage(images[imgIndex], col * scaledTileWidth, row * scaledTileHeight, scaledTileWidth, scaledTileHeight);
+        if (sourceRow < rows && sourceCol < cols) {
+          const index = sourceRow * cols + sourceCol;
+          imagesToLoad.push(loadImage(srcs[index]));
         }
       }
     }
 
-    el.src = canvas.toDataURL('image/jpeg');
+    try {
+      const images = await Promise.all(imagesToLoad);
+      images.forEach((img, i) => {
+        const x = (i % numTilesInViewportWidth) * scaledTileWidth;
+        const y = Math.floor(i / numTilesInViewportWidth) * scaledTileHeight;
+        ctx.drawImage(img, x, y, scaledTileWidth, scaledTileHeight);
+      });
+      el.src = canvas.toDataURL('image/jpeg');
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const handleResize = debounce(() => {
-    const viewportWidth = window.innerWidth;
-    const viewportHeight = window.innerHeight;
-    elements.forEach((el) => {
+    const viewportWidth = window.innerWidth, viewportHeight = window.innerHeight;
+    elements.forEach(el => {
       const { mobileBreakpoint } = JSON.parse(el.getAttribute('data-pruner') || '{}');
-      const isMobileView = mobileBreakpoint && viewportWidth <= mobileBreakpoint;
-      processImages(el, isMobileView, viewportWidth, viewportHeight);
+      processImages(el, mobileBreakpoint && viewportWidth <= mobileBreakpoint, viewportWidth, viewportHeight);
     });
   }, 200);
 
-  const processOnLoad = () => {
-    const viewportWidth = window.innerWidth;
-    const viewportHeight = window.innerHeight;
-    elements.forEach((el) => {
-      const { mobileBreakpoint } = JSON.parse(el.getAttribute('data-pruner') || '{}');
-      const isMobileView = mobileBreakpoint && viewportWidth <= mobileBreakpoint;
-      processImages(el, isMobileView, viewportWidth, viewportHeight);
-    });
-  };
+  const processOnLoad = () => handleResize();
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        processOnLoad();
-        observer.unobserve(entry.target);
-      }
-    });
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => { if (entry.isIntersecting) { processOnLoad(); observer.unobserve(entry.target); } });
   });
 
-  elements.forEach((el) => observer.observe(el));
+  elements.forEach(el => observer.observe(el));
   window.addEventListener('resize', handleResize);
   window.addEventListener('load', processOnLoad);
 }
 
 const debounce = (func, wait) => {
   let timeout;
-  return (...args) => {
-    clearTimeout(timeout);
-    timeout = setTimeout(() => func(...args), wait);
-  };
+  return (...args) => { clearTimeout(timeout); timeout = setTimeout(() => func(...args), wait); };
 };
 
 window.onload = pruner;
