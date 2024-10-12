@@ -103,7 +103,7 @@ On mobile devices (below the `mobileBreakpoint`), only the central tiles of the 
 
 ### Region of Interest (ROI)
 
-The region of interest `roi` attribute allows developers to shift the focal point of an image. ROI activates on smaller form factors and adjusts the image by shifting its focus based on the defined tile number, ensuring that off-centre subjects are the centre of attention within the viewport.
+The Region of Interest `roi` attribute allows developers to shift the focal point of an image. ROI activates on smaller form factors and adjusts the image by shifting its focus based on the defined tile number, ensuring that off-centre subjects are the centre of attention within the viewport.
 
 ## Performance
 
