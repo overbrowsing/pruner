@@ -1,7 +1,7 @@
 {
     "name": "prunerjs",
     "version": "1.0.5",
-    "description": "Responsive images polyfill through viewport-based rendering.",
+    "description": "Responsive image polyfill using viewport-based rendering.",
     "main": "dist/pruner.min.js",
     "scripts": {
       "build": "terser src/pruner.js -o dist/pruner.min.js --compress --mangle"

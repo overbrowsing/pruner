@@ -6,7 +6,7 @@
 
 ## Overview
 
-**pruner.js**: Responsive images polyfill through viewport-based rendering. It works by splitting large images into smaller 'tiles' and loading only the 'tiles' needed for the current viewport. This method reduces the total data transferred and boosts performance by processing only the visible parts of the image, effectively minimising data usage and eliminating the need to load multiple differently sized versions of the same image for different form factors, as seen with the traditional Picture-Element <picture>.
+**pruner.js**: Responsive image polyfill using viewport-based rendering. It works by splitting large images into smaller 'tiles' and loading only the 'tiles' needed for the current viewport. This method reduces the total data transferred and boosts performance by processing only the visible parts of the image, effectively minimising data usage and eliminating the need to load multiple differently sized versions of the same image for different form factors, as seen with the traditional Picture-Element <picture>.
 
 ## Install
 
