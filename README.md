@@ -106,7 +106,7 @@ The Region of Interest `roi` attribute allows developers to shift the focal poin
 
 ### Mobile Optimization
 
-The optional `mobileScale` parameter in the data-pruner is vital for optimising mobile performance on smaller devices by scaling images based on viewport size. When the screen size drops below the threshold set by the `mobileBreakpoint` parameter, the system adjusts the image display. This scaling retains Picture-Element functionality for effective cropping and resizing. Moreover, scaling images up can enhance performance by reducing the number of tiles needed for smaller screens. By enlarging the tiles to fit the viewport, fewer tiles are required, improving efficiency and reducing processing load.
+The optional `mobileScale` parameter in the data-pruner is vital for optimising mobile performance on smaller devices by scaling images based on viewport size. When the screen size drops below the threshold set by the `mobileBreakpoint` parameter, the system adjusts the scale of the image. This scaling retains Picture-Element functionality for effective cropping and resizing. Moreover, scaling images up can enhance performance by reducing the number of 'tiles' needed for smaller screens. By enlarging the tiles to fit the viewport, fewer 'tiles' are required, improving efficiency and reducing HTTP requests.
 
 ## Performance
 
