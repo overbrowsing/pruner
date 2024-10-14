@@ -100,13 +100,13 @@ You can use the `data-pruner` attribute to configure how the image is processed.
    - Ensure that `imageName` matches the base name used for the 'tile' images. For instance, if `imageName` is `landscape`, the images should be named `landscape 1.webp`, `landscape 2.webp`, and so on.
    - Add the `data-pruner` attributes to the image, specifying the name of the image, the number of columns, rows, 'tile' width, 'tile' height, mobile breakpoint, mobile scale factor, and image path.
 
-### Mobile Optimization
-
-On mobile devices (below the `mobileBreakpoint`), only the central 'tiles' of the grid are loaded for improved performance. This is determined by the `mobileScale` parameter, which adjusts the scaling of the 'tiles' based on the device’s screen size. For larger screens, the entire 'tiled' image grid is constructed and displayed on a canvas.
-
 ### Region of Interest (ROI)
 
 The Region of Interest `roi` attribute allows developers to shift the focal point of an image. ROI activates on smaller form factors and adjusts the image by shifting its focus based on the defined 'tile' number, ensuring that off-centre subjects are the centre of attention within the viewport.
+
+### Mobile Optimization
+
+The optional `mobileScale` parameter in the data-pruner is vital for optimising mobile performance on smaller devices by scaling images based on viewport size. When the screen size drops below the threshold set by the `mobileBreakpoint` parameter, the system adjusts the image display. This scaling retains Picture-Element functionality for effective cropping and resizing. Moreover, scaling images up can enhance performance by reducing the number of tiles needed for smaller screens. By enlarging the tiles to fit the viewport, fewer tiles are required, improving efficiency and reducing processing load.
 
 ## Performance
 
@@ -118,7 +118,7 @@ To evaluate the performance improvements from using **`pruner.js`** compared to 
 
 This experiment compared two approaches to image loading:
 
-- **Using [Srcset](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/srcset)**: Loading two images using the 1500 x 1000px for desktop and 500 x 1000px for mobile.
+- **Using Picture-Element `<picture>`**: Loading two images using the 1500 x 1000px for desktop and 500 x 1000px for mobile.
 - **Using `pruner.js`**: Loading 25 'tiles' (300 x 200px) plus the 3,189 bytes minified script.
 
 To ensure consistent and accurate results, the following factors were considered:
