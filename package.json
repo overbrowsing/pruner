@@ -1,34 +1,33 @@
 {
     "name": "prunerjs",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "description": "Responsive image polyfill using viewport-based rendering.",
     "main": "dist/pruner.min.js",
     "scripts": {
-      "build": "terser src/pruner.js -o dist/pruner.min.js --compress --mangle"
+        "build": "terser src/pruner.js -o dist/pruner.min.js --compress --mangle"
     },
     "keywords": [
-      "pruner",
-      "data",
-      "responsive",
-      "images",
-      "unpkg",
-      "npm"
+        "pruner",
+        "data",
+        "responsive",
+        "images",
+        "unpkg",
+        "npm"
     ],
     "author": "Headless Horse and printer_scanner",
     "license": "MIT",
     "repository": {
-      "type": "git",
-      "url": "https://github.com/overbrowsing/pruner.git"
+        "type": "git",
+        "url": "https://github.com/overbrowsing/pruner.git"
     },
     "bugs": {
-      "url": "https://github.com/overbrowsing/pruner/issues"
+        "url": "https://github.com/overbrowsing/pruner/issues"
     },
     "homepage": "https://github.com/overbrowsing/pruner#readme",
     "devDependencies": {
-      "terser": "^5.31.6"
+        "terser": "^5.31.6"
     },
     "publishConfig": {
-      "registry": "https://registry.npmjs.org/"
+        "registry": "https://registry.npmjs.org/"
     }
-  }
-  
+}
