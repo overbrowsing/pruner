@@ -18,27 +18,33 @@ function pruner() {
 
   const processImages = async (el, isMobileView, viewportWidth, viewportHeight) => {
     const data = JSON.parse(el.getAttribute('data-pruner') || '{}');
-    const { imageName, cols, rows, tileWidth, tileHeight, mobileScale, imagePath, roi } = data;
+    const { imageName, cols, rows, tileWidth, tileHeight, mobileScale, imagePath, roi, imageExtension } = data;
 
     if (!cols || !rows || !tileWidth || !tileHeight || !imagePath || !imageName) {
       console.error('Missing required data attributes.');
       return;
     }
 
-    const scaleFactor = isMobileView ? mobileScale || 1.2 : 1;
-    const scaledTileWidth = tileWidth * scaleFactor;
-    const scaledTileHeight = tileHeight * scaleFactor;
+    // Apply mobile scaling only if mobileScale is defined in parameters
+    const scaleFactor = (isMobileView && mobileScale) ? mobileScale : 1;
+    const scaledTileWidth = Math.round(tileWidth * scaleFactor);
+    const scaledTileHeight = Math.round(tileHeight * scaleFactor);
 
     const numTilesInViewportWidth = Math.min(Math.ceil(viewportWidth / scaledTileWidth), cols);
     const numTilesInViewportHeight = Math.min(Math.ceil(viewportHeight / scaledTileHeight), rows);
 
     const canvas = createCanvas(numTilesInViewportWidth * scaledTileWidth, numTilesInViewportHeight * scaledTileHeight);
     const ctx = canvas.getContext('2d');
-    
-    ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Disable image smoothing to reduce artifacts
+    ctx.imageSmoothingEnabled = false;
+
+    ctx.fillStyle = '#fff'; 
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
     el.src = '';
 
-    const srcs = Array.from({ length: cols * rows }, (_, i) => `${imagePath}${imageName} ${i + 1}.jpg`);
+    const ext = imageExtension || 'webp';
+    const srcs = Array.from({ length: cols * rows }, (_, i) => `${imagePath}${imageName}-${i + 1}.${ext}`);
 
     const calculateStartIndices = () => {
       if (roi) {
@@ -72,11 +78,11 @@ function pruner() {
     try {
       const images = await Promise.all(imagesToLoad);
       images.forEach((img, i) => {
-        const x = (i % numTilesInViewportWidth) * scaledTileWidth;
-        const y = Math.floor(i / numTilesInViewportWidth) * scaledTileHeight;
+        const x = Math.round((i % numTilesInViewportWidth) * scaledTileWidth);
+        const y = Math.round(Math.floor(i / numTilesInViewportWidth) * scaledTileHeight);
         ctx.drawImage(img, x, y, scaledTileWidth, scaledTileHeight);
       });
-      el.src = canvas.toDataURL('image/jpeg');
+      el.src = canvas.toDataURL('image/WEBP');
     } catch (error) {
       console.error(error);
     }
@@ -90,10 +96,21 @@ function pruner() {
     });
   }, 200);
 
-  const processOnLoad = () => handleResize();
+  const processOnLoad = () => {
+    const viewportWidth = window.innerWidth, viewportHeight = window.innerHeight;
+    elements.forEach(el => {
+      const { mobileBreakpoint } = JSON.parse(el.getAttribute('data-pruner') || '{}');
+      processImages(el, mobileBreakpoint && viewportWidth <= mobileBreakpoint, viewportWidth, viewportHeight);
+    });
+  };
 
   const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => { if (entry.isIntersecting) { processOnLoad(); observer.unobserve(entry.target); } });
+    entries.forEach(entry => { 
+      if (entry.isIntersecting) { 
+        processOnLoad(); 
+        observer.unobserve(entry.target); 
+      } 
+    });
   });
 
   elements.forEach(el => observer.observe(el));
