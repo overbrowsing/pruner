@@ -48,7 +48,7 @@ In the `<img>` tag, instead of using the `src` attribute to link an image, we us
 - `rows` — Number of rows.
 - `tileWidth` — Width of each tile in pixels 
 - `tileHeight` — Height of each tile in pixels.
-- `roi` — Which tile should be the [Region of Interest](#explained-region-of-interest-roiregion-of-interest-roi) e.g. 5 (image-5.webp). ⭐️
+- `roi` — Which tile should be the [Region of Interest](#explained-region-of-interest) e.g. 5 (image-5.webp). ⭐️
 - `mobileBreakpoint` — Used for viewport width in pixels below which the `mobileScale` is active for the [Mobile Optimization](#explained-mobile-optimization). ⭐️
 - `mobileScale` — Scale factor for mobile view. ⭐️
 - `imagePath` — Path to the directory where images are stored.
