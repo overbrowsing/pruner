@@ -112,7 +112,7 @@ Example setup using [Banks of the Seine, Vétheuil, 1880 by Claude Monet](https:
 
 ## Performance
 
-This is a live project, and we are in the process of developing a methodology to evaluate the performance and parity of **`pruner.js`** and reliability of the calcualtor.
+This is a live project, and we are in the process of developing a methodology to evaluate the performance the utility and tools in this project.
 
 ## Contributing
 
