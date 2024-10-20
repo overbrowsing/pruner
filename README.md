@@ -114,6 +114,10 @@ Example setup using [Banks of the Seine, Vétheuil, 1880 by Claude Monet](https:
 
 This is a live project, and we are in the process of developing a methodology to evaluate the performance the utility and tools in this project.
 
+## Pruning
+
+The name was chosen based on the practice of pruning in horticulture, the careful trimming of plants to remove excess or dead foliage and promote healthier growth. In a similar way, Pruning away unnecessary [wasted pixels](/tile-calculator/README.md#-tile-calculator), ensuring only the essential parts of an image are loaded based on the viewport. Just as pruning in nature encourages a plant to thrive by focusing its energy on the most important branches, Pruning optimises web performance by reducing excess data transfer, focusing on what is immediately needed to display the image effectively. A name related to nature was fitting and thematic, aligning with the principles of sustainable web design.
+
 ## Contributing
 
 Contributions are welcome. Please feel free to submit issues or pull requests.
