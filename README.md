@@ -78,13 +78,13 @@ The optional `mobileScale` parameter in the data-pruner is vital for optimising 
 2. **Update Parameters**: Update the image paths within the HTML snippet to point to the location of your tiles. Make sure to also configure any optional parameters (e.g.,`ROI`, `mobileBreak`, `mobileScale`) as necessary to suit your needs. 
 
 3. **Include `pruner.js`**: To include the utility in your project. Add the either option before the closing `</html>` tag in your HTML file
-    - **Option 1**: [Using locally](/README.md#download).
+    - **Option 1**: [Using locally](#download).
 
       ```html
       <script async src="/your-path-here/pruner.js"></script>
       ```
 
-    - **Option 2**: [Using a CDN](/README.md#cdn).
+    - **Option 2**: [Using a CDN](#cdn).
 
       ```html
       <script async src="https://unpkg.com/prunerjs@1.0.7/dist/pruner.min.js"></script>
