@@ -1,8 +1,6 @@
+import os
 import numpy as np
 import matplotlib.pyplot as plt
-from math import gcd
-from functools import reduce
-import os
 
 MIN_TILE_SIZE = 200
 
