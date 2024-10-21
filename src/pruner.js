@@ -16,72 +16,52 @@ function pruner() {
     return canvas;
   };
 
+  const getViewportDimensions = () => ({
+    width: window.innerWidth,
+    height: window.innerHeight
+  });
+
   const processImages = async (el, isMobileView, viewportWidth, viewportHeight) => {
-    const data = JSON.parse(el.getAttribute('data-pruner') || '{}');
-    const { imageName, cols, rows, tileWidth, tileHeight, mobileScale, imagePath, roi, imageExtension } = data;
+    const { imageName, cols, rows, tileWidth, tileHeight, mobileScale, imagePath, roi, imageExtension } = JSON.parse(el.getAttribute('data-pruner') || '{}');
 
-    if (!cols || !rows || !tileWidth || !tileHeight || !imagePath || !imageName) {
-      console.error('Missing required data attributes.');
-      return;
-    }
+    if (!(cols && rows && tileWidth && tileHeight && imagePath && imageName)) return console.error('Missing required data attributes.');
 
-    // Apply mobile scaling only if mobileScale is defined in parameters
-    const scaleFactor = (isMobileView && mobileScale) ? mobileScale : 1;
-    const scaledTileWidth = Math.round(tileWidth * scaleFactor);
-    const scaledTileHeight = Math.round(tileHeight * scaleFactor);
+    const scaleFactor = (isMobileView && mobileScale) ? mobileScale : 1,
+      scaledTileWidth = Math.round(tileWidth * scaleFactor),
+      scaledTileHeight = Math.round(tileHeight * scaleFactor),
+      numTilesInViewportWidth = Math.min(Math.ceil(viewportWidth / scaledTileWidth), cols),
+      numTilesInViewportHeight = Math.min(Math.ceil(viewportHeight / scaledTileHeight), rows),
+      canvas = createCanvas(numTilesInViewportWidth * scaledTileWidth, numTilesInViewportHeight * scaledTileHeight),
+      ctx = canvas.getContext('2d');
 
-    const numTilesInViewportWidth = Math.min(Math.ceil(viewportWidth / scaledTileWidth), cols);
-    const numTilesInViewportHeight = Math.min(Math.ceil(viewportHeight / scaledTileHeight), rows);
-
-    const canvas = createCanvas(numTilesInViewportWidth * scaledTileWidth, numTilesInViewportHeight * scaledTileHeight);
-    const ctx = canvas.getContext('2d');
-
-    // Disable image smoothing to reduce artifacts
     ctx.imageSmoothingEnabled = false;
-
-    ctx.fillStyle = '#fff'; 
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
     el.src = '';
+    const ext = imageExtension || 'webp',
+      srcs = Array.from({ length: cols * rows }, (_, i) => `${imagePath}${imageName}-${i + 1}.${ext}`);
 
-    const ext = imageExtension || 'webp';
-    const srcs = Array.from({ length: cols * rows }, (_, i) => `${imagePath}${imageName}-${i + 1}.${ext}`);
-
-    const calculateStartIndices = () => {
+    const [finalStartRow, finalStartCol] = (() => {
       if (roi) {
-        const roiIndex = roi - 1;
-        const roiRow = Math.floor(roiIndex / cols);
-        const roiCol = roiIndex % cols;
-        const startRow = Math.max(0, roiRow - Math.floor(numTilesInViewportHeight / 2));
-        const startCol = Math.max(0, roiCol - Math.floor(numTilesInViewportWidth / 2));
-        return [Math.min(startRow, rows - numTilesInViewportHeight), Math.min(startCol, cols - numTilesInViewportWidth)];
+        const roiIndex = roi - 1, roiRow = Math.floor(roiIndex / cols), roiCol = roiIndex % cols;
+        return [
+          Math.min(Math.max(0, roiRow - Math.floor(numTilesInViewportHeight / 2)), rows - numTilesInViewportHeight),
+          Math.min(Math.max(0, roiCol - Math.floor(numTilesInViewportWidth / 2)), cols - numTilesInViewportWidth)];
       }
-      return [
-        Math.max(0, Math.floor(rows / 2) - Math.floor(numTilesInViewportHeight / 2)),
-        Math.max(0, Math.floor(cols / 2) - Math.floor(numTilesInViewportWidth / 2))
-      ];
-    };
-
-    const [finalStartRow, finalStartCol] = calculateStartIndices();
+      return [Math.max(0, Math.floor(rows / 2) - Math.floor(numTilesInViewportHeight / 2)), Math.max(0, Math.floor(cols / 2) - Math.floor(numTilesInViewportWidth / 2))];
+    })();
 
     const imagesToLoad = [];
     for (let row = 0; row < numTilesInViewportHeight; row++) {
       for (let col = 0; col < numTilesInViewportWidth; col++) {
-        const sourceRow = finalStartRow + row;
-        const sourceCol = finalStartCol + col;
+        const sourceRow = finalStartRow + row, sourceCol = finalStartCol + col;
         if (sourceRow < rows && sourceCol < cols) {
-          const index = sourceRow * cols + sourceCol;
-          imagesToLoad.push(loadImage(srcs[index]));
+          imagesToLoad.push(loadImage(srcs[sourceRow * cols + sourceCol]));
         }
       }
     }
 
     try {
       const images = await Promise.all(imagesToLoad);
-      images.forEach((img, i) => {
-        const x = Math.round((i % numTilesInViewportWidth) * scaledTileWidth);
-        const y = Math.round(Math.floor(i / numTilesInViewportWidth) * scaledTileHeight);
-        ctx.drawImage(img, x, y, scaledTileWidth, scaledTileHeight);
-      });
+      images.forEach((img, i) => ctx.drawImage(img, (i % numTilesInViewportWidth) * scaledTileWidth, Math.floor(i / numTilesInViewportWidth) * scaledTileHeight, scaledTileWidth, scaledTileHeight));
       el.src = canvas.toDataURL('image/WEBP');
     } catch (error) {
       console.error(error);
@@ -89,33 +69,22 @@ function pruner() {
   };
 
   const handleResize = debounce(() => {
-    const viewportWidth = window.innerWidth, viewportHeight = window.innerHeight;
+    const { width, height } = getViewportDimensions();
     elements.forEach(el => {
       const { mobileBreakpoint } = JSON.parse(el.getAttribute('data-pruner') || '{}');
-      processImages(el, mobileBreakpoint && viewportWidth <= mobileBreakpoint, viewportWidth, viewportHeight);
+      processImages(el, mobileBreakpoint && width <= mobileBreakpoint, width, height);
     });
   }, 200);
 
-  const processOnLoad = () => {
-    const viewportWidth = window.innerWidth, viewportHeight = window.innerHeight;
-    elements.forEach(el => {
-      const { mobileBreakpoint } = JSON.parse(el.getAttribute('data-pruner') || '{}');
-      processImages(el, mobileBreakpoint && viewportWidth <= mobileBreakpoint, viewportWidth, viewportHeight);
-    });
-  };
+  const processOnLoad = () => handleResize();
 
   const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => { 
-      if (entry.isIntersecting) { 
-        processOnLoad(); 
-        observer.unobserve(entry.target); 
-      } 
-    });
+    entries.forEach(entry => { if (entry.isIntersecting) { processOnLoad(); observer.unobserve(entry.target); } });
   });
 
+  window.addEventListener('load', processOnLoad);
   elements.forEach(el => observer.observe(el));
   window.addEventListener('resize', handleResize);
-  window.addEventListener('load', processOnLoad);
 }
 
 const debounce = (func, wait) => {
