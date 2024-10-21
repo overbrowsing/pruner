@@ -65,7 +65,7 @@ The optional `mobileScale` parameter in the data-pruner is vital for optimising 
 
 ### Tiles
 
-1. **Calculating Tiles**: The best way to create tiles is by first calcualting the optimal arrangement by using the **[Tile Calculator](/tile-calculator/README.md)**. This tool will help you generate the best configuration for your project and will share the parameters needed for the next step.
+1. **Calculating Tiles**: The best way to create tiles is by first calcualting the optimal arrangement by using the [Tile Calculator](/tile-calculator/README.md). This tool will help you generate the best configuration for your project and will share the parameters needed for the next step.
 
 2. **Making Tiles**: Once you have your configuration from the Tile Calculator, use the [Tile Maker](/tile-maker/README.md) to process your images and create the tiles. Tile Maker will output the tiles and an optional HTML snippet for easy installation. You can also use a free online tool such as [Split Image](https://pinetools.com/split-image).
 
