@@ -76,27 +76,6 @@ Tile Dimensions = 250 x 140px
 --- Tiles Visible at 1536px = 7 (W) 10 (H)
 --- Tiles Visible at 1860px = 8 (W) 10 (H)
 --- Tiles Visible at 2560px = 11 (W) 10 (H)
-
-Pixel Waste Results
-Average pixel waste across viewports for the tested tile dimensions.
-250 x 140px = 86.44px wasted
-256 x 140px = 115.00px wasted
-320 x 140px = 147.00px wasted
-310 x 140px = 164.78px wasted
-372 x 140px = 171.67px wasted
-375 x 140px = 183.67px wasted
-384 x 140px = 200.33px wasted
-465 x 140px = 207.83px wasted
-512 x 140px = 243.00px wasted
-620 x 140px = 302.56px wasted
-640 x 140px = 307.00px wasted
-750 x 140px = 308.67px wasted
-768 x 140px = 371.00px wasted
-930 x 140px = 543.67px wasted
-1280 x 140px = 555.89px wasted
-1536 x 140px = 755.00px wasted
-1860 x 140px = 1060.33px wasted
-2560 x 140px = 1124.78px wasted
 ```
 
 ### Example Visualisation
