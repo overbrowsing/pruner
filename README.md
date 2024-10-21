@@ -6,9 +6,9 @@
 
 ## Overview
 
-`pruner.js` is responsive image polyfill using viewport-based rendering. It works by splitting images into tiles and loading only the parts of the image visible within the viewport, like assembling a jigsaw puzzle. This method reduces storage compared to the current best practice of responsive images by eliminating the need for multiple image versions defined for screen sizes and reduces data transfer by avoiding the download of ‘waste pixels’—parts of the image outside the visible aperture.
+`pruner.js` is a responsive image polyfill using viewport-based rendering. It works by splitting images into tiles and loading only the parts of the image visible within the viewport, like assembling a jigsaw puzzle. This method reduces storage compared to the current best practice of responsive images by eliminating the need for multiple image versions defined for specific breakpoints and reduces data transfer by avoiding the download of ‘waste pixels’—parts of the image outside the visible aperture.
 
-The utility is designed to function not only at defined breakpoints but also dynamically across varying viewport sizes, distinguishing it from traditional responsive image methods. The tile creation process begins with the [Tile Calculator](/tile-calculator/README.md) which determines the most efficient arrangement of tiles for processing images using the [Tile Maker](/tile-maker/README.md). The Tile Maker also generates a snippet of HTML for easy installation, using less HTML than the [Picture-Element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture) (`<picture>`), resulting in a simpler and more efficient process to responsive images.
+The utility is designed to function not only at defined breakpoints but also dynamically across varying viewport sizes, distinguishing it from traditional responsive image methods. The tile creation process begins with the [Tile Calculator](/tile-calculator/README.md) which determines the most efficient arrangement of tiles for processing images using the [Tile Maker](/tile-maker/README.md). This tool also generates a snippet of HTML for easy installation, that also uses less HTML than the [Picture-Element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture) (`<picture>`), resulting in a simpler and more efficient process to responsive images.
 
 ## Install
 
