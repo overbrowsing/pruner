@@ -105,11 +105,5 @@ The exported tiles can be be found [here](/tile-maker/processed/banks-of-the-sei
 Below is the exported HTML snippet from the file [data-pruner.html](/tile-maker/processed/banks-of-the-seine/data-pruner.html).
 
 ```html
-<!-- Pruner.js -->
-
-<!-- Just copy the <img> tag below and install the accompanying Pruner.js <script> from the repo into your project. -->
-<!-- IMPORTANT! Don't forget to update the 'imagePath' parameter. You'll also need some alt text for your image! -->
-<!-- Additionally, if you wish, you can also include the optional parameters as found in the documentation for 'ROI', 'mobileBreak', and 'mobileScale'. -->
-
 <img data-pruner='{"imageName": "banks-of-the-seine", "cols": 8, "rows": 8, "tileWidth": 312, "tileHeight": 175, "imagePath": "/your-path-goes-here"}' alt="" loading="lazy">
 ```
