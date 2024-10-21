@@ -2,7 +2,7 @@
 
 ## Overview
 
-Tile Maker is a Python application designed to process images for web projects that use **`pruner.js`**. It splits images into a grid of tiles, offering options for resizing, custom grid sizes, image formatting, and compression. Additionally, the application can export HTML snippets for easy embedding into web pages.
+Tile Maker is a Python application designed to process images for web projects that use `pruner.js`. It splits images into a grid of tiles, offering options for resizing, custom grid sizes, image formatting, and compression. Additionally, the application can export HTML snippets for easy embedding into web pages.
 
 ## Features
 
@@ -10,7 +10,7 @@ Tile Maker is a Python application designed to process images for web projects t
 - Option to resize the image before splitting it into tiles.
 - Customisable grid size – choose how many columns and rows to split the image into.
 - File names are automatically formatted, compressed, and their extensions are changed to .webp.
-- HTML snippet export feature – generates HTML code to embed the tiled images in a project using **`pruner.js`**.
+- HTML snippet export feature – generates HTML code to embed the tiled images in a project using `pruner.js`.
 - Supports the following image formats: .png, .jpg, .jpeg, .webp.
 
 ## Requirements

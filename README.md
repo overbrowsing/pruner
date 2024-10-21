@@ -6,13 +6,13 @@
 
 ## Overview
 
-**pruner.js**: A responsive image polyfill using viewport-based rendering. It works by splitting images into tiles and loading only the parts of the image visible within the viewport, like assembling a jigsaw puzzle. This method reduces storage compared to the current best practice of responsive images by eliminating the need for multiple image versions defined for screen sizes and reduces data transfer by avoiding the download of ‘waste pixels’—parts of the image outside the visible aperture.
+`pruner.js` is responsive image polyfill using viewport-based rendering. It works by splitting images into tiles and loading only the parts of the image visible within the viewport, like assembling a jigsaw puzzle. This method reduces storage compared to the current best practice of responsive images by eliminating the need for multiple image versions defined for screen sizes and reduces data transfer by avoiding the download of ‘waste pixels’—parts of the image outside the visible aperture.
 
-The utility is designed to function not only at defined breakpoints but also dynamically across varying viewport sizes, distinguishing it from traditional responsive image methods. The tile creation process begins with the **[Tile Calculator](/tile-calculator/README.md)** which determines the most efficient arrangement of tiles for processing images using the **[Tile Maker](/tile-maker/README.md)**. The Tile Maker also generates a snippet of HTML for easy installation, using less HTML than the [Picture-Element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture) (`<picture>`), resulting in a simpler and more efficient process to responsive images.
+The utility is designed to function not only at defined breakpoints but also dynamically across varying viewport sizes, distinguishing it from traditional responsive image methods. The tile creation process begins with the [Tile Calculator](/tile-calculator/README.md) which determines the most efficient arrangement of tiles for processing images using the **[Tile Maker](/tile-maker/README.md). The Tile Maker also generates a snippet of HTML for easy installation, using less HTML than the [Picture-Element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture) (`<picture>`), resulting in a simpler and more efficient process to responsive images.
 
 ## Install
 
-You can include **`pruner.js`** in your project either by downloading the files or using a CDN. While using a third-party CDN introduces an additional HTTP request, we ensured that it is hosted is using renewable energy.
+You can include `pruner.js` in your project either by downloading the files or using a CDN. While using a third-party CDN introduces an additional HTTP request, we ensured that it is hosted is using renewable energy.
 
 ### Download
 
@@ -29,7 +29,7 @@ Link directly to the minified version using Unpkg (we recommend downloading the 
 
 ### Package Managers
 
-You can also install **`pruner.js`** using npm:
+You can also install `pruner.js` using npm:
 
 ```bash
 npm install pruner --save
@@ -67,13 +67,13 @@ The optional `mobileScale` parameter in the data-pruner is vital for optimising 
 
 1. **Calculating Tiles**: The best way to create tiles is by first calcualting the optimal arrangement by using the **[Tile Calculator](/tile-calculator/README.md)**. This tool will help you generate the best configuration for your project and will share the parameters needed for the next step.
 
-2. **Making Tiles**: Once you have your configuration from the Tile Calculator, use the **[Tile Maker](/tile-maker/README.md)** to process your images and create the tiles. Tile Maker will output the tiles and an optional HTML snippet for easy installation. You can also use a free online tool such as [Split Image](https://pinetools.com/split-image).
+2. **Making Tiles**: Once you have your configuration from the Tile Calculator, use the [Tile Maker](/tile-maker/README.md) to process your images and create the tiles. Tile Maker will output the tiles and an optional HTML snippet for easy installation. You can also use a free online tool such as [Split Image](https://pinetools.com/split-image).
 
-3. **Formatting Images**: If you used the **[Tile Maker](/tile-maker/README.md)**, you can ignore this section as the tool handles naming and formatting automatically. For manual setups, ensure that the `imageName` matches the base name for the tile images (e.g., banks-of-the-seine-1.webp, banks-of-the-seine-2.webp, etc.) and that the images are named sequentially. 🚨 `pruner.js` only supports the WebP image format.
+3. **Formatting Images**: If you used the [Tile Maker](/tile-maker/README.md), you can ignore this section as the tool handles naming and formatting automatically. For manual setups, ensure that the `imageName` matches the base name for the tile images (e.g., banks-of-the-seine-1.webp, banks-of-the-seine-2.webp, etc.) and that the images are named sequentially. `pruner.js` only supports the WebP image format.
 
 ### HTML Installation
 
-1. **Install the HTML Snippet**: If you used the **[Tile Maker](/tile-maker/README.md)**, locate the exported HTML snippet in the image folder associated with the image name within the [processed folder](/tile-maker/processed/). Copy this snippet into your web project where you want to display the images.
+1. **Install the HTML Snippet**: If you used the [Tile Maker](/tile-maker/README.md), locate the exported HTML snippet in the image folder associated with the image name within the [processed folder](/tile-maker/processed/). Copy this snippet into your web project where you want to display the images.
 
 2. **Update Parameters**: Update the image paths within the HTML snippet to point to the location of your tiles. Make sure to also configure any optional parameters (e.g.,`ROI`, `mobileBreak`, `mobileScale`) as necessary to suit your needs. 
 
@@ -116,7 +116,7 @@ This is a live project, and we are in the process of developing a methodology to
 
 ## Pruning
 
-The name was chosen based on the practice of pruning in horticulture, the careful trimming of plants to remove excess or dead foliage and promote healthier growth. In a similar way, Pruning away unnecessary waste pixels, ensuring only the essential parts of an image are loaded based on the viewport. Just as pruning in nature encourages a plant to thrive by focusing its energy on the most important branches, **`pruner.js`** optimises web performance by reducing excess data transfer, focusing on what is immediately needed to display the image effectively. A name related to nature was fitting and thematic, aligning with the principles of sustainable web design.
+The name was chosen based on the practice of pruning in horticulture, the careful trimming of plants to remove excess or dead foliage and promote healthier growth. In a similar way, Pruning away unnecessary waste pixels, ensuring only the essential parts of an image are loaded based on the viewport. Just as pruning in nature encourages a plant to thrive by focusing its energy on the most important branches, `pruner.js` optimises web performance by reducing excess data transfer, focusing on what is immediately needed to display the image effectively. A name related to nature was fitting and thematic, aligning with the principles of sustainable web design.
 
 ## Contributing
 
@@ -124,4 +124,4 @@ Contributions are welcome. Please feel free to submit issues or pull requests.
 
 ## License
 
-**`pruner.js`** is released under the [MIT](/LICENSE) license. Feel free to use and modify it as needed.
+`pruner.js` is released under the [MIT](/LICENSE) license. Feel free to use and modify it as needed.

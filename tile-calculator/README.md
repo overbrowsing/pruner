@@ -2,7 +2,7 @@
 
 ## Overview
 
-Tile Calculator is a Python application that helps users determine the optimal tile dimensions images using **`pruner.js`** not only at defined breakpoints but also dynamically across a variety of viewport sizes, distinguishing it from traditional responsive image methods.
+Tile Calculator is a Python application that helps users determine the optimal tile dimensions images using `pruner.js` not only at defined breakpoints but also dynamically across a variety of viewport sizes, distinguishing it from traditional responsive image methods.
 
 The calcualtor begins by gathering essential information, such as the image dimensions and important viewport breakpoints. Once this information is collected, the algorithm calculates suitable tile sizes by identifying the nearest common divisors of the breakpoint widths. This approach ensures that the tiles fit seamlessly within the viewport, avoiding gaps or excessive pixel waste—defined as the unused pixels that remain when an image does not perfectly align with the viewport. The algorithm focuses on minimising this pixel waste while maintaining a balanced number of tiles, evaluating the trade-off between using fewer larger tiles—which may lead to more pixel waste—and smaller tiles that fit better but increase HTTP requests. This careful consideration enables the algorithm to select the optimal tile configuration, enhancing layout efficiency and overall performance.
 
