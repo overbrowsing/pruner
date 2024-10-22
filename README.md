@@ -43,23 +43,17 @@ In the `<img>` tag, instead of using the `src` attribute to link an image, we us
 
 ⭐️ Denotes which parameters are optional.
 
-- `imageName` — The base name of the images used in conjunction with the image.
-- `cols` — Number of columns.
-- `rows` — Number of rows.
-- `tileWidth` — Width of each tile in pixels 
-- `tileHeight` — Height of each tile in pixels.
-- `roi` — Which tile should be the [Region of Interest](#explained-region-of-interest) e.g. 5/image-5.webp. ⭐️
-- `mobileBreakpoint` — Used for viewport width in pixels below which the `mobileScale` is active for the [Mobile Optimization](#explained-mobile-optimization). ⭐️
-- `mobileScale` — Scale factor for mobile view. ⭐️
-- `imagePath` — Path to the directory where images are stored.
-
-#### Explained: Region of Interest
-
-The Region of Interest `roi` attribute allows developers to shift the focal point of an image. ROI activates on smaller form factors and adjusts the image by shifting its focus based on the defined tile number, ensuring that off-centre subjects are the centre of attention within the viewport.
-
-#### Explained: Mobile Optimization
-
-The optional `mobileScale` parameter in the data-pruner is vital for optimising mobile performance on smaller devices by scaling images based on viewport size. When the screen size drops below the threshold set by the `mobileBreakpoint` parameter, the system adjusts the scale of the image. This scaling retains Picture-Element functionality for effective cropping and resizing. Moreover, scaling images up can enhance performance by reducing the number of tiles needed for smaller viewports.
+|   | Parameter          | Description             | Details                                                                                                                                                                                                                                                                                                         | [Example Installation](#example)                  |
+|---|--------------------|-------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------|
+|   | `imageName`        | Image Name              | The base name of the image files.                                                                                                                                                                                                                                                                               | `banks-of-the-seine` (banks-of-the-seine-n.webp)  |
+|   | `cols`             | Columns                 | The number of vertical divisions the image is split into.                                                                                                                                                                                                                                                       | `8`                                               |
+|   | `rows`             | Rows                    | The number of horizontal divisions the image is split into.                                                                                                                                                                                                                                                     | `8`                                               |
+|   | `tileWidth`        | Tile Width (px)         | Specifies the width of each individual tile in pixels.                                                                                                                                                                                                                                                          | `312`                                             |
+|   | `tileHeight`       | Tile Height (px)        | Specifies the height of each individual tile in pixels.                                                                                                                                                                                                                                                         | `175`                                             |
+| ⭐️ | `roi`              | Region of Interest      | This attribute lets you set a specific focal point within the image. The Region of Interest adjusts the image’s focus based on the chosen tile number, ensuring that off-centre subjects are prominently displayed in the viewport.                                                                             | `5` (banks-of-the-seine-5.webp)                   |
+| ⭐️ | `mobileBreakpoint` | Mobile Breakpoint (px)  | pecifies the viewport width in pixels below which the `mobileScale` parameter is activated.                                                                                                                                                                                                                     | `750`                                             |
+| ⭐️ | `mobileScale`      | Mobile Scale Factor (%) | When the viewport size is below the mobileBreakpoint, the script scales the image accordingly. This scaling maintains Picture-Element functionality for effective cropping and resizing. Additionally, enlarging images can improve performance by minimising the number of tiles required for smaller screens. | `1.2` (120%)                                      |
+|   | `imagePath`        | Directory for Tiles     | The file path to the directory where the image tiles are stored. This parameter is essential for locating and retrieving the image files for display.                                                                                                                                                           | `tile-maker/processed/banks-of-the-seine/`        |
 
 ## How to Use
 
