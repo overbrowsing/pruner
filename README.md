@@ -86,23 +86,29 @@ In the `<img>` tag, instead of using the `src` attribute to link an image, we us
 
 ## Example Installation
 
-Once you have completed the above steps, your `<img>` tag snippet should resemble the following. The optional attributes (`ROI`, `mobileBreak`, `mobileScale`) were added in afterwards. The original snippet can be viewed [here](/tile-maker/processed/banks-of-the-seine/data-pruner.html).
-
-Example setup using [Banks of the Seine, Vétheuil, 1880 by Claude Monet](https://www.nga.gov/collection/art-object-page.46652.html).
+Once you have finished using [Tile Maker](/tile-maker/README.md) and [Tile Calculator](/tile-calculator/README.md), your `<img>` tag snippet should resemble the following. The optional attributes (`ROI`, `mobileBreak`, `mobileScale`) were added in afterwards. The original snippet can be viewed [here](/tile-maker/processed/banks-of-the-seine/data-pruner.html).
 
 ```html
 <img data-pruner='{"imageName": "banks-of-the-seine", "cols": 8, "rows": 8, "tileWidth": 312, "tileHeight": 175, "roi": 5, "mobileBreakpoint": 750, "mobileScale": 1.2, "imagePath": "tile-maker/processed/banks-of-the-seine/"}' alt="Banks of the Seine, Vétheuil, 1880 by Claude Monet" loading="lazy">
 ```
 
-- `imageName`: `banks-of-the-seine`
-- `cols`: `8` (8 columns)
-- `rows`: `8` (8 rows)
-- `tileWidth`: `312` (pixels)
-- `tileHeight`: `175` (pixels)
-- `roi`: 5 (Tile number, banks-of-the-seine-5.webp)
-- `mobileBreakpoint`: `750` (pixels)
-- `mobileScale`: `1.2` (120%)
-- `imagePath`: `tile-maker/processed/banks-of-the-seine/` (path to images)
+| Parameter          | Description             | Value                                      |
+|--------------------|-------------------------|--------------------------------------------|
+| `imageName`        | Image Name              | `banks-of-the-seine`                       |
+| `cols`             | Columns                 | `8`                                        |
+| `rows`             | Rows                    | `8`                                        |
+| `tileWidth`        | Tile Width (px)         | `312` (pixels)                             |
+| `tileHeight`       | Tile Height (px)        | `175` (pixels)                             |
+| `roi`              | Region of Interest      | `5` (banks-of-the-seine-5.webp)            |
+| `mobileBreakpoint` | Mobile Breakpoint (px)  | `750`                                      |
+| `mobileScale`      | Mobile Scale Factor (%) | `1.2` (120%)                               |
+| `imagePath`        | Directory for Tiles     | `tile-maker/processed/banks-of-the-seine/` |
+
+The HTML snippet above was generated following the steps within [Tile-Maker](/tile-maker/README.md#example-usage) using results generated using [Tile Calculator](/tile-calculator/README.md#example-calculation).
+
+The tiles for this example installation can be found [here](/tile-maker/processed/banks-of-the-seine/).
+
+Original image: [Banks of the Seine, Vétheuil, 1880 by Claude Monet](https://www.nga.gov/collection/art-object-page.46652.html).
 
 ## Performance
 
