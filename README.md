@@ -71,9 +71,9 @@ The optional `mobileScale` parameter in the data-pruner is vital for optimising 
 
 3. **Formatting Images**: If you used the [Tile Maker](/tile-maker/README.md), you can ignore this section as the tool handles naming and formatting automatically. For manual setups, ensure that the `imageName` matches the base name for the tile images (e.g., banks-of-the-seine-1.webp, banks-of-the-seine-2.webp, etc.) and that the images are named sequentially. `pruner.js` only supports the WebP image format.
 
-### HTML Installation
+### Installation
 
-1. **Install the HTML Snippet**: If you used the [Tile Maker](/tile-maker/README.md), locate the exported HTML snippet in the image folder associated with the image name within the [processed folder](/tile-maker/processed/). Copy this snippet into your web project where you want to display the images.
+1. **Insert the HTML Snippet**: If you used the [Tile Maker](/tile-maker/README.md), locate the exported HTML snippet in the image folder associated with the image name within the [processed folder](/tile-maker/processed/). Copy this snippet into your web project where you want to display the images.
 
 2. **Update Parameters**: Update the image paths within the HTML snippet to point to the location of your tiles. Make sure to also configure any optional parameters (e.g.,`ROI`, `mobileBreak`, `mobileScale`) as necessary to suit your needs. 
 
