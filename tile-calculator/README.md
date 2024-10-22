@@ -58,7 +58,7 @@ pip install numpy matplotlib
 
 ## Example Calculation
 
-The inputs below generated the calculation for tiles featured in the [example setup](/README.md#example-html-setup):
+The inputs below generated the calculation for tiles featured in the [example setup](/README.md#example-installation):
 
 - Dimensions: 2400 x 1500px
 - Breakpoints: Default (750, 1536, 1860, 2560)
