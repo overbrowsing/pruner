@@ -10,6 +10,17 @@
 
 The utility is designed to function not only at defined breakpoints but also dynamically across varying viewport sizes, distinguishing it from traditional responsive image methods. The tile creation process begins with the [Tile Calculator](/tile-calculator/README.md) which determines the most efficient arrangement of tiles for processing images using the [Tile Maker](/tile-maker/README.md). This tool also generates a snippet of HTML for easy installation, that also uses less HTML than the [Picture-Element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture) (`<picture>`), resulting in a simpler and more efficient process to responsive images.
 
+The name was chosen based on the practice of pruning in horticulture, the careful trimming of plants to remove excess or dead foliage and promote healthier growth. In a similar way, Pruning away unnecessary waste pixels, ensuring only the essential parts of an image are loaded based on the viewport. Just as pruning in nature encourages a plant to thrive by focusing its energy on the most important branches, `pruner.js` optimises web performance by reducing excess data transfer, focusing on what is immediately needed to display the image effectively. A name related to nature was fitting and thematic, aligning with the principles of sustainable web design.
+
+## Features
+
+- **Load Only What You See**: Downloads only the parts of an image that are visible on the screen and reduces unnecessary data transfer by not loading hidden sections of images (waste pixels).
+- **Save Data**: Reduces the number of images needed for responsive displays, enhancing website speed.
+- **Better Responsive Images**: Provides dynamic viewport-based rendering of images across a range of viewports, rather than just a few predefined breakpoints like `<picture>`.
+- **Easy to Use**: The [Tile Calculator](/tile-calculator/README.md) automates the calculation, while the [Tile Maker](/tile-maker/README.md) handles formatting and compression of tiles, as well as the generation of a single line of HTML for easy installation.
+- **Customisable**: Allows you to set a focal point in the image and specify breakpoints for image scaling on smaller form factors.
+- **Client-Side Functionality**: Operates in the browser with a small piece of Javascript to dynamically load images based on the viewport size.
+
 ## Install
 
 You can include `pruner.js` in your project either by downloading the files or using a CDN. While using a third-party CDN introduces an additional HTTP request, we ensured that it is hosted is using renewable energy.
@@ -109,14 +120,6 @@ The HTML snippet above was generated following the steps within [Tile-Maker](/ti
 The tiles for this example installation can be found [here](/tile-maker/processed/banks-of-the-seine/).
 
 Original image: [Banks of the Seine, Vétheuil, 1880 by Claude Monet](https://www.nga.gov/collection/art-object-page.46652.html).
-
-## Performance
-
-This is a live project, and we are in the process of developing a methodology to evaluate the performance the utility and tools in this project.
-
-## Pruning
-
-The name was chosen based on the practice of pruning in horticulture, the careful trimming of plants to remove excess or dead foliage and promote healthier growth. In a similar way, Pruning away unnecessary waste pixels, ensuring only the essential parts of an image are loaded based on the viewport. Just as pruning in nature encourages a plant to thrive by focusing its energy on the most important branches, `pruner.js` optimises web performance by reducing excess data transfer, focusing on what is immediately needed to display the image effectively. A name related to nature was fitting and thematic, aligning with the principles of sustainable web design.
 
 ## Contributing
 
