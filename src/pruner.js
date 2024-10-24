@@ -1,95 +1,79 @@
 function pruner() {
-  const elements = Array.from(document.querySelectorAll('[data-pruner]'));
+  const elems = [...document.querySelectorAll('[data-pruner]')];
 
-  const loadImage = (src) => new Promise((resolve, reject) => {
+  const loadImg = src => new Promise((res, rej) => {
     const img = new Image();
     img.crossOrigin = 'anonymous';
-    img.onload = () => resolve(img);
-    img.onerror = () => reject(`Failed to load image: ${src}`);
+    img.onload = () => res(img);
+    img.onerror = () => rej(`Failed to load: ${src}`);
     img.src = src;
   });
 
-  const createCanvas = (width, height) => {
-    const canvas = document.createElement('canvas');
-    canvas.width = width;
-    canvas.height = height;
-    return canvas;
-  };
+  const createCanvas = (w, h) => Object.assign(document.createElement('canvas'), { width: w, height: h });
+  const getViewport = () => ({ w: innerWidth, h: innerHeight });
 
-  const getViewportDimensions = () => ({
-    width: window.innerWidth,
-    height: window.innerHeight
-  });
+  const processImgs = async (el, mobile, vw, vh) => {
+    const { imageName, cols, rows, tileWidth, tileHeight, mobileScale, imagePath, roi, imageExtension } = JSON.parse(el.dataset.pruner);
+    if (!(cols && rows && tileWidth && tileHeight && imagePath && imageName)) return console.error('Missing params.');
 
-  const processImages = async (el, isMobileView, viewportWidth, viewportHeight) => {
-    const { imageName, cols, rows, tileWidth, tileHeight, mobileScale, imagePath, roi, imageExtension } = JSON.parse(el.getAttribute('data-pruner') || '{}');
+    const sf = mobile && mobileScale ? mobileScale : 1, sw = Math.round(tileWidth * sf), sh = Math.round(tileHeight * sf);
+    const numCols = Math.min(Math.ceil(vw / sw), cols), numRows = Math.min(Math.ceil(vh / sh), rows);
+    const canvas = createCanvas(numCols * sw, numRows * sh), ctx = canvas.getContext('2d');
+    ctx.imageSmoothingEnabled = false; el.src = '';
 
-    if (!(cols && rows && tileWidth && tileHeight && imagePath && imageName)) return console.error('Missing required data attributes.');
+    const ext = imageExtension || 'webp';
+    const srcs = Array.from({ length: cols * rows }, (_, i) => `${imagePath}${imageName}-${i + 1}.${ext}`);
+    const [startRow, startCol] = roi ? getRoi(roi - 1, cols, numRows, numCols, rows) : getCenter(cols, rows, numRows, numCols);
 
-    const scaleFactor = (isMobileView && mobileScale) ? mobileScale : 1,
-      scaledTileWidth = Math.round(tileWidth * scaleFactor),
-      scaledTileHeight = Math.round(tileHeight * scaleFactor),
-      numTilesInViewportWidth = Math.min(Math.ceil(viewportWidth / scaledTileWidth), cols),
-      numTilesInViewportHeight = Math.min(Math.ceil(viewportHeight / scaledTileHeight), rows),
-      canvas = createCanvas(numTilesInViewportWidth * scaledTileWidth, numTilesInViewportHeight * scaledTileHeight),
-      ctx = canvas.getContext('2d');
-
-    ctx.imageSmoothingEnabled = false;
-    el.src = '';
-    const ext = imageExtension || 'webp',
-      srcs = Array.from({ length: cols * rows }, (_, i) => `${imagePath}${imageName}-${i + 1}.${ext}`);
-
-    const [finalStartRow, finalStartCol] = (() => {
-      if (roi) {
-        const roiIndex = roi - 1, roiRow = Math.floor(roiIndex / cols), roiCol = roiIndex % cols;
-        return [
-          Math.min(Math.max(0, roiRow - Math.floor(numTilesInViewportHeight / 2)), rows - numTilesInViewportHeight),
-          Math.min(Math.max(0, roiCol - Math.floor(numTilesInViewportWidth / 2)), cols - numTilesInViewportWidth)];
+    const imgsToLoad = [];
+    for (let r = 0; r < numRows; r++)
+      for (let c = 0; c < numCols; c++) {
+        const srcR = startRow + r, srcC = startCol + c;
+        if (srcR < rows && srcC < cols) imgsToLoad.push(loadImg(srcs[srcR * cols + srcC]));
       }
-      return [Math.max(0, Math.floor(rows / 2) - Math.floor(numTilesInViewportHeight / 2)), Math.max(0, Math.floor(cols / 2) - Math.floor(numTilesInViewportWidth / 2))];
-    })();
-
-    const imagesToLoad = [];
-    for (let row = 0; row < numTilesInViewportHeight; row++) {
-      for (let col = 0; col < numTilesInViewportWidth; col++) {
-        const sourceRow = finalStartRow + row, sourceCol = finalStartCol + col;
-        if (sourceRow < rows && sourceCol < cols) {
-          imagesToLoad.push(loadImage(srcs[sourceRow * cols + sourceCol]));
-        }
-      }
-    }
 
     try {
-      const images = await Promise.all(imagesToLoad);
-      images.forEach((img, i) => ctx.drawImage(img, (i % numTilesInViewportWidth) * scaledTileWidth, Math.floor(i / numTilesInViewportWidth) * scaledTileHeight, scaledTileWidth, scaledTileHeight));
+      const imgs = await Promise.all(imgsToLoad);
+      imgs.forEach((img, i) => ctx.drawImage(img, (i % numCols) * sw, Math.floor(i / numCols) * sh, sw, sh));
       el.src = canvas.toDataURL('image/WEBP');
     } catch (error) {
       console.error(error);
     }
   };
 
+  const getRoi = (idx, cols, nr, nc, rows) => {
+    const roiRow = idx / cols | 0, roiCol = idx % cols;
+    return [
+      Math.min(Math.max(0, roiRow - (nr / 2 | 0)), rows - nr),
+      Math.min(Math.max(0, roiCol - (nc / 2 | 0)), cols - nc)
+    ];
+  };
+
+  const getCenter = (cols, rows, nr, nc) => [
+    Math.max(0, (rows / 2 | 0) - (nr / 2 | 0)),
+    Math.max(0, (cols / 2 | 0) - (nc / 2 | 0))
+  ];
+
   const handleResize = debounce(() => {
-    const { width, height } = getViewportDimensions();
-    elements.forEach(el => {
-      const { mobileBreakpoint } = JSON.parse(el.getAttribute('data-pruner') || '{}');
-      processImages(el, mobileBreakpoint && width <= mobileBreakpoint, width, height);
+    const { w, h } = getViewport();
+    elems.forEach(el => {
+      const { mobileBreakpoint } = JSON.parse(el.dataset.pruner);
+      processImgs(el, mobileBreakpoint && w <= mobileBreakpoint, w, h);
     });
   }, 200);
 
-  const processOnLoad = () => handleResize();
-
   const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => { if (entry.isIntersecting) { processOnLoad(); observer.unobserve(entry.target); } });
+    entries.forEach(entry => { if (entry.isIntersecting) { handleResize(); observer.unobserve(entry.target); } });
   });
 
-  window.addEventListener('load', processOnLoad);
-  elements.forEach(el => observer.observe(el));
+  window.addEventListener('load', handleResize);
+  elems.forEach(el => observer.observe(el));
   window.addEventListener('resize', handleResize);
 }
 
-const debounce = (func, wait) => {
+const debounce = (f, wait) => {
   let timeout;
-  return (...args) => { clearTimeout(timeout); timeout = setTimeout(() => func(...args), wait); };
+  return (...args) => { clearTimeout(timeout); timeout = setTimeout(() => f(...args), wait); };
 };
 
 window.onload = pruner;
