@@ -19,7 +19,7 @@ The name was chosen based on the practice of pruning in horticulture, the carefu
 - **Better Responsive Images**: Provides dynamic viewport-based rendering of images across a range of viewports, rather than just a few predefined breakpoints like `<picture>`.
 - **Easy to Use**: The [Tile Calculator](/tile-calculator/README.md) automates the calculation, while the [Tile Maker](/tile-maker/README.md) handles formatting and compression of tiles, as well as the generation of a single line of HTML for easy installation.
 - **Customisable**: Allows you to set a focal point in the image and specify breakpoints for image scaling on smaller form factors.
-- **Client-Side Functionality**: Operates in the browser with a small piece of Javascript to dynamically load images based on the viewport size.
+- **Client-Side Functionality**: Operates in the browser with a small piece of Javascript to dynamically create auto-scaling images based on the viewport size.
 
 ## Install
 
