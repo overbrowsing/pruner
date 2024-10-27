@@ -1,13 +1,20 @@
 function pruner() {
   const elems = [...document.querySelectorAll('[data-pruner]')];
+  const imageCache = {};
 
-  const loadImg = src => new Promise((res, rej) => {
-    const img = new Image();
-    img.crossOrigin = 'anonymous';
-    img.onload = () => res(img);
-    img.onerror = () => rej(`Failed to load: ${src}`);
-    img.src = src;
-  });
+  const loadImg = src => {
+    if (imageCache[src]) return Promise.resolve(imageCache[src]);
+    return new Promise((res, rej) => {
+      const img = new Image();
+      img.crossOrigin = 'anonymous';
+      img.onload = () => {
+        imageCache[src] = img;
+        res(img);
+      };
+      img.onerror = () => rej(`Failed to load: ${src}`);
+      img.src = src;
+    });
+  };
 
   const createCanvas = (w, h) => Object.assign(document.createElement('canvas'), { width: w, height: h });
   const getViewport = () => ({ w: innerWidth, h: innerHeight });
@@ -26,11 +33,15 @@ function pruner() {
     const [startRow, startCol] = roi ? getRoi(roi - 1, cols, numRows, numCols, rows) : getCenter(cols, rows, numRows, numCols);
 
     const imgsToLoad = [];
-    for (let r = 0; r < numRows; r++)
+    for (let r = 0; r < numRows; r++) {
       for (let c = 0; c < numCols; c++) {
         const srcR = startRow + r, srcC = startCol + c;
-        if (srcR < rows && srcC < cols) imgsToLoad.push(loadImg(srcs[srcR * cols + srcC]));
+        if (srcR < rows && srcC < cols) {
+          const imgSrc = srcs[srcR * cols + srcC];
+          imgsToLoad.push(loadImg(imgSrc)); // Load and cache visible tiles
+        }
       }
+    }
 
     try {
       const imgs = await Promise.all(imgsToLoad);
