@@ -8,7 +8,7 @@
 
 `pruner.js` is a responsive image polyfill using viewport-based rendering. It works by splitting images into tiles and loading only the parts of the image visible within the viewport, like assembling a jigsaw puzzle. This method reduces server-side storage compared to the current best practice of responsive images by eliminating the need for multiple image versions defined for specific breakpoints and reduces data transfer by avoiding the download of ‘waste pixels’—parts of the image outside the visible aperture.
 
-The utility is designed to function not only at defined breakpoints but also dynamically across varying viewport sizes, distinguishing it from traditional responsive image methods. The tile creation process begins with the [Tile Calculator](/tile-calculator/README.md) which determines the most efficient arrangement of tiles for processing images using the [Tile Maker](/tile-maker/README.md). This tool also generates a snippet of HTML for easy installation, that also uses less HTML than the [Picture-Element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture) (`<picture>`), and in some cases `srcset`, resulting in a simpler and more efficient process to responsive images.
+The utility is designed to function not only at defined breakpoints but also dynamically across varying viewport sizes, distinguishing it from traditional responsive image methods. The tile creation process begins with the [Tile Calculator](/tools/tile-calculator/) which determines the most efficient arrangement of tiles for processing images using the [Tile Maker](/tools/tile-maker/). This tool also generates a snippet of HTML for easy installation, that also uses less HTML than the [Picture-Element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture) (`<picture>`), and in some cases `srcset`, resulting in a simpler and more efficient process to responsive images.
 
 The name was chosen based on the practice of [pruning in horticulture](https://en.wikipedia.org/wiki/Pruning): the practice of targetted removal of unhealthy or unwanted parts of a plant to promote healthier growth. Just as pruning in nature encourages a plant to thrive by focusing its energy on the most important branches, `pruner.js` optimises web performance by reducing server-side storage and excess data transfer, focusing on what is needed to display the image effectively across viewports. A name related to nature was fitting and thematic, aligning with the principles of [sustainable web design](https://sustainablewebdesign.org).
 
@@ -17,7 +17,7 @@ The name was chosen based on the practice of [pruning in horticulture](https://e
 - **Load Only What You See**: Downloads only the parts of an image that are visible on the screen and reduces unnecessary data transfer by not loading hidden sections of images (waste pixels).
 - **Save Data**: Reduces the number of images needed for responsive displays, enhancing website speed.
 - **Better Responsive Images**: Provides dynamic viewport-based rendering of images across a range of viewports, rather than just a few predefined breakpoints like `<picture>`.
-- **Easy to Use**: The [Tile Calculator](/tile-calculator/README.md) automates the calculation, while the [Tile Maker](/tile-maker/README.md) handles formatting and compression of tiles, as well as the generation of a single line of HTML for easy installation.
+- **Easy to Use**: The [Tile Calculator](/tools/tile-calculator/README.md) automates the calculation, while the [Tile Maker](/tools/tile-maker/) handles formatting and compression of tiles, as well as the generation of a single line of HTML for easy installation.
 - **Customisable**: Allows you to set a focal point in the image and specify breakpoints for image scaling on smaller form factors.
 - **Client-Side Functionality**: Operates in the browser with a small piece of Javascript to dynamically create auto-scaling images based on the viewport size.
 
@@ -64,21 +64,21 @@ In the `<img>` tag, instead of using the `src` attribute to link an image, we us
 | ⭐️ | `roi`              | Region of Interest      | This attribute lets you set a specific focal point within the image. The Region of Interest adjusts the image’s focus based on the chosen tile number, ensuring that off-centre subjects are prominently displayed in the viewport.                                                                             | `5` (banks-of-the-seine-5.webp)                   |
 | ⭐️ | `mobileBreakpoint` | Mobile Breakpoint (px)  | pecifies the viewport width in pixels below which the `mobileScale` parameter is activated.                                                                                                                                                                                                                     | `750`                                             |
 | ⭐️ | `mobileScale`      | Mobile Scale Factor (%) | When the viewport size is below the mobileBreakpoint, the script scales the image accordingly. This scaling maintains Picture-Element functionality for effective cropping and resizing. Additionally, enlarging images can improve performance by minimising the number of tiles required for smaller screens. | `1.2` (120%)                                      |
-|   | `imagePath`        | Directory for Tiles     | The file path to the directory where the image tiles are stored. This parameter is essential for locating and retrieving the image files for display.                                                                                                                                                           | `tile-maker/processed/banks-of-the-seine/`        |
+|   | `imagePath`        | Directory for Tiles     | The file path to the directory where the image tiles are stored. This parameter is essential for locating and retrieving the image files for display.                                                                                                                                                           | `/tools/tile-maker/processed/banks-of-the-seine/`        |
 
 ## How to Use
 
 ### Tiles
 
-1. **Calculating Tiles**: The best way to create tiles is by first calcualting the optimal arrangement by using the [Tile Calculator](/tile-calculator/README.md). This tool will help you generate the best configuration for your project and will share the parameters needed for the next step.
+1. **Calculating Tiles**: The best way to create tiles is by first calcualting the optimal arrangement by using the [Tile Calculator](/tools/tile-calculator/README.md). This tool will help you generate the best configuration for your project and will share the parameters needed for the next step.
 
-2. **Making Tiles**: Once you have your configuration from the Tile Calculator, use the [Tile Maker](/tile-maker/README.md) to process your images and create the tiles. Tile Maker will output the tiles and an optional HTML snippet for easy installation. You can also use a free online tool such as [Split Image](https://pinetools.com/split-image).
+2. **Making Tiles**: Once you have your configuration from the Tile Calculator, use the [Tile Maker](/tools/tile-maker/README.md) to process your images and create the tiles. Tile Maker will output the tiles and an optional HTML snippet for easy installation. You can also use a free online tool such as [Split Image](https://pinetools.com/split-image).
 
-3. **Formatting Images**: If you used the [Tile Maker](/tile-maker/README.md), you can ignore this section as the tool handles naming and formatting automatically. For manual setups, ensure that the `imageName` matches the base name for the tile images (e.g., banks-of-the-seine-1.webp, banks-of-the-seine-2.webp, etc.) and that the images are named sequentially. `pruner.js` only supports the WebP image format.
+3. **Formatting Images**: If you used the [Tile Maker](/tools/tile-maker/README.md), you can ignore this section as the tool handles naming and formatting automatically. For manual setups, ensure that the `imageName` matches the base name for the tile images (e.g., banks-of-the-seine-1.webp, banks-of-the-seine-2.webp, etc.) and that the images are named sequentially. `pruner.js` only supports the WebP image format.
 
 ### Installation
 
-1. **Insert the HTML Snippet**: If you used the [Tile Maker](/tile-maker/README.md), locate the exported HTML snippet in the image folder associated with the image name within the [processed folder](/tile-maker/processed/). Copy this snippet into your web project where you want to display the images.
+1. **Insert the HTML Snippet**: If you used the [Tile Maker](/tools/tile-maker/README.md), locate the exported HTML snippet in the image folder associated with the image name within the [processed folder](/tools/tile-maker/processed/). Copy this snippet into your web project where you want to display the images.
 
 2. **Update Parameters**: Update the image paths within the HTML snippet to point to the location of your tiles. Make sure to also configure any optional parameters (e.g.,`ROI`, `mobileBreak`, `mobileScale`) as necessary to suit your needs. 
 
@@ -97,27 +97,27 @@ In the `<img>` tag, instead of using the `src` attribute to link an image, we us
 
 ## Example Installation
 
-Once you have finished using [Tile Maker](/tile-maker/README.md) and [Tile Calculator](/tile-calculator/README.md), your `<img>` tag snippet should resemble the following. The optional attributes (`ROI`, `mobileBreak`, `mobileScale`) were added in afterwards. The original snippet can be viewed [here](/tile-maker/processed/banks-of-the-seine/data-pruner.html).
+Once you have finished using [Tile Maker](/tools/tile-maker/README.md) and [Tile Calculator](/tools/tile-calculator/README.md), your `<img>` tag snippet should resemble the following. The optional attributes (`ROI`, `mobileBreak`, `mobileScale`) were added in afterwards. The original snippet can be viewed [here](/tools/tile-maker/processed/banks-of-the-seine/data-pruner.html).
 
 ```html
 <img data-pruner='{"imageName": "banks-of-the-seine", "cols": 8, "rows": 8, "tileWidth": 312, "tileHeight": 175, "roi": 5, "mobileBreakpoint": 750, "mobileScale": 1.2, "imagePath": "tile-maker/processed/banks-of-the-seine/"}' alt="Banks of the Seine, Vétheuil, 1880 by Claude Monet" loading="lazy">
 ```
 
-| Parameter          | Description             | Value                                      |
-|--------------------|-------------------------|--------------------------------------------|
-| `imageName`        | Image Name              | `banks-of-the-seine`                       |
-| `cols`             | Columns                 | `8`                                        |
-| `rows`             | Rows                    | `8`                                        |
-| `tileWidth`        | Tile Width (px)         | `312` (pixels)                             |
-| `tileHeight`       | Tile Height (px)        | `175` (pixels)                             |
-| `roi`              | Region of Interest      | `5` (banks-of-the-seine-5.webp)            |
-| `mobileBreakpoint` | Mobile Breakpoint (px)  | `750`                                      |
-| `mobileScale`      | Mobile Scale Factor (%) | `1.2` (120%)                               |
-| `imagePath`        | Directory for Tiles     | `tile-maker/processed/banks-of-the-seine/` |
+| Parameter          | Description             | Value                                            |
+|--------------------|-------------------------|--------------------------------------------------|
+| `imageName`        | Image Name              | `banks-of-the-seine`                             |
+| `cols`             | Columns                 | `8`                                              |
+| `rows`             | Rows                    | `8`                                              |
+| `tileWidth`        | Tile Width (px)         | `312` (pixels)                                   |
+| `tileHeight`       | Tile Height (px)        | `175` (pixels)                                   |
+| `roi`              | Region of Interest      | `5` (banks-of-the-seine-5.webp)                  |
+| `mobileBreakpoint` | Mobile Breakpoint (px)  | `750`                                            |
+| `mobileScale`      | Mobile Scale Factor (%) | `1.2` (120%)                                     |
+| `imagePath`        | Directory for Tiles     | `/toolstile-maker/processed/banks-of-the-seine/` |
 
-The HTML snippet above was generated following the steps within [Tile-Maker](/tile-maker/README.md#example-usage) using results generated using [Tile Calculator](/tile-calculator/README.md#example-calculation).
+The HTML snippet above was generated following the steps within [Tile-Maker](/tools/tile-maker/README.md#example-usage) using results generated using [Tile Calculator](/tools/tile-calculator/README.md#example-calculation).
 
-The tiles for this example installation can be found [here](/tile-maker/processed/banks-of-the-seine/).
+The tiles for this example installation can be found [here](/tools/tile-maker/processed/banks-of-the-seine/).
 
 Original image: [Banks of the Seine, Vétheuil, 1880 by Claude Monet](https://www.nga.gov/collection/art-object-page.46652.html).
 

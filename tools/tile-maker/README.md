@@ -26,7 +26,7 @@ pip install pillow
 
 ### Folder Structure
 
-Set up the folders as outlined below. Then place the images that you wish to process in the [target folder](/tile-maker/target/). The [processed folder](/tile-maker/processed/) will store the exported tiles and any generated HTML snippets, each within a subfolder named after the target image.
+Set up the folders as outlined below. Then place the images that you wish to process in the [target folder](/tools/tile-maker/target/). The [processed folder](/tools/tile-maker/processed/) will store the exported tiles and any generated HTML snippets, each within a subfolder named after the target image.
 
 ```bash
 tile-maker/
@@ -37,7 +37,7 @@ tile-maker/
 
 ### Add Images
 
-Place your images to be processed in the [target folder](/tile-maker/target/). Ensure they are in a supported format (e.g., .png, .jpg, .jpeg, .webp).
+Place your images to be processed in the [target folder](/tools/tile-maker/target/). Ensure they are in a supported format (e.g., .png, .jpg, .jpeg, .webp).
 
 ## Initialize
 
@@ -50,7 +50,7 @@ Place your images to be processed in the [target folder](/tile-maker/target/). E
 2. **Follow the Prompts (❓)**
 
     **❓ Do you want to process all images in the target folder or just one image? (all/one)**
-    - ***all*** — Process all images inside the [target folder](/tile-maker/target/).
+    - ***all*** — Process all images inside the [target folder](/tools/tile-maker/target/).
     - ***one*** —  Enter the name of the target image (with extension, e.g. banks-of-the-seine.jpg)
 
     **❓ Do you want to resize the image? (y/n)**
@@ -79,7 +79,7 @@ Place your images to be processed in the [target folder](/tile-maker/target/). E
 
 The inputs below generated the tiles and HTML snippet featured in the [example setup](/README.md#example-installation):
 
-- Image: [banks-of-the-seine.jpg](/tile-maker/target/banks-of-the-seine.jpg)
+- Image: [banks-of-the-seine.jpg](/tools/tile-maker/target/banks-of-the-seine.jpg)
 - Dimensions: 2400 x 1500px
 - Columns: 8, Rows: 8
 
@@ -98,11 +98,11 @@ Tile dimensions: 312 x 175px
 
 ### Tiles
 
-The exported tiles can be be found [here](/tile-maker/processed/banks-of-the-seine/).
+The exported tiles can be be found [here](/tools/tile-maker/processed/banks-of-the-seine/).
 
 ### HTML Snippet
 
-Below is the exported HTML snippet from the file [data-pruner.html](/tile-maker/processed/banks-of-the-seine/data-pruner.html).
+Below is the exported HTML snippet from the file [data-pruner.html](/tools/tile-maker/processed/banks-of-the-seine/data-pruner.html).
 
 ```html
 <img data-pruner='{"imageName": "banks-of-the-seine", "cols": 8, "rows": 8, "tileWidth": 312, "tileHeight": 175, "imagePath": "/your-path-goes-here"}' alt="" loading="lazy">
