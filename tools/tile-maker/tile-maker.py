@@ -58,7 +58,7 @@ def process_image(input_folder, target_image_name, img_size, grid_size, export_h
   if img_size:
     img = img.resize(img_size)
 
-  pruner_folder = os.path.join(os.getcwd(), 'tile-maker', 'processed', os.path.splitext(processed_image_name)[0])
+  pruner_folder = os.path.join(os.getcwd(), 'tools', 'tile-maker', 'processed', os.path.splitext(processed_image_name)[0])
   os.makedirs(pruner_folder, exist_ok=True)
 
   tile_count, total_size_kb, tile_dimensions = split_image(img, pruner_folder, os.path.splitext(processed_image_name)[0], grid_size)
@@ -99,7 +99,7 @@ def print_processing_summary(image_name, tile_count, total_size_kb, grid_size, t
   print(f"Columns: {grid_size[0]}, Rows: {grid_size[1]}")
   print(f"Tile dimensions: {tile_dimensions[0]} x {tile_dimensions[1]}px")
 
-input_folder = os.path.join(os.getcwd(), 'tile-maker', 'target')
+input_folder = os.path.join(os.getcwd(), 'tools', 'tile-maker', 'target')
 
 target_image_name, img_size, grid_size, target_choice, export_html_choice = get_user_input()
 
