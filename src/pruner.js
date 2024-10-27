@@ -38,7 +38,7 @@ function pruner() {
         const srcR = startRow + r, srcC = startCol + c;
         if (srcR < rows && srcC < cols) {
           const imgSrc = srcs[srcR * cols + srcC];
-          imgsToLoad.push(loadImg(imgSrc)); // Load and cache visible tiles
+          imgsToLoad.push(loadImg(imgSrc));
         }
       }
     }
