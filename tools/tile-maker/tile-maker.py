@@ -36,7 +36,7 @@ def export_html(pruner_folder, base_name, grid_size, tile_dimensions):
   cols, rows = grid_size
   tile_width, tile_height = tile_dimensions
 
-  html_content = f"""<img data-pruner='{{"imageName": "{base_name}", "cols": {cols}, "rows": {rows}, "tileWidth": {tile_width}, "tileHeight": {tile_height}, "imagePath": "/your-path-goes-here"}}' alt="" loading="lazy">"""
+  html_content = f"""<img data-pruner='{{"imageName": "{base_name}", "cols": {cols}, "rows": {rows}, "tileWidth": {tile_width}, "tileHeight": {tile_height}, "imagePath": "/your-path-here"}}' alt="" loading="lazy">"""
 
   try:
     with open(html_file_path, 'w') as html_file:
