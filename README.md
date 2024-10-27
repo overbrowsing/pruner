@@ -107,17 +107,17 @@ After completing the steps with the example image of [*Banks of the Seine, Véth
 
 The optional parameters (`ROI`, `mobileBreak`, `mobileScale`) along with the `alt` were added in manually afterwards. The original snippet can be viewed [here](/tools/tile-maker/processed/banks-of-the-seine/data-pruner.html) and exported tiles [here](/tools/tile-maker/processed/banks-of-the-seine/).
 
-| Parameter          | Description             | Value                                             |
-|--------------------|-------------------------|---------------------------------------------------|
-| `imageName`        | Image Name              | `banks-of-the-seine`                              |
-| `cols`             | Columns                 | `9`                                               |
-| `rows`             | Rows                    | `9`                                               |
-| `tileWidth`        | Tile Width (px)         | `266` (pixels)                                    |
-| `tileHeight`       | Tile Height (px)        | `166` (pixels)                                    |
-| `roi`              | Region of Interest      | `5` (banks-of-the-seine-5.webp)                   |
-| `mobileBreakpoint` | Mobile Breakpoint (px)  | `750`                                             |
-| `mobileScale`      | Mobile Scale Factor (%) | `1.2` (120%)                                      |
-| `imagePath`        | Directory for Tiles     | `tools/tile-maker/processed/banks-of-the-seine/`  |
+| Parameter          | Description             | Value                                            |
+|--------------------|-------------------------|--------------------------------------------------|
+| `imageName`        | Image Name              | `banks-of-the-seine`                             |
+| `cols`             | Columns                 | `9`                                              |
+| `rows`             | Rows                    | `9`                                              |
+| `tileWidth`        | Tile Width (px)         | `266` (pixels)                                   |
+| `tileHeight`       | Tile Height (px)        | `166` (pixels)                                   |
+| `roi`              | Region of Interest      | `5` (banks-of-the-seine-5.webp)                  |
+| `mobileBreakpoint` | Mobile Breakpoint (px)  | `750`                                            |
+| `mobileScale`      | Mobile Scale Factor (%) | `1.2` (120%)                                     |
+| `imagePath`        | Directory for Tiles     | `tools/tile-maker/processed/banks-of-the-seine/` |
 
 ## Progressive Enhancement
 
