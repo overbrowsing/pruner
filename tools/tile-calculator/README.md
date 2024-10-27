@@ -56,14 +56,16 @@ The inputs below generated the calculation for tiles featured in the [example se
 The printed results from the example setup:
 
 ```bash
-Tile Calculator Results
-Breakpoints: [750, 1536, 1860, 2560] (px)
+Tile calculating complete!
+Image dimensions = 2400 x 1500px
 Columns = 9, Rows = 9
-Tile Dimensions = 266.67 x 166.00px
---- Tiles Visible at 750px = 3 (W) 10 (H)
---- Tiles Visible at 1536px = 7 (W) 10 (H)
---- Tiles Visible at 1860px = 8 (W) 10 (H)
---- Tiles Visible at 2560px = 11 (W) 10 (H)
+Total tiles = 81
+Tile dimensions = 266.67 x 166.67px
+Breakpoints = [750, 1536, 1860, 2560]px
+--- Tiles visible at 750px = 3 (W) 10 (H)
+--- Tiles visible at 1536px = 7 (W) 10 (H)
+--- Tiles visible at 1860px = 8 (W) 10 (H)
+--- Tiles visible at 2560px = 11 (W) 10 (H)
 ```
 
 ### Example Visualisation

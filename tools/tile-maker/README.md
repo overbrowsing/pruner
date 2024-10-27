@@ -89,9 +89,9 @@ The printed results from the example setup:
 
 ```bash
 Processing complete for all images!
-Total tiles created: 81
-Average total size of tiles: 984.50 KB
-Columns: 9, Rows: 9
+Total tiles created = 81
+Average total size of tiles = 984.50 KB
+Columns = 9, Rows = 9
 ```
 
 ### Tiles

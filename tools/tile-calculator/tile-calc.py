@@ -15,19 +15,23 @@ def generate_viewport_widths(start=500, end=1800, step=100):
 def get_divisors(n):
   return [i for i in range(1, n + 1) if n % i == 0]
 
-def print_metrics(original_breakpoints, best_tile_width, original_width, original_height, num_columns, num_rows, pixel_waste_results):
-  print(f"\nTile Calculator Results")
-  print(f"Breakpoints: {original_breakpoints} (px)")
+def print_metrics(original_breakpoints, best_tile_width, original_width, original_height, num_columns, num_rows, pixel_waste):
+  print(f"\nTile calculating complete!")
+  print(f"Image dimensions = {original_width} x {original_height}px")
   print(f"Columns = {num_columns}, Rows = {num_rows}")
-  
+
+  total_tiles = num_rows * num_columns
+  print(f"Total tiles = {total_tiles}")
+
   actual_tile_width = original_width / num_columns
-  actual_tile_height = original_height // num_rows
-  print(f"Tile Dimensions = {actual_tile_width:.2f} x {actual_tile_height:.2f}px")
+  actual_tile_height = original_height / num_rows
+  print(f"Tile dimensions = {actual_tile_width:.2f} x {actual_tile_height:.2f}px")
+  print(f"Breakpoints = {original_breakpoints}px")
   
   for bp in original_breakpoints:
     cols = (bp + best_tile_width - 1) // best_tile_width
     rows = (original_height + (original_height // num_rows) - 1) // (original_height // num_rows)
-    print(f"--- Tiles Visible at {bp}px = {cols} (W) {rows} (H)")
+    print(f"--- Tiles visible at {bp}px = {cols} (W) {rows} (H)")
 
 def calculate_breakpoint_waste(viewport_width, breakpoints):
   closest_breakpoint = min(breakpoints, key=lambda x: abs(x - viewport_width))

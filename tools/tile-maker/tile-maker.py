@@ -94,10 +94,10 @@ def get_user_input():
 
 def print_processing_summary(image_name, tile_count, total_size_kb, grid_size, tile_dimensions):
   print(f"\nProcessing {image_name} complete!")
-  print(f"Tiles created: {tile_count}")
-  print(f"Total size of tiles: {total_size_kb:.2f} KB")
-  print(f"Columns: {grid_size[0]}, Rows: {grid_size[1]}")
-  print(f"Tile dimensions: {tile_dimensions[0]} x {tile_dimensions[1]}px")
+  print(f"Tiles created = {tile_count}")
+  print(f"Total size of tiles = {total_size_kb:.2f} KB")
+  print(f"Columns = {grid_size[0]}, Rows = {grid_size[1]}")
+  print(f"Tile dimensions = {tile_dimensions[0]} x {tile_dimensions[1]}px")
 
 input_folder = os.path.join(os.getcwd(), 'tools', 'tile-maker', 'target')
 
