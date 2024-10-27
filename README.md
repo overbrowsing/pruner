@@ -129,7 +129,7 @@ Although, on average, only about [0.2% of users disable Javascript](https://gds.
 
 ## Contributing
 
-Contributions are welcome. Please feel free to submit issues or pull requests.
+Contributions are welcome. Please feel free to [submit and issue](https://github.com/overbrowsing/pruner/issues) or a [pull request](https://github.com/overbrowsing/pruner/pulls).
 
 ## License
 
