@@ -97,7 +97,7 @@ In the `<img>` tag, instead of using the `src` attribute to link an image, we us
 
 ## Example Installation
 
-Once you have finished using [Tile Maker](/tools/tile-maker/README.md) and [Tile Calculator](/tools/tile-calculator/README.md), your `<img>` tag snippet should resemble the following. The optional attributes (`ROI`, `mobileBreak`, `mobileScale`) were added in afterwards. The original snippet can be viewed [here](/tools/tile-maker/processed/banks-of-the-seine/data-pruner.html).
+Once you have finished using [Tile Maker](/tools/tile-maker/README.md) and [Tile Calculator](/tools/tile-calculator/README.md), your `<img>` tag snippet should resemble the following. The optional parameters (`ROI`, `mobileBreak`, `mobileScale`) along with the `alt` were added in manually afterwards. The original snippet can be viewed [here](/tools/tile-maker/processed/banks-of-the-seine/data-pruner.html).
 
 ```html
 <img data-pruner='{"imageName": "banks-of-the-seine", "cols": 8, "rows": 8, "tileWidth": 312, "tileHeight": 175, "roi": 5, "mobileBreakpoint": 750, "mobileScale": 1.2, "imagePath": "tools/tile-maker/processed/banks-of-the-seine/"}' alt="Banks of the Seine, Vétheuil, 1880 by Claude Monet" loading="lazy">
