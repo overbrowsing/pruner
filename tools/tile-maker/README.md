@@ -83,8 +83,6 @@ The inputs below generated the tiles and HTML snippet featured in the [example s
 - Dimensions: 2400 x 1500px
 - Columns: 9, Rows: 9
 
-Original image: [Banks of the Seine, Vétheuil, 1880 by Claude Monet](https://www.nga.gov/collection/art-object-page.46652.html).
-
 ### Results
 
 The printed results from the example setup:

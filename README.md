@@ -99,11 +99,13 @@ In the `<img>` tag, instead of using the `src` attribute to link an image, we us
 
 ## Example Installation
 
-Once you have finished using [Tile Maker](/tools/tile-maker/README.md) and [Tile Calculator](/tools/tile-calculator/README.md), your `<img>` tag snippet should resemble the following. The optional parameters (`ROI`, `mobileBreak`, `mobileScale`) along with the `alt` were added in manually afterwards. The original snippet can be viewed [here](/tools/tile-maker/processed/banks-of-the-seine/data-pruner.html) and exported tiles [here](/tools/tile-maker/processed/banks-of-the-seine/).
+After completing the steps with the example image of [*Banks of the Seine, Vétheuil*, by Claude Monet](https://www.nga.gov/collection/art-object-page.46652.html), beginning with the steps in [Tile Calculator](/tools/tile-calculator/README.md#example-calculation) documentation and then proceeding to the steps in the [Tile Maker](/tools/tile-maker/README.md#example-usage) documentation, your `<img>` tag snippet should look like this:
 
 ```html
 <img data-pruner='{"imageName": "banks-of-the-seine", "cols": 9, "rows": 9, "tileWidth": 266, "tileHeight": 166, "roi": 5, "mobileBreakpoint": 750, "mobileScale": 1.2, "imagePath": "tools/tile-maker/processed/banks-of-the-seine/"}' alt="Banks of the Seine, Vétheuil, 1880 by Claude Monet" loading="lazy">
 ```
+
+The optional parameters (`ROI`, `mobileBreak`, `mobileScale`) along with the `alt` were added in manually afterwards. The original snippet can be viewed [here](/tools/tile-maker/processed/banks-of-the-seine/data-pruner.html) and exported tiles [here](/tools/tile-maker/processed/banks-of-the-seine/).
 
 | Parameter          | Description             | Value                                             |
 |--------------------|-------------------------|---------------------------------------------------|
@@ -116,8 +118,6 @@ Once you have finished using [Tile Maker](/tools/tile-maker/README.md) and [Tile
 | `mobileBreakpoint` | Mobile Breakpoint (px)  | `750`                                             |
 | `mobileScale`      | Mobile Scale Factor (%) | `1.2` (120%)                                      |
 | `imagePath`        | Directory for Tiles     | `/tools/tile-maker/processed/banks-of-the-seine/` |
-
-Original image: [Banks of the Seine, Vétheuil, 1880 by Claude Monet](https://www.nga.gov/collection/art-object-page.46652.html).
 
 ## Progressive Enhancement
 
