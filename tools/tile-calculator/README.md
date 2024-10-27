@@ -39,7 +39,7 @@ The calcualtor begins by gathering essential information, such as the image dime
 - Pixel Waste Results
 
 4. **Export Data**
-- You will be prompted to export pixel waste data to a CSV file. Choose 'y' to save to the [tile-calcualtor folder](/tools/tile-calculator/).
+- You will be prompted to export pixel waste data to a CSV file. Choose 'y' to save to the [tile-calculator folder](/tools/tile-calculator/).
 
 5. **Graphical Output**
 -	Optionally, you can view a graph showing the distribution of tiles and the associated pixel waste. Choose 'y' when prompted.
