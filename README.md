@@ -64,7 +64,7 @@ In the `<img>` tag, instead of using the `src` attribute to link an image, we us
 | ⭐️ | `roi`              | Region of Interest      | This attribute lets you set a specific focal point within the image. The Region of Interest adjusts the image’s focus based on the chosen tile number, ensuring that off-centre subjects are prominently displayed in the viewport.                                                                             | `5` (banks-of-the-seine-5.webp)                   |
 | ⭐️ | `mobileBreakpoint` | Mobile Breakpoint (px)  | pecifies the viewport width in pixels below which the `mobileScale` parameter is activated.                                                                                                                                                                                                                     | `750`                                             |
 | ⭐️ | `mobileScale`      | Mobile Scale Factor (%) | When the viewport size is below the mobileBreakpoint, the script scales the image accordingly. This scaling maintains Picture-Element functionality for effective cropping and resizing. Additionally, enlarging images can improve performance by minimising the number of tiles required for smaller screens. | `1.2` (120%)                                      |
-|   | `imagePath`        | Directory for Tiles     | The file path to the directory where the image tiles are stored. This parameter is essential for locating and retrieving the image files for display.                                                                                                                                                           | `/tools/tile-maker/processed/banks-of-the-seine/`        |
+|   | `imagePath`        | Directory for Tiles     | The file path to the directory where the image tiles are stored. This parameter is essential for locating and retrieving the image files for display.                                                                                                                                                           | `/tools/tile-maker/processed/banks-of-the-seine/  |
 
 ## How to Use
 
@@ -100,7 +100,7 @@ In the `<img>` tag, instead of using the `src` attribute to link an image, we us
 Once you have finished using [Tile Maker](/tools/tile-maker/README.md) and [Tile Calculator](/tools/tile-calculator/README.md), your `<img>` tag snippet should resemble the following. The optional attributes (`ROI`, `mobileBreak`, `mobileScale`) were added in afterwards. The original snippet can be viewed [here](/tools/tile-maker/processed/banks-of-the-seine/data-pruner.html).
 
 ```html
-<img data-pruner='{"imageName": "banks-of-the-seine", "cols": 8, "rows": 8, "tileWidth": 312, "tileHeight": 175, "roi": 5, "mobileBreakpoint": 750, "mobileScale": 1.2, "imagePath": "tile-maker/processed/banks-of-the-seine/"}' alt="Banks of the Seine, Vétheuil, 1880 by Claude Monet" loading="lazy">
+<img data-pruner='{"imageName": "banks-of-the-seine", "cols": 8, "rows": 8, "tileWidth": 312, "tileHeight": 175, "roi": 5, "mobileBreakpoint": 750, "mobileScale": 1.2, "imagePath": "tools/tile-maker/processed/banks-of-the-seine/"}' alt="Banks of the Seine, Vétheuil, 1880 by Claude Monet" loading="lazy">
 ```
 
 | Parameter          | Description             | Value                                            |
