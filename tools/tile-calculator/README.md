@@ -32,11 +32,12 @@ The calcualtor begins by gathering essential information, such as the image dime
     - ***Yes*** — **❓ Enter breakpoints separated by spaces**
 
 3. **View Results**
-- Breakpoints
+- Image dimensions
 - Number of columns and rows
-- Tile Dimensions
+- Total tiles
+- Tile dimensions
+- Breakpoints
 - Tiles visible at each breakpoint
-- Pixel Waste Results
 
 4. **Export Data**
 - You will be prompted to export pixel waste data to a CSV file. Choose 'y' to save to the [tile-calculator folder](/tools/tile-calculator/).

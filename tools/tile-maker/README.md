@@ -73,7 +73,6 @@ Place your images to be processed in the [target folder](/tools/tile-maker/targe
   - Total tiles created
   - Total size of tiles (KB)
   - Number of columns and rows
-  - Tile dimensions (px)
 
 ## Example Usage
 
