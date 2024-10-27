@@ -58,8 +58,8 @@ The printed results from the example setup:
 ```bash
 Tile Calculator Results
 Breakpoints: [750, 1536, 1860, 2560] (px)
-Columns = 10, Rows = 10
-Tile Dimensions = 250 x 140px
+Columns = 9, Rows = 9
+Tile Dimensions = 266.67 x 166.00px
 --- Tiles Visible at 750px = 3 (W) 10 (H)
 --- Tiles Visible at 1536px = 7 (W) 10 (H)
 --- Tiles Visible at 1860px = 8 (W) 10 (H)
