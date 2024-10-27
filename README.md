@@ -102,7 +102,7 @@ In the `<img>` tag, instead of using the `src` attribute to link an image, we us
 After completing the steps with the example image of [*Banks of the Seine, Vétheuil*, by Claude Monet](https://www.nga.gov/collection/art-object-page.46652.html), beginning with the steps in [Tile Calculator](/tools/tile-calculator/README.md#example-calculation) documentation and then proceeding to the steps in the [Tile Maker](/tools/tile-maker/README.md#example-usage) documentation the HTML snippet will be exported [here](/tools/tile-maker/processed/banks-of-the-seine/data-pruner.html) and exported tiles [here](/tools/tile-maker/processed/banks-of-the-seine/). The HTML snippet looks like this:
 
 ```html
-<img data-pruner='{"imageName": "banks-of-the-seine", "cols": 9, "rows": 9, "tileWidth": 266, "tileHeight": 166, "imagePath": "/your-path-here"}' alt="" loading="lazy">
+<img data-pruner='{"imageName": "banks-of-the-seine", "cols": 9, "rows": 9, "tileWidth": 266, "tileHeight": 166, "imagePath": "your-path-here/"}' alt="" loading="lazy">
 ```
 
 The  `imagePath` and optional parameters (`ROI`, `mobileBreakpoint`, `mobileScale`), along the `alt` attribute, were added in manually afterwards:
