@@ -103,5 +103,5 @@ The exported tiles can be be found [here](/tools/tile-maker/processed/banks-of-t
 Below is the exported HTML snippet from the file [data-pruner.html](/tools/tile-maker/processed/banks-of-the-seine/data-pruner.html).
 
 ```html
-<img data-pruner='{"imageName": "banks-of-the-seine", "cols": 9, "rows": 9, "tileWidth": 266, "tileHeight": 166, "imagePath": "/your-path-goes-here"}' alt="" loading="lazy">
+<img data-pruner='{"imageName": "banks-of-the-seine", "cols": 9, "rows": 9, "tileWidth": 266, "tileHeight": 166, "imagePath": "your-path-here/"}' alt="" loading="lazy">
 ```
