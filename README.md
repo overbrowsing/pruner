@@ -14,11 +14,11 @@ The name was chosen based on the practice of [pruning in horticulture](https://e
 
 ## Features
 
-- **Load Only What You See**: Downloads only the parts of an image that are visible on the screen and reduces unnecessary data transfer by not loading hidden sections of images (waste pixels).
-- **Save Data**: Reduces the number of images needed for responsive displays, enhancing website speed.
+- **Load Only What You See**: Servers only the parts of an image that are visible on the screen and reduces unnecessary data transfer by not loading hidden sections of images (waste pixels).
+- **Save Data**: Reduces the number of images needed for responsive images saving storage server-side.
 - **Better Responsive Images**: Provides dynamic viewport-based rendering of images across a range of viewports, rather than just a few predefined breakpoints like `<picture>`.
 - **Easy to Use**: The [Tile Calculator](/tools/tile-calculator/README.md) automates the calculation, while the [Tile Maker](/tools/tile-maker/) handles formatting and compression of tiles, as well as the generation of a single line of HTML for easy installation.
-- **Customisable**: Allows you to set a focal point in the image and specify breakpoints for image scaling on smaller form factors.
+- **Art Direction**: Allows you to set a focal point in the image and specify breakpoints for image scaling on smaller form factors.
 - **Client-Side Functionality**: Operates in the browser with a small piece of Javascript to dynamically create auto-scaling images based on the viewport size.
 
 ## Install
