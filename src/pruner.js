@@ -1,76 +1,59 @@
 function pruner() {
-  const elems = [...document.querySelectorAll('[data-pruner]')];
-  const imageCache = {};
+  const elems = [...document.querySelectorAll('[data-pruner]')], imageCache = {};
+  let prevW = 0, prevH = 0;
 
-  const loadImg = src => {
-    if (imageCache[src]) return Promise.resolve(imageCache[src]);
-    return new Promise((res, rej) => {
-      const img = new Image();
-      img.crossOrigin = 'anonymous';
-      img.onload = () => {
-        imageCache[src] = img;
-        res(img);
-      };
-      img.onerror = () => rej(`Failed to load: ${src}`);
-      img.src = src;
-    });
-  };
+  const loadImg = src => imageCache[src] ? Promise.resolve(imageCache[src]) : new Promise((res, rej) => {
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.onload = () => res(imageCache[src] = img);
+    img.onerror = () => rej(`Failed to load: ${src}`);
+    img.src = src;
+  });
 
   const createCanvas = (w, h) => Object.assign(document.createElement('canvas'), { width: w, height: h });
   const getViewport = () => ({ w: innerWidth, h: innerHeight });
-
-  const processImgs = async (el, mobile, vw, vh) => {
-    const { imageName, cols, rows, tileWidth, tileHeight, mobileScale, imagePath, roi, imageExtension } = JSON.parse(el.dataset.pruner);
-    if (!(cols && rows && tileWidth && tileHeight && imagePath && imageName)) return console.error('Missing params.');
-
-    const sf = mobile && mobileScale ? mobileScale : 1, sw = Math.round(tileWidth * sf), sh = Math.round(tileHeight * sf);
-    const numCols = Math.min(Math.ceil(vw / sw), cols), numRows = Math.min(Math.ceil(vh / sh), rows);
-    const canvas = createCanvas(numCols * sw, numRows * sh), ctx = canvas.getContext('2d');
-    ctx.imageSmoothingEnabled = false; el.src = '';
-
-    const ext = imageExtension || 'webp';
-    const srcs = Array.from({ length: cols * rows }, (_, i) => `${imagePath}${imageName}-${i + 1}.${ext}`);
-    const [startRow, startCol] = roi ? getRoi(roi - 1, cols, numRows, numCols, rows) : getCenter(cols, rows, numRows, numCols);
-
-    const imgsToLoad = [];
-    for (let r = 0; r < numRows; r++) {
-      for (let c = 0; c < numCols; c++) {
-        const srcR = startRow + r, srcC = startCol + c;
-        if (srcR < rows && srcC < cols) {
-          const imgSrc = srcs[srcR * cols + srcC];
-          imgsToLoad.push(loadImg(imgSrc));
-        }
-      }
-    }
-
-    try {
-      const imgs = await Promise.all(imgsToLoad);
-      imgs.forEach((img, i) => ctx.drawImage(img, (i % numCols) * sw, Math.floor(i / numCols) * sh, sw, sh));
-      el.src = canvas.toDataURL('image/WEBP');
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
+  
   const getRoi = (idx, cols, nr, nc, rows) => {
-    const roiRow = idx / cols | 0, roiCol = idx % cols;
+    const roiRow = Math.floor(idx / cols), roiCol = idx % cols;
     return [
-      Math.min(Math.max(0, roiRow - (nr / 2 | 0)), rows - nr),
-      Math.min(Math.max(0, roiCol - (nc / 2 | 0)), cols - nc)
+      Math.min(Math.max(0, roiRow - Math.floor(nr / 2)), rows - nr),
+      Math.min(Math.max(0, roiCol - Math.floor(nc / 2)), cols - nc)
     ];
   };
 
-  const getCenter = (cols, rows, nr, nc) => [
-    Math.max(0, (rows / 2 | 0) - (nr / 2 | 0)),
-    Math.max(0, (cols / 2 | 0) - (nc / 2 | 0))
-  ];
+  const processImgs = async (el, isMobile, vw, vh) => {
+    const { imageName, cols, rows, tileWidth, tileHeight, mobileScale, imagePath, roi, imageExtension = 'webp' } = JSON.parse(el.dataset.pruner);
+    if (!cols || !rows || !tileWidth || !tileHeight || !imagePath || !imageName) return console.error('Missing params.');
+
+    const sf = isMobile && mobileScale ? mobileScale : 1, sw = Math.round(tileWidth * sf), sh = Math.round(tileHeight * sf);
+    const numCols = Math.min(Math.ceil(vw / sw), cols), numRows = Math.min(Math.ceil(vh / sh), rows);
+    const canvas = createCanvas(numCols * sw, numRows * sh), ctx = canvas.getContext('2d');
+    ctx.imageSmoothingEnabled = false;
+    el.src = '';
+
+    const srcs = Array.from({ length: cols * rows }, (_, i) => `${imagePath}${imageName}-${i + 1}.${imageExtension}`);
+    const [startRow, startCol] = roi ? getRoi(roi - 1, cols, numRows, numCols, rows) : [
+      Math.max(0, Math.floor(rows / 2) - Math.floor(numRows / 2)),
+      Math.max(0, Math.floor(cols / 2) - Math.floor(numCols / 2))
+    ];
+
+    try {
+      const imgs = await Promise.all(
+        Array.from({ length: numRows * numCols }, (_, i) => {
+          const r = startRow + Math.floor(i / numCols), c = startCol + i % numCols;
+          return r < rows && c < cols ? loadImg(srcs[r * cols + c]) : Promise.resolve(null);
+        })
+      );
+      imgs.forEach((img, i) => img && ctx.drawImage(img, (i % numCols) * sw, Math.floor(i / numCols) * sh, sw, sh));
+      el.src = canvas.toDataURL('image/webp');
+    } catch (e) { console.error(e); }
+  };
 
   const handleResize = debounce(() => {
     const { w, h } = getViewport();
-    elems.forEach(el => {
-      const { mobileBreakpoint } = JSON.parse(el.dataset.pruner);
-      processImgs(el, mobileBreakpoint && w <= mobileBreakpoint, w, h);
-    });
+    if (w === prevW && h === prevH) return;
+    prevW = w; prevH = h;
+    elems.forEach(el => processImgs(el, w <= (JSON.parse(el.dataset.pruner).mobileBreakpoint || 0), w, h));
   }, 200);
 
   const observer = new IntersectionObserver(entries => {
@@ -82,9 +65,9 @@ function pruner() {
   window.addEventListener('resize', handleResize);
 }
 
-const debounce = (f, wait) => {
+const debounce = (func, wait) => {
   let timeout;
-  return (...args) => { clearTimeout(timeout); timeout = setTimeout(() => f(...args), wait); };
+  return (...args) => { clearTimeout(timeout); timeout = setTimeout(() => func(...args), wait); };
 };
 
 window.onload = pruner;
