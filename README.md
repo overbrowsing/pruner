@@ -82,7 +82,7 @@ In the `<img>` tag, instead of using the `src` attribute to link an image, we us
 
 1. **Insert the HTML Snippet**: If you used the [Tile Maker](/tools/tile-maker/README.md), locate the exported HTML snippet in the image folder associated with the image name within the [processed folder](/tools/tile-maker/processed/). Copy this snippet into your web project where you want to display the images.
 
-2. **Update Parameters**: Update the image path `imagePath` parameter within the HTML snippet to point to the location of your tiles. Make sure to also configure any optional parameters (e.g.,`ROI`, `mobileBreak`, `mobileScale`) as necessary to suit your needs (don't forget `alt` text!). 
+2. **Update Parameters**: Update the image path `imagePath` parameter within the HTML snippet to point to the location of your tiles. Make sure to also configure any optional parameters (e.g.,`ROI`, `mobileBreak`, `mobileScale`) as necessary to suit your project. Remember to include `alt` text as well!
 
 3. **Include `pruner.js`**: To include the utility in your project. Add the either option before the closing `</html>` tag in your HTML file
     - **Option 1**: [Using locally](#download).
