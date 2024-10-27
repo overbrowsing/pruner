@@ -82,7 +82,7 @@ In the `<img>` tag, instead of using the `src` attribute to link an image, we us
 
 1. **Insert the HTML Snippet**: If you used the [Tile Maker](/tools/tile-maker/README.md), locate the exported HTML snippet in the image folder associated with the image name within the [processed folder](/tools/tile-maker/processed/). Copy this snippet into your web project where you want to display the images.
 
-2. **Update Parameters**: Update the image path `imagePath` parameter within the HTML snippet to point to the location of your tiles. Make sure to also configure any optional parameters (e.g.,`ROI`, `mobileBreak`, `mobileScale`) as necessary to suit your project. Remember to include `alt` text as well!
+2. **Update Parameters**: Update the image path `imagePath` parameter within the HTML snippet to point to the location of your tiles. Make sure to also configure any optional parameters (e.g.,`ROI`, `mobileBreakpoint`, `mobileScale`) as necessary to suit your project. Remember to include `alt` text as well!
 
 3. **Include `pruner.js`**: To include the utility in your project. Add the either option before the closing `</html>` tag in your HTML file
     - **Option 1**: [Using locally](#download).
@@ -99,13 +99,17 @@ In the `<img>` tag, instead of using the `src` attribute to link an image, we us
 
 ## Example Installation
 
-After completing the steps with the example image of [*Banks of the Seine, Vétheuil*, by Claude Monet](https://www.nga.gov/collection/art-object-page.46652.html), beginning with the steps in [Tile Calculator](/tools/tile-calculator/README.md#example-calculation) documentation and then proceeding to the steps in the [Tile Maker](/tools/tile-maker/README.md#example-usage) documentation, your `<img>` tag snippet should look like this:
+After completing the steps with the example image of [*Banks of the Seine, Vétheuil*, by Claude Monet](https://www.nga.gov/collection/art-object-page.46652.html), beginning with the steps in [Tile Calculator](/tools/tile-calculator/README.md#example-calculation) documentation and then proceeding to the steps in the [Tile Maker](/tools/tile-maker/README.md#example-usage) documentation the HTML snippet will be exported [here](/tools/tile-maker/processed/banks-of-the-seine/data-pruner.html) and exported tiles [here](/tools/tile-maker/processed/banks-of-the-seine/). The HTML snippet looks like this:
+
+```html
+<img data-pruner='{"imageName": "banks-of-the-seine", "cols": 9, "rows": 9, "tileWidth": 266, "tileHeight": 166, "imagePath": "/your-path-here"}' alt="" loading="lazy">
+```
+
+The  `imagePath` and optional parameters (`ROI`, `mobileBreakpoint`, `mobileScale`), along the `alt` attribute, were added in manually afterwards:
 
 ```html
 <img data-pruner='{"imageName": "banks-of-the-seine", "cols": 9, "rows": 9, "tileWidth": 266, "tileHeight": 166, "roi": 5, "mobileBreakpoint": 750, "mobileScale": 1.2, "imagePath": "tools/tile-maker/processed/banks-of-the-seine/"}' alt="Banks of the Seine, Vétheuil, 1880 by Claude Monet" loading="lazy">
 ```
-
-The optional parameters (`ROI`, `mobileBreak`, `mobileScale`) along with the `alt` were added in manually afterwards. The original snippet can be viewed [here](/tools/tile-maker/processed/banks-of-the-seine/data-pruner.html) and exported tiles [here](/tools/tile-maker/processed/banks-of-the-seine/).
 
 | Parameter          | Description             | Value                                            |
 |--------------------|-------------------------|--------------------------------------------------|
