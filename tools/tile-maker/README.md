@@ -81,19 +81,17 @@ The inputs below generated the tiles and HTML snippet featured in the [example s
 
 - Image: [banks-of-the-seine.jpg](/tools/tile-maker/target/banks-of-the-seine.jpg)
 - Dimensions: 2400 x 1500px
-- Columns: 8, Rows: 8
+- Columns: 9, Rows: 9
 
 ### Results
 
 The printed results from the example setup:
 
 ```bash
-Processing banks-of-the-seine.jpg complete!
-
-Total tiles created: 64
-Total size of tiles: 936.97 KB
-Columns: 8, Rows: 8
-Tile dimensions: 312 x 175px
+Processing complete for all images!
+Total tiles created: 81
+Average total size of tiles: 984.50 KB
+Columns: 9, Rows: 9
 ```
 
 ### Tiles

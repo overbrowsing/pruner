@@ -100,20 +100,20 @@ In the `<img>` tag, instead of using the `src` attribute to link an image, we us
 Once you have finished using [Tile Maker](/tools/tile-maker/README.md) and [Tile Calculator](/tools/tile-calculator/README.md), your `<img>` tag snippet should resemble the following. The optional parameters (`ROI`, `mobileBreak`, `mobileScale`) along with the `alt` were added in manually afterwards. The original snippet can be viewed [here](/tools/tile-maker/processed/banks-of-the-seine/data-pruner.html).
 
 ```html
-<img data-pruner='{"imageName": "banks-of-the-seine", "cols": 8, "rows": 8, "tileWidth": 312, "tileHeight": 175, "roi": 5, "mobileBreakpoint": 750, "mobileScale": 1.2, "imagePath": "tools/tile-maker/processed/banks-of-the-seine/"}' alt="Banks of the Seine, Vétheuil, 1880 by Claude Monet" loading="lazy">
+<img data-pruner='{"imageName": "banks-of-the-seine", "cols": 9, "rows": 9, "tileWidth": 266, "tileHeight": 166, "roi": 5, "mobileBreakpoint": 750, "mobileScale": 1.2, "imagePath": "tools/tile-maker/processed/banks-of-the-seine/"}' alt="Banks of the Seine, Vétheuil, 1880 by Claude Monet" loading="lazy">
 ```
 
-| Parameter          | Description             | Value                                            |
-|--------------------|-------------------------|--------------------------------------------------|
-| `imageName`        | Image Name              | `banks-of-the-seine`                             |
-| `cols`             | Columns                 | `8`                                              |
-| `rows`             | Rows                    | `8`                                              |
-| `tileWidth`        | Tile Width (px)         | `312` (pixels)                                   |
-| `tileHeight`       | Tile Height (px)        | `175` (pixels)                                   |
-| `roi`              | Region of Interest      | `5` (banks-of-the-seine-5.webp)                  |
-| `mobileBreakpoint` | Mobile Breakpoint (px)  | `750`                                            |
-| `mobileScale`      | Mobile Scale Factor (%) | `1.2` (120%)                                     |
-| `imagePath`        | Directory for Tiles     | `/toolstile-maker/processed/banks-of-the-seine/` |
+| Parameter          | Description             | Value                                             |
+|--------------------|-------------------------|---------------------------------------------------|
+| `imageName`        | Image Name              | `banks-of-the-seine`                              |
+| `cols`             | Columns                 | `9`                                               |
+| `rows`             | Rows                    | `9`                                               |
+| `tileWidth`        | Tile Width (px)         | `266` (pixels)                                    |
+| `tileHeight`       | Tile Height (px)        | `166` (pixels)                                    |
+| `roi`              | Region of Interest      | `5` (banks-of-the-seine-5.webp)                   |
+| `mobileBreakpoint` | Mobile Breakpoint (px)  | `750`                                             |
+| `mobileScale`      | Mobile Scale Factor (%) | `1.2` (120%)                                      |
+| `imagePath`        | Directory for Tiles     | `/tools/tile-maker/processed/banks-of-the-seine/` |
 
 The HTML snippet above was generated following the steps within [Tile-Maker](/tools/tile-maker/README.md#example-usage) using results generated using [Tile Calculator](/tools/tile-calculator/README.md#example-calculation).
 
