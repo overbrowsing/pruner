@@ -111,7 +111,6 @@ The  `imagePath` and optional parameters (`ROI`, `mobileBreakpoint`, `mobileScal
 
 ⭐️ Denotes which parameters are optional.
 
-
 |   | Parameter          | Description             | Value                                            |
 |---|--------------------|-------------------------|--------------------------------------------------|
 |   | `imageName`        | Image Name              | `banks-of-the-seine`                             |
