@@ -27,7 +27,7 @@ You can include `pruner.js` in your project either by downloading the files or u
 
 ### Download
 
-- **Minified**: [Available via pruner.min.js on unpkg.](https://unpkg.com/prunerjs@1.0.7/dist/pruner.min.js)
+- **Minified**: [Available via pruner.min.js on unpkg.](https://unpkg.com/prunerjs@1.0.8/dist/pruner.min.js)
 - **Unminified**: [Available in the source repository.](/src/pruner.js)
 
 ### CDN
@@ -35,7 +35,7 @@ You can include `pruner.js` in your project either by downloading the files or u
 Link directly to the minified version using Unpkg (we recommend downloading the file to reduce HTTP requests):
 
 ```html
-<script async src="https://unpkg.com/prunerjs@1.0.7/dist/pruner.min.js"></script>
+<script async src="https://unpkg.com/prunerjs@1.0.8/dist/pruner.min.js"></script>
 ```
 
 ### Package Managers
@@ -59,8 +59,6 @@ In the `<img>` tag, instead of using the `src` attribute to link an image, we us
 |   | `imageName`        | Image Name              | The base name of the image files.                                                                                                                                                                                                                                                                               | `banks-of-the-seine` (banks-of-the-seine-n.webp) |
 |   | `cols`             | Columns                 | The number of vertical divisions the image is split into.                                                                                                                                                                                                                                                       | `9`                                              |
 |   | `rows`             | Rows                    | The number of horizontal divisions the image is split into.                                                                                                                                                                                                                                                     | `9`                                              |
-|   | `tileWidth`        | Tile Width (px)         | Specifies the width of each individual tile in pixels.                                                                                                                                                                                                                                                          | `266`                                            |
-|   | `tileHeight`       | Tile Height (px)        | Specifies the height of each individual tile in pixels.                                                                                                                                                                                                                                                         | `166`                                            |
 | ⭐️ | `roi`              | Region of Interest      | This attribute lets you set a specific focal point within the image. The Region of Interest adjusts the image's focus based on the chosen tile number, ensuring that off-centre subjects are prominently displayed in the viewport.                                                                             | `5` (banks-of-the-seine-5.webp)                  |
 | ⭐️ | `mobileBreakpoint` | Mobile Breakpoint (px)  | pecifies the viewport width in pixels below which the `mobileScale` parameter is activated.                                                                                                                                                                                                                     | `750`                                            |
 | ⭐️ | `mobileScale`      | Mobile Scale Factor (%) | When the viewport size is below the mobileBreakpoint, the script scales the image accordingly. This scaling maintains Picture-Element functionality for effective cropping and resizing. Additionally, enlarging images can improve performance by minimising the number of tiles required for smaller screens. | `1.2` (120%)                                     |
@@ -94,7 +92,7 @@ In the `<img>` tag, instead of using the `src` attribute to link an image, we us
     - **Option 2**: [Using a CDN](#cdn).
 
       ```html
-      <script async src="https://unpkg.com/prunerjs@1.0.7/dist/pruner.min.js"></script>
+      <script async src="https://unpkg.com/prunerjs@1.0.8/dist/pruner.min.js"></script>
       ```
 
 ## Example Installation
@@ -102,26 +100,27 @@ In the `<img>` tag, instead of using the `src` attribute to link an image, we us
 After completing the steps with the example image of [*Banks of the Seine, Vétheuil*, by Claude Monet](https://www.nga.gov/collection/art-object-page.46652.html), beginning with the steps in [Tile Calculator](/tools/tile-calculator/README.md#example-calculation) documentation and then proceeding to the steps in the [Tile Maker](/tools/tile-maker/README.md#example-usage) documentation the HTML snippet will be exported [here](/tools/tile-maker/processed/banks-of-the-seine/data-pruner.html) and tiles [here](/tools/tile-maker/processed/banks-of-the-seine/). The HTML snippet looks like this:
 
 ```html
-<img data-pruner='{"imageName": "banks-of-the-seine", "cols": 9, "rows": 9, "tileWidth": 266, "tileHeight": 166, "imagePath": "your-path-here/"}' alt="" loading="lazy">
+<img data-pruner='{"imageName": "banks-of-the-seine", "cols": 9, "rows": 9, "imagePath": "your-path-here/"}' alt="" loading="lazy">
 ```
 
 The  `imagePath` and optional parameters (`ROI`, `mobileBreakpoint`, `mobileScale`), along the `alt` attribute, were added in manually afterwards:
 
 ```html
-<img data-pruner='{"imageName": "banks-of-the-seine", "cols": 9, "rows": 9, "tileWidth": 266, "tileHeight": 166, "roi": 5, "mobileBreakpoint": 750, "mobileScale": 1.2, "imagePath": "tools/tile-maker/processed/banks-of-the-seine/"}' alt="Banks of the Seine, Vétheuil, 1880 by Claude Monet" loading="lazy">
+<img data-pruner='{"imageName": "banks-of-the-seine", "cols": 9, "rows": 9, "roi": 5, "mobileBreakpoint": 750, "mobileScale": 1.2, "imagePath": "tools/tile-maker/processed/banks-of-the-seine/"}' alt="Banks of the Seine, Vétheuil, 1880 by Claude Monet" loading="lazy">
 ```
 
-| Parameter          | Description             | Value                                            |
-|--------------------|-------------------------|--------------------------------------------------|
-| `imageName`        | Image Name              | `banks-of-the-seine`                             |
-| `cols`             | Columns                 | `9`                                              |
-| `rows`             | Rows                    | `9`                                              |
-| `tileWidth`        | Tile Width (px)         | `266` (pixels)                                   |
-| `tileHeight`       | Tile Height (px)        | `166` (pixels)                                   |
-| `roi`              | Region of Interest      | `5` (banks-of-the-seine-5.webp)                  |
-| `mobileBreakpoint` | Mobile Breakpoint (px)  | `750`                                            |
-| `mobileScale`      | Mobile Scale Factor (%) | `1.2` (120%)                                     |
-| `imagePath`        | Directory for Tiles     | `tools/tile-maker/processed/banks-of-the-seine/` |
+⭐️ Denotes which parameters are optional.
+
+
+|   | Parameter          | Description             | Value                                            |
+|---||--------------------|-------------------------|--------------------------------------------------|
+|   | `imageName`        | Image Name              | `banks-of-the-seine`                             |
+|   | `cols`             | Columns                 | `9`                                              |
+|   | `rows`             | Rows                    | `9`                                              |
+| ⭐️ | `roi`              | Region of Interest      | `5` (banks-of-the-seine-5.webp)                  |
+| ⭐️ | `mobileBreakpoint` | Mobile Breakpoint (px)  | `750`                                            |
+| ⭐️ | `mobileScale`      | Mobile Scale Factor (%) | `1.2` (120%)                                     |
+|   | `imagePath`        | Directory for Tiles     | `tools/tile-maker/processed/banks-of-the-seine/` |
 
 ## Progressive Enhancement
 
