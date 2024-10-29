@@ -69,6 +69,8 @@ Breakpoints = [750, 1536, 1860, 2560]px
 --- Tiles visible at 2560px = 11 (W) 10 (H)
 ```
 
-### Example Visualisation
+### Example Graph
 
 ![Graph Example](/tools/tile-calculator/assets/example-graph.png)
+
+Key breakpoints (marked in red) indicate where major layout adjustments occur, either predefined or left as defaults. The purple line, representing the number of visible tiles, shows smoother transitions than the typical responsive image techniques. The jagged yellow line illustrates pixel waste: as images better match the screen width relative to viewport size, pixel waste reduces to zero. When an additional tile is needed to fill the viewport, pixel waste rises, indicating pixels extending beyond the viewport boundaries.
