@@ -113,7 +113,7 @@ The  `imagePath` and optional parameters (`ROI`, `mobileBreakpoint`, `mobileScal
 
 
 |   | Parameter          | Description             | Value                                            |
-|---||--------------------|-------------------------|--------------------------------------------------|
+|---|--------------------|-------------------------|--------------------------------------------------|
 |   | `imageName`        | Image Name              | `banks-of-the-seine`                             |
 |   | `cols`             | Columns                 | `9`                                              |
 |   | `rows`             | Rows                    | `9`                                              |
