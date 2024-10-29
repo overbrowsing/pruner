@@ -1,6 +1,6 @@
 {
     "name": "prunerjs",
-    "version": "1.0.7",
+    "version": "1.0.8",
     "description": "Responsive image polyfill using viewport-based rendering.",
     "main": "dist/pruner.min.js",
     "scripts": {
