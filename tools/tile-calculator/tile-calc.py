@@ -135,19 +135,17 @@ def main():
     for breakpoint in rounded_breakpoints:
       ax1.axvline(x=breakpoint, color='red', linestyle='--')
       ax1.text(breakpoint, ax1.get_ylim()[1] * 0.95, f'{int(breakpoint)}px', color='red', fontsize=10)
-    
-    ax1.grid(True)
+
     ax2 = ax1.twinx()
     pixel_waste_values = [calculate_metrics(vp, best_tile_width)[1] for vp in all_viewport_widths]
     ax2.plot(all_viewport_widths, pixel_waste_values, label='Pixel Waste', color='orange', linestyle='--')
-    ax2.axhline(y=average_waste, color='green', linestyle='--', label='Average Wastage')
     ax2.set_ylabel('Pixel Waste (px)', color='orange')
     ax2.tick_params(axis='y', labelcolor='orange')
     
     plt.title('Tile Distribution and Pixel Waste Across Viewports')
     ax1.legend(loc='upper left')
     ax2.legend(loc='upper right')
-    plt.grid(True)
+    
     plt.show()
 
 if __name__ == "__main__":
