@@ -12,7 +12,7 @@ function pruner() {
 
   const processImgs = async (el, isMobile, vw, vh) => {
     const { imageName, cols, rows, mobileScale, imagePath, roi, imageExtension = 'webp' } = JSON.parse(el.dataset.pruner);
-    if (!cols || !rows || !imagePath || !imageName) return console.error('Missing params.');
+    if (!cols || !rows || !imagePath || !imageName) return console.error('Missing parameters.');
 
     try {
       const sampleImg = await loadImg(`${imagePath}${imageName}-1.${imageExtension}`);
