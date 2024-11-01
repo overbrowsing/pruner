@@ -4,14 +4,8 @@
 
 Tile Calculator is a Python application that helps users determine the optimal tile dimensions images using `pruner.js` not only at defined breakpoints but also dynamically across a variety of viewport sizes, distinguishing it from traditional responsive image methods.
 
-The calcualtor begins by gathering essential information, such as the image dimensions and important viewport breakpoints. Once this information is collected, the algorithm calculates suitable tile sizes by identifying the nearest common divisors of the breakpoint widths. This approach ensures that the tiles fit seamlessly within the viewport, avoiding gaps or excessive pixel waste—defined as the unused pixels that remain when an image does not perfectly align with the viewport. The algorithm focuses on minimising this pixel waste while maintaining a balanced number of tiles, evaluating the trade-off between using fewer larger tiles—which may lead to more pixel waste—and smaller tiles that fit better but increase HTTP requests. This careful consideration enables the algorithm to select the optimal tile configuration, enhancing layout efficiency and overall performance.
+It begins by retrieving the five most common viewport sizes for mobile, tablet, and desktop from [Statcounter](https://gs.statcounter.com/screen-resolution-stats), along with some secondary sizes for added flexibility. The calculator finds potential tile widths and heights by identifying all common divisors of the viewport dimensions, allowing it to determine how many tiles fit and the overhang in width and height. By testing different tile size combinations, it finds the size that produces the lowest average pixel waste, defined as the unused pixels that remain when an image does not perfectly align with the viewport.  After identifying the best tile dimensions, the application calculates the average pixel waste percentage and displays results, including the tile layout (columns and rows), tile dimensions, total number of tiles, and average pixel waste across the tested viewport sizes.
 
-## Features
-
-- Calculate the optimal tile sizes based upon all the nearest common divisors for specified breakpoints and across a range of viewport widths.
-- Assess pixel waste for different tile sizes and viewport configurations.
-- Option to save pixel waste data to a CSV file for further analysis.
-- Option to view visual representation of tile distribution and pixel waste through graphs.
 
 ## Initialize
 
@@ -27,50 +21,28 @@ The calcualtor begins by gathering essential information, such as the image dime
 
 	**❓ Enter the desired largest image height (px)**
 
-	**❓Do you want to manually set breakpoints? (y/n)**
-	  - ***No*** — Use common breakpoints (750, 1536, 1860, 2560) and proceed.
-    - ***Yes*** — **❓ Enter breakpoints separated by spaces**
-
 3. **View Results**
 - Image dimensions
 - Number of columns and rows
 - Total tiles
 - Tile dimensions
-- Breakpoints
-- Tiles visible at each breakpoint
-
-4. **Export Data**
-- You will be prompted to export pixel waste data to a CSV file. Choose 'y' to save to the [tile-calculator folder](/tools/tile-calculator/).
-
-5. **Graphical Output**
--	Optionally, you can view a graph showing the distribution of tiles and the associated pixel waste. Choose 'y' when prompted.
+- Average pixel waste
 
 ## Example Calculation
 
 The inputs below generated the calculation for tiles featured in the [example setup](/README.md#example-installation):
 
 - Dimensions: 2400 x 1500px
-- Breakpoints: Default (750, 1536, 1860, 2560)
 
 ### Example Results
 
 The printed results from the example setup:
 
 ```bash
-Tile calculating complete!
+Tile calculation complete!
 Image dimensions = 2400 x 1500px
-Columns = 9, Rows = 9
-Total tiles = 81
-Tile dimensions = 266.67 x 166.67px
-Breakpoints = [750, 1536, 1860, 2560]px
---- Tiles visible at 750px = 3 (W) 10 (H)
---- Tiles visible at 1536px = 7 (W) 10 (H)
---- Tiles visible at 1860px = 8 (W) 10 (H)
---- Tiles visible at 2560px = 11 (W) 10 (H)
+Columns = 10, Rows = 8
+Total tiles = 80
+Tile dimensions = 240.00 x 187.50px
+Average pixel waste = 20.38%
 ```
-
-### Example Graph
-
-![Graph Example](/tools/tile-calculator/assets/example-graph.png)
-
-Key breakpoints (marked in red) indicate where major layout adjustments occur, either predefined or left as defaults. The purple line, representing the number of visible tiles, shows smoother transitions than the typical responsive image techniques. The jagged yellow line illustrates pixel waste: as images better match the screen width relative to viewport size, pixel waste reduces to zero. When an additional tile is needed to fill the viewport, pixel waste rises, indicating pixels extending beyond the viewport boundaries.
