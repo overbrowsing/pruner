@@ -106,7 +106,7 @@ After completing the steps with the example image of [*Banks of the Seine, Véth
 The  `imagePath` and optional parameters (`ROI`, `mobileBreakpoint`, `mobileScale`), along the `alt` attribute, were added in manually afterwards:
 
 ```html
-<img data-pruner='{"banks-of-the-seine", "cols": 10, "rows": 8, "roi": 5, "mobileBreakpoint": 750, "mobileScale": 1.2, "imagePath": "tools/tile-maker/processed/banks-of-the-seine/"}' alt="Banks of the Seine, Vétheuil, 1880 by Claude Monet" loading="lazy">
+<img data-pruner='{"imageName": "banks-of-the-seine", "cols": 10, "rows": 8, "roi": 5, "mobileBreakpoint": 750, "mobileScale": 1.2, "imagePath": "tools/tile-maker/processed/banks-of-the-seine/"}' alt="Banks of the Seine, Vétheuil, 1880 by Claude Monet" loading="lazy">
 ```
 
 ⭐️ Denotes which parameters are optional.
