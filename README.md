@@ -6,7 +6,7 @@
 
 ## Overview
 
-`pruner.js` is a responsive image polyfill using viewport-based rendering. It works by splitting images into tiles and loading only the parts of the image visible within the viewport, like assembling a jigsaw puzzle. This method reduces server-side storage compared to the current best practice of responsive images by eliminating the need for multiple image versions defined for specific breakpoints and reduces data transfer by avoiding the download of ‘waste pixels’—parts of the image outside the visible aperture.
+`pruner.js` is a responsive image Javascript utility using viewport-based rendering. It works by splitting images into tiles and loading only the parts of the image visible within the viewport, like assembling a jigsaw puzzle. This method reduces server-side storage compared to the current best practice of responsive images by eliminating the need for multiple image versions defined for specific breakpoints and reduces data transfer by avoiding the download of ‘waste pixels’—parts of the image outside the visible aperture.
 
 The utility is designed to function not only at defined breakpoints but also dynamically across varying viewport sizes, distinguishing it from traditional responsive image methods. The tile creation process begins with the [Tile Calculator](/tools/tile-calculator/) which determines the most efficient arrangement of tiles for processing images using the [Tile Maker](/tools/tile-maker/). This tool also generates a snippet of HTML for easy installation, that also uses less HTML than the [Picture-Element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture) (`<picture>`), and in some cases `srcset`, resulting in a simpler and more efficient process to responsive images.
 
@@ -27,7 +27,7 @@ You can include `pruner.js` in your project either by downloading the files or u
 
 ### Download
 
-- **Minified**: [Available via pruner.min.js on unpkg.](https://unpkg.com/prunerjs@1.0.8/dist/pruner.min.js)
+- **Minified**: [Available via pruner.min.js on unpkg.](https://unpkg.com/prunerjs@1.0.9/dist/pruner.min.js)
 - **Unminified**: [Available in the source repository.](/src/pruner.js)
 
 ### CDN
@@ -35,7 +35,7 @@ You can include `pruner.js` in your project either by downloading the files or u
 Link directly to the minified version using Unpkg (we recommend downloading the file to reduce HTTP requests):
 
 ```html
-<script async src="https://unpkg.com/prunerjs@1.0.8/dist/pruner.min.js"></script>
+<script async src="https://unpkg.com/prunerjs@1.0.9/dist/pruner.min.js"></script>
 ```
 
 ### Package Managers
@@ -92,7 +92,7 @@ In the `<img>` tag, instead of using the `src` attribute to link an image, we us
     - **Option 2**: [Using a CDN](#cdn).
 
       ```html
-      <script async src="https://unpkg.com/prunerjs@1.0.8/dist/pruner.min.js"></script>
+      <script async src="https://unpkg.com/prunerjs@1.0.9/dist/pruner.min.js"></script>
       ```
 
 ## Example Installation
@@ -100,13 +100,13 @@ In the `<img>` tag, instead of using the `src` attribute to link an image, we us
 After completing the steps with the example image of [*Banks of the Seine, Vétheuil*, by Claude Monet](https://www.nga.gov/collection/art-object-page.46652.html), beginning with the steps in [Tile Calculator](/tools/tile-calculator/README.md#example-calculation) documentation and then proceeding to the steps in the [Tile Maker](/tools/tile-maker/README.md#example-usage) documentation the HTML snippet will be exported [here](/tools/tile-maker/processed/banks-of-the-seine/data-pruner.html) and tiles [here](/tools/tile-maker/processed/banks-of-the-seine/). The HTML snippet looks like this:
 
 ```html
-<img data-pruner='{"imageName": "banks-of-the-seine", "cols": 9, "rows": 9, "imagePath": "your-path-here/"}' alt="" loading="lazy">
+<img data-pruner='{"imageName": "banks-of-the-seine", "cols": 10, "rows": 8, "imagePath": "your-path-here/"}' alt="" loading="lazy">
 ```
 
 The  `imagePath` and optional parameters (`ROI`, `mobileBreakpoint`, `mobileScale`), along the `alt` attribute, were added in manually afterwards:
 
 ```html
-<img data-pruner='{"imageName": "banks-of-the-seine", "cols": 9, "rows": 9, "roi": 5, "mobileBreakpoint": 750, "mobileScale": 1.2, "imagePath": "tools/tile-maker/processed/banks-of-the-seine/"}' alt="Banks of the Seine, Vétheuil, 1880 by Claude Monet" loading="lazy">
+<img data-pruner='{"banks-of-the-seine", "cols": 10, "rows": 8, "roi": 5, "mobileBreakpoint": 750, "mobileScale": 1.2, "imagePath": "tools/tile-maker/processed/banks-of-the-seine/"}' alt="Banks of the Seine, Vétheuil, 1880 by Claude Monet" loading="lazy">
 ```
 
 ⭐️ Denotes which parameters are optional.
@@ -114,8 +114,8 @@ The  `imagePath` and optional parameters (`ROI`, `mobileBreakpoint`, `mobileScal
 |   | Parameter          | Description             | Value                                            |
 |---|--------------------|-------------------------|--------------------------------------------------|
 |   | `imageName`        | Image Name              | `banks-of-the-seine`                             |
-|   | `cols`             | Columns                 | `9`                                              |
-|   | `rows`             | Rows                    | `9`                                              |
+|   | `cols`             | Columns                 | `10`                                             |
+|   | `rows`             | Rows                    | `8`                                              |
 | ⭐️ | `roi`              | Region of Interest      | `5` (banks-of-the-seine-5.webp)                  |
 | ⭐️ | `mobileBreakpoint` | Mobile Breakpoint (px)  | `750`                                            |
 | ⭐️ | `mobileScale`      | Mobile Scale Factor (%) | `1.2` (120%)                                     |
