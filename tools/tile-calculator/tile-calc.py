@@ -2,14 +2,15 @@ import math
 from typing import List, Tuple
 
 def get_priority_viewport_sizes() -> List[Tuple[int, int]]:
-  
   return [
     (1920, 1080), (1366, 768), (768, 1024), (412, 915), (360, 800)
   ]
 
 def get_secondary_viewport_sizes() -> List[Tuple[int, int]]:
   return [
-    (1536, 864), (390, 844), (393, 873), (414, 896), (1280, 720), (360, 780), (1440, 900), (375, 812), (385, 854), (428, 926), (360, 640), (393, 852), (430, 932), (360, 760), (375, 667), (393, 851)
+    (1536, 864), (390, 844), (393, 873), (414, 896), (1280, 720), (360, 780), 
+    (1440, 900), (375, 812), (385, 854), (428, 926), (360, 640), (393, 852), 
+    (430, 932), (360, 760), (375, 667), (393, 851)
   ]
 
 def get_divisors(n: int) -> List[int]:
@@ -33,11 +34,10 @@ def calculate_pixel_waste(viewport_width: int, viewport_height: int, tile_width:
   return (waste_x * viewport_height) + (waste_y * viewport_width) - (waste_x * waste_y)
 
 def optimal_tile_size(image_width: int, image_height: int, primary_breakpoints: List[Tuple[int, int]], secondary_breakpoints: List[Tuple[int, int]]) -> Tuple[Tuple[int, int], float]:
-  density_factor = 2
   all_tile_sizes = {
     (tw, th) for width, height in primary_breakpoints
-    for tw in get_divisors(width * density_factor)
-    for th in get_divisors(height * density_factor)
+    for tw in get_divisors(width * 2 if width < 1920 else width)
+    for th in get_divisors(height * 2 if height < 1080 else height)
     if tw >= 200 and th >= 200
   }
 
@@ -46,7 +46,11 @@ def optimal_tile_size(image_width: int, image_height: int, primary_breakpoints: 
 
   for tw, th in all_tile_sizes:
     total_pixel_waste = sum(
-      calculate_pixel_waste(width * density_factor, height * density_factor, tw, th) 
+      calculate_pixel_waste(
+        width * 2 if width < 1920 else width, 
+        height * 2 if height < 1080 else height, 
+        tw, th
+      ) 
       for width, height in primary_breakpoints + secondary_breakpoints
     )
     average_pixel_waste = total_pixel_waste / (len(primary_breakpoints) + len(secondary_breakpoints))
