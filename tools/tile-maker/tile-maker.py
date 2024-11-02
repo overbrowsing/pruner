@@ -1,43 +1,36 @@
 import os
 from PIL import Image
 
+IMAGE_FORMAT = 'WEBP'
+
 def split_image(image, pruner_folder, base_name, grid_size):
   img_width, img_height = image.size
   tile_width = img_width // grid_size[0]
   tile_height = img_height // grid_size[1]
 
   os.makedirs(pruner_folder, exist_ok=True)
-
-  tile_count = 0
   total_size_kb = 0
 
   for row in range(grid_size[1]):
     for col in range(grid_size[0]):
-      left = col * tile_width
-      upper = row * tile_height
-      right = (col + 1) * tile_width
-      lower = (row + 1) * tile_height
-
+      left, upper = col * tile_width, row * tile_height
+      right, lower = left + tile_width, upper + tile_height
       tile = image.crop((left, upper, right, lower))
-      tile_name = f"{base_name}-{row * grid_size[0] + col + 1}.webp"
+
+      tile_name = f"{base_name}-{row * grid_size[0] + col + 1}.{IMAGE_FORMAT.lower()}"
       tile_path = os.path.join(pruner_folder, tile_name)
+      tile.save(tile_path, format=IMAGE_FORMAT, quality=80)
 
-      tile.save(tile_path, format='WEBP', quality=80)
+      total_size_kb += os.path.getsize(tile_path) / 1024
 
-      tile_size_kb = os.path.getsize(tile_path) / 1024
-      total_size_kb += tile_size_kb
-      tile_count += 1
+  return grid_size[0] * grid_size[1], total_size_kb, (tile_width, tile_height)
 
-  return tile_count, total_size_kb, (tile_width, tile_height)
-
-def export_html(pruner_folder, base_name, grid_size, tile_dimensions):
+def export_html(pruner_folder, base_name, grid_size):
   html_file_path = os.path.join(pruner_folder, 'data-pruner.html')
+  cols = grid_size[0]
 
-  cols, rows = grid_size
-  tile_width, tile_height = tile_dimensions
-
-  html_content = f"""<img data-pruner='{{"imageName": "{base_name}", "cols": {cols}, "rows": {rows}, "imagePath": "your-path-here/"}}' alt="" loading="lazy">"""
-
+  html_content = f"""<img data-pruner='{{"name": "{base_name}", "cols": {cols}, "path": "your-path-here/"}}' alt="" loading="lazy">"""
+  
   try:
     with open(html_file_path, 'w') as html_file:
       html_file.write(html_content)
@@ -54,40 +47,34 @@ def process_image(input_folder, target_image_name, img_size, grid_size, export_h
     return 0, 0, (0, 0)
 
   img = Image.open(image_path)
-
   if img_size:
     img = img.resize(img_size)
 
   pruner_folder = os.path.join(os.getcwd(), 'tools', 'tile-maker', 'processed', os.path.splitext(processed_image_name)[0])
-  os.makedirs(pruner_folder, exist_ok=True)
-
   tile_count, total_size_kb, tile_dimensions = split_image(img, pruner_folder, os.path.splitext(processed_image_name)[0], grid_size)
 
   if tile_count > 0 and export_html_choice:
-    export_html(pruner_folder, os.path.splitext(processed_image_name)[0], grid_size, tile_dimensions)
+    export_html(pruner_folder, os.path.splitext(processed_image_name)[0], grid_size)
 
   return tile_count, total_size_kb, tile_dimensions
 
 def get_user_input():
-  target_choice = input("Do you want to process all images inside the target folder or just one image? (all/one): ").lower()
-
+  target_choice = input("Do you want to process all images or just one? (all/one): ").lower()
   if target_choice not in ['all', 'one']:
     print("Invalid choice. Please enter 'all' or 'one'.")
     return None, None, None, None, None
 
-  target_image_name = input("Enter the name of the target image (with extension, e.g. image.jpg): ") if target_choice == 'one' else None
+  target_image_name = input("Enter the target image name (with extension): ") if target_choice == 'one' else None
 
   resize_choice = input("Do you want to resize the image before processing (y/n): ").lower()
-
   img_size = None
   if resize_choice == 'y':
-    width = input("Width: ").replace('px', '').strip()
-    height = input("Height: ").replace('px', '').strip()
-    img_size = (int(width), int(height))
+    width = int(input("Width (px): "))
+    height = int(input("Height (px): "))
+    img_size = (width, height)
 
   columns = int(input("Number of columns: "))
   rows = int(input("Number of rows: "))
-
   export_html_choice = input("Do you want to export the HTML snippet? (y/n): ").lower() == 'y'
 
   return target_image_name, img_size, (columns, rows), target_choice, export_html_choice
@@ -102,10 +89,7 @@ def print_processing_summary(image_name, tile_count, total_size_kb, grid_size, t
 input_folder = os.path.join(os.getcwd(), 'tools', 'tile-maker', 'target')
 
 target_image_name, img_size, grid_size, target_choice, export_html_choice = get_user_input()
-
-total_tile_count = 0
-total_size_kb_all = 0
-total_image_count = 0
+total_tile_count = total_size_kb_all = total_image_count = 0
 
 if target_choice == 'one':
   tile_count, total_size_kb, tile_dimensions = process_image(input_folder, target_image_name, img_size, grid_size, export_html_choice)
