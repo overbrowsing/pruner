@@ -1,6 +1,6 @@
 {
     "name": "prunerjs",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "description": "Responsive images using viewport based ",
     "main": "dist/pruner.min.js",
     "scripts": {
