@@ -27,7 +27,7 @@ You can include `pruner.js` in your project either by downloading the files or u
 
 ### Download
 
-- **Minified**: [Available via pruner.min.js on unpkg.](https://unpkg.com/prunerjs@1.1.1/dist/pruner.min.js)
+- **Minified**: [Available via pruner.min.js on unpkg.](https://unpkg.com/prunerjs@1.1.2/dist/pruner.min.js)
 - **Unminified**: [Available in the source repository.](/src/pruner.js)
 
 ### CDN
@@ -35,7 +35,7 @@ You can include `pruner.js` in your project either by downloading the files or u
 Link directly to the minified version using Unpkg (we recommend downloading the file to reduce HTTP requests):
 
 ```html
-<script async src="https://unpkg.com/prunerjs@1.1.1/dist/pruner.min.js"></script>
+<script async src="https://unpkg.com/prunerjs@1.1.2/dist/pruner.min.js"></script>
 ```
 
 ### Package Managers
@@ -57,7 +57,7 @@ In the `<img>` tag, instead of using the `src` attribute to link an image, we us
 |   | Parameter | Description         | Details                                                                                                                                                                                                                                               | [Example Installation](#example-installation)    |
 |---|-----------|---------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
 |   | `name`    | Image Name          | The base name of the image files.                                                                                                                                                                                                                     | `banks-of-the-seine` (banks-of-the-seine-n.webp) |
-|   | `cols`    | Columns             | The number of vertical divisions the image is split into.                                                                                                                                                                                             | `10`                                             |
+|   | `tile`    | Tile Grid           | The number of columns and rows the image is split into.                                                                                                                                                                                               | `10 8 ` (10 columns and 8 rows)                  |
 | ⭐️ | `roi`     | Region of Interest  | This parameter lets you set a specific focal point within the image for art direction. The region of interest adjusts the image's focus based on the chosen tile number, ensuring that off-centre subjects are prominently displayed in the viewport. | `5` (banks-of-the-seine-5.webp)                  |
 | ⭐️ | `scale`   | Scale Factor        | Defines how much to enlarge the image when the viewport width is at or below the breakpoint in pixels. Formatted as "scale breakpoint" (e.g. 1.2 750).                                                                                                | `1.2 750` (120% 750w)                            |
 |   | `path`    | Directory for Tiles | The file path to the directory where the image tiles are stored. This parameter is essential for locating and retrieving the image files for display.                                                                                                 | `tools/tile-maker/processed/banks-of-the-seine/` |
@@ -90,7 +90,7 @@ In the `<img>` tag, instead of using the `src` attribute to link an image, we us
     - **Option 2**: [Using a CDN](#cdn).
 
       ```html
-      <script async src="https://unpkg.com/prunerjs@1.1.1/dist/pruner.min.js"></script>
+      <script async src="https://unpkg.com/prunerjs@1.1.2/dist/pruner.min.js"></script>
       ```
 
 ## Example Installation
@@ -98,13 +98,13 @@ In the `<img>` tag, instead of using the `src` attribute to link an image, we us
 After completing the steps with the example image of [*Banks of the Seine, Vétheuil*, by Claude Monet](https://www.nga.gov/collection/art-object-page.46652.html), beginning with the steps in [Tile Calculator](/tools/tile-calculator/README.md#example-calculation) documentation and then proceeding to the steps in the [Tile Maker](/tools/tile-maker/README.md#example-usage) documentation the HTML snippet will be exported [here](/tools/tile-maker/processed/banks-of-the-seine/data-pruner.html) and tiles [here](/tools/tile-maker/processed/banks-of-the-seine/). The HTML snippet looks like this:
 
 ```html
-<img data-pruner='{"name": "banks-of-the-seine", "cols": 10, "path": "your-path-here/"}' alt="" loading="lazy">
+<img data-pruner='{"name": "banks-of-the-seine", "tile": "10 8", "path": "your-path-here/"}' alt="" loading="lazy">
 ```
 
 The `path` and optional parameters (`roi` and `scale`), along the `alt` attribute, were added in manually afterwards:
 
 ```html
-<img data-pruner='{"name": "banks-of-the-seine", "cols": 10, "roi": 5, "scale": "1.2 750", "path": "tools/tile-maker/processed/banks-of-the-seine/"}' alt="Banks of the Seine, Vétheuil, 1880 by Claude Monet"  loading="lazy">
+<img data-pruner='{"name": "banks-of-the-seine", "tile": "10 8", "roi": 5, "scale": "1.2 750", "path": "tools/tile-maker/processed/banks-of-the-seine/"}' alt="Banks of the Seine, Vétheuil, 1880 by Claude Monet"  loading="lazy">
 ```
 
 ⭐️ Denotes which parameters are optional.
@@ -112,7 +112,7 @@ The `path` and optional parameters (`roi` and `scale`), along the `alt` attribut
 |   | Parameter | Description         | Value                                            |
 |---|-----------|---------------------|--------------------------------------------------|
 |   | `name`    | Image Name          | `banks-of-the-seine`                             |
-|   | `cols`    | Columns             | `10`                                             |
+|   | `tile`    | Tile Grid           | `10 9` (10 columns and 8 rows)                   |
 | ⭐️ | `roi`     | Region of Interest  | `5` (banks-of-the-seine-5.webp)                  |
 | ⭐️ | `scale`   | Scale Factor        | `1.2 750` (120% 750w)                            |
 |   | `path`    | Directory for Tiles | `tools/tile-maker/processed/banks-of-the-seine/` |
