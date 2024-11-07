@@ -1,7 +1,7 @@
 {
     "name": "prunerjs",
-    "version": "1.1.1",
-    "description": "Responsive images using viewport based ",
+    "version": "1.1.2",
+    "description": "Responsive image Javascript utility using viewport-based rendering.",
     "main": "dist/pruner.min.js",
     "scripts": {
       "build": "terser src/pruner.js -o dist/pruner.min.js --compress --mangle"
