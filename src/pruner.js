@@ -3,7 +3,7 @@ function pruner() {
   let prevW = 0, prevH = 0;
 
   const debounce = (fn, d) => { let t; return (...args) => { clearTimeout(t); t = setTimeout(() => fn(...args), d); }; };
-  const loadImg = src => cache[src] || (cache[src] = new Promise((r, rej) => { const img = new Image(); img.crossOrigin = 'anonymous'; img.onload = () => r(img); img.onerror = () => rej(src); img.src = src; }));
+  const loadImg = src => cache[src] || (cache[src] = new Promise((r, rej) => { const img = new Image(); img.crossOrigin = 'anon'; img.onload = () => r(img); img.onerror = () => rej(src); img.src = src; }));
 
   const processImgs = async (el, vw, vh) => {
     const { name, tile, scale = "1 0", path = '', roi, imageExtension = 'webp' } = JSON.parse(el.dataset.pruner);
