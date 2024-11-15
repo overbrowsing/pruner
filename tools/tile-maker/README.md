@@ -15,7 +15,7 @@ Tile Maker is a Python application designed to process images for web projects t
 
 ## Requirements
 
-- **Python 3.x**: Ensure that you have Python 3.x installed on your system. You can download it from the [official Python website](https://www.python.org/downloads/).
+- **Python 3.x**: Ensure that you have Python 3.x installed on your system. You can download it from the [official Python website](https://python.org/downloads/).
 - **Pillow**: The Pillow library is used for image manipulation (resizing, cropping, and saving images). You can install it via pip:
 
   ```bash

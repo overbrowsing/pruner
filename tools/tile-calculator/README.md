@@ -13,7 +13,7 @@ Tile Calculator is a Python application that helps users determine the optimal t
 
 ## Requirements
 
-- **Python 3.x**: Ensure that you have Python 3.x installed on your system. You can download it from the [official Python website](https://www.python.org/downloads/).
+- **Python 3.x**: Ensure that you have Python 3.x installed on your system. You can download it from the [official Python website](https://python.org/downloads/).
 
 ## Initialize
 
