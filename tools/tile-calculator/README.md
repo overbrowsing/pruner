@@ -45,7 +45,7 @@ Tile Calculator is a Python application that helps users determine the optimal t
 
 ## Example
 
-The inputs below generated the calculation for tiles featured in the [example setup](/README.md#example-installation):
+The inputs below generated the calculation for tiles featured in the [example](/README.md#example):
 
 - Dimensions: 2400 x 1500px
 

@@ -81,7 +81,7 @@ Place your images to be processed in the [target folder](/tools/tile-maker/targe
 
 ## Example
 
-The inputs below generated the tiles and HTML snippet featured in the [example setup](/README.md#example-installation):
+The inputs below generated the tiles and HTML snippet featured in the [example](/README.md#example):
 
 - Image: [banks-of-the-seine.jpg](/tools/tile-maker/target/banks-of-the-seine.jpg)
 - Dimensions: 2400 x 1500px

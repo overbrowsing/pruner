@@ -54,7 +54,7 @@ In the `<img>` tag, instead of using the `src` attribute to link an image, we us
 
 ⭐️ Denotes which parameters are optional.
 
-|   | Parameter | Description         | Details                                                                                                                                                                                                                                               | [Example Installation](#example-installation)    |
+|   | Parameter | Description         | Details                                                                                                                                                                                                                                               | [Example](#example)                              |
 |---|-----------|---------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
 |   | `name`    | Image Name          | The base name of the image files.                                                                                                                                                                                                                     | `banks-of-the-seine` (banks-of-the-seine-n.webp) |
 |   | `tile`    | Tile Grid           | The number of columns and rows the image is split into.                                                                                                                                                                                               | `10 8` (10 columns and 8 rows)                   |
@@ -95,7 +95,7 @@ In the `<img>` tag, instead of using the `src` attribute to link an image, we us
 
 ## Example
 
-After completing the steps with the example image of [*Banks of the Seine, Vétheuil*, by Claude Monet](https://www.nga.gov/collection/art-object-page.46652.html), beginning with the steps in [Tile Calculator](/tools/tile-calculator/README.md#example-calculation) documentation and then proceeding to the steps in the [Tile Maker](/tools/tile-maker/README.md#example-usage) documentation the HTML snippet will be exported [here](/tools/tile-maker/processed/banks-of-the-seine/data-pruner.html) and tiles [here](/tools/tile-maker/processed/banks-of-the-seine/). The HTML snippet looks like this:
+After completing the steps with the example image of [*Banks of the Seine, Vétheuil*, by Claude Monet](https://www.nga.gov/collection/art-object-page.46652.html), beginning with the steps in [Tile Calculator](/tools/tile-calculator/README.md#example) documentation and then proceeding to the steps in the [Tile Maker](/tools/tile-maker/README.md#example) documentation the HTML snippet will be exported [here](/tools/tile-maker/processed/banks-of-the-seine/data-pruner.html) and tiles [here](/tools/tile-maker/processed/banks-of-the-seine/). The HTML snippet looks like this:
 
 ```html
 <img data-pruner='{"name": "banks-of-the-seine", "tile": "10 8", "path": "your-path-here/"}' alt="" loading="lazy">
