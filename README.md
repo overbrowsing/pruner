@@ -43,7 +43,7 @@ Link directly to the minified version using Unpkg (we recommend downloading the 
 You can also install `pruner.js` using npm:
 
 ```bash
-npm install pruner --save
+npm install prunerjs --save
 ```
 
 ## How it Works
