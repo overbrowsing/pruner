@@ -68,7 +68,7 @@ In the `<img>` tag, instead of using the `src` attribute to link an image, we us
 
 1. **Calculating Tiles**: The best way to create tiles is by first calcualting the optimal arrangement by using the [Tile Calculator](/tools/tile-calculator/README.md). This tool will help you generate the best configuration for your project and will share the parameters needed for the next step.
 
-2. **Making Tiles**: Once you have your configuration from the Tile Calculator, use the [Tile Maker](/tools/tile-maker/README.md) to process your images and create the tiles. Tile Maker will output the tiles and an optional HTML snippet for easy installation.
+2. **Making Tiles**: Once you have your configuration from the [Tile Calculator](/tools/tile-calculator/README.md), use the [Tile Maker](/tools/tile-maker/README.md) to process your images and create the tiles. Tile Maker will output the tiles and an optional HTML snippet for easy installation.
 
 3. **Naming Images**: If you used the [Tile Maker](/tools/tile-maker/README.md), you can ignore the next two steps and proceed to [installation](/README.md#installation) as the tool handles naming and formatting of images automatically. For manual installation and tile creation, ensure that the parameter `image` matches the base name for the tile images (e.g., banks-of-the-seine-1.webp, banks-of-the-seine-2.webp, etc.) and that the images are named sequentially.
 
