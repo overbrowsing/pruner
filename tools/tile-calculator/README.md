@@ -49,6 +49,11 @@ The inputs below generated the calculation for tiles featured in the [example](/
 
 - Dimensions: 1920 x 1080px
 
+```bash
+Enter the desired largest image width (px): 1920
+Enter the desired largest image height (px): 1080
+```
+
 ### Results
 
 The printed results from the example:

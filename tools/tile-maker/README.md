@@ -58,14 +58,19 @@ Place your images to be processed in the [target folder](/tools/tile-maker/targe
       **❓ Do you want to resize the image? (y/n)**
       - ***No*** — Skip resizing and proceed.
       - ***Yes*** — Enter the overall size of the image in pixels (width and height).
-        - **❓ Width**:
-        - **❓ Height**:
+        - **❓ Width**
+        - **❓ Height**
+
+      **❓ Do you want to set the compression quality? (y/n)**
+      - ***No*** — Skip defining the compression (default is 80)
+      - ***Yes*** — Enter the compression quality.
+        - **❓ Enter the compression quality (0 to 80)**:
 
       **❓ Enter the number of columns and rows to split the image into**
       - ***No*** — Skip resizing and proceed.
       - ***Yes*** — Set the number of columns and rows for the grid.
-        - **❓ Number of columns**:
-        - **❓ Number of Rows**:
+        - **❓ Number of columns**
+        - **❓ Number of Rows**
         
       **❓ Do you want to export an HTML snippet? (y/n)**
       - ***Yes*** — Finish processing and export the HTML snippet.
@@ -85,7 +90,19 @@ The inputs below generated the tiles and HTML snippet featured in the [example](
 
 - Image: [banks-of-the-seine.jpg](/tools/tile-maker/target/banks-of-the-seine.jpg)
 - Dimensions: 1920 x 1080px
+- Compression: 50
 - Columns: 8, Rows: 6
+
+```bash
+Do you want to process all images or just one? (all/one): all
+Do you want to resize the image before processing (y/n): y
+Width (px): 1920
+Height (px): 1080
+Do you want to set the compression quality? (y/n): y
+Enter the compression quality (0 to 80): 50
+Number of columns: 8
+Number of rows: 6
+```
 
 ### Results
 
@@ -94,7 +111,7 @@ The printed results from the example:
 ```bash
 Processing complete for all images!
 Total tiles created: 48
-Average total size of tiles: 556.27 KB
+Average total size of tiles: 321.59 KB
 Columns: 8, Rows: 6
 ```
 
