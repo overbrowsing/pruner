@@ -23,12 +23,12 @@ The name was chosen based on the practice of [pruning in horticulture](https://e
 
 ## Install
 
-You can include `pruner.js` in your project either by downloading the files or using a CDN. While using a third-party CDN introduces an additional HTTP request, we ensured that it is hosted is using renewable energy.
+You can include `pruner.js` in your project either by downloading the files or using a CDN. While using a third-party CDN introduces an additional HTTP request, we have ensured that it is hosted using renewable energy.
 
 ### Download
 
-- **Minified**: [Available via pruner.min.js on unpkg.](https://unpkg.com/prunerjs@1.1.6/dist/pruner.min.js)
-- **Unminified**: [Available in the source repository.](/src/pruner.js)
+- **Minified**: Available in the [distributable (dist) folder](/dist/pruner.min.js) and [unpkg](https://unpkg.com/prunerjs@1.1.6/dist/pruner.min.js).
+- **Unminified**: Available in the [source (src) folder](/src/pruner.js) and [unpkg](https://unpkg.com/prunerjs@1.1.6/src/pruner.js).
 
 ### CDN
 
