@@ -84,7 +84,7 @@ In the `<img>` tag, instead of using the `src` attribute to link an image, we us
     - **Option 1**: [Using locally](#download).
 
       ```html
-      <script async src="/your-path-here/pruner.js"></script>
+      <script async src="/your-path-here/pruner.min.js"></script>
       ```
 
     - **Option 2**: [Using a CDN](#cdn).
