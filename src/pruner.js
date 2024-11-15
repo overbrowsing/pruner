@@ -1,43 +1,28 @@
 function pruner() {
-  const elems = [...document.querySelectorAll('[data-pruner]')], cache = {};
-  let prevW = 0, prevH = 0;
+  const elems = [...document.querySelectorAll('[data-pruner]')], cache = {}, d = (fn, t) => { let h; return (...a) => (clearTimeout(h), h = setTimeout(() => fn(...a), t)); }, l = s => cache[s] || (cache[s] = new Promise((r, e) => { const i = new Image(); i.crossOrigin = 'anon'; i.onload = () => r(i); i.onerror = () => e(s); i.src = s; }));
 
-  const debounce = (fn, d) => { let t; return (...args) => { clearTimeout(t); t = setTimeout(() => fn(...args), d); }; };
-  const loadImg = src => cache[src] || (cache[src] = new Promise((r, rej) => { const img = new Image(); img.crossOrigin = 'anon'; img.onload = () => r(img); img.onerror = () => rej(src); img.src = src; }));
-
-  const processImgs = async (el, vw, vh) => {
+  const p = async (el, vw, vh) => {
     const { name, tile, scale = "1 0", path = '', roi, imageExtension = 'webp' } = JSON.parse(el.dataset.pruner);
     if (!tile || !name) return;
-    const [cols, rows] = tile.split(" "), [sf, bp] = scale.split(" "), isMobile = vw <= +bp;
+    const [cols, rows] = tile.split(" ").map(Number), [sf, bp] = scale.split(" ").map(Number), m = vw <= bp;
     try {
-      const { width: w, height: h } = await loadImg(`${path}${name}-1.${imageExtension}`);
-      const sw = Math.round(w * (isMobile ? +sf : 1)), sh = Math.round(h * (isMobile ? +sf : 1));
-      const numCols = Math.min(Math.ceil(vw / sw), cols), numRows = Math.min(Math.ceil(vh / sh), rows);
-      const c = document.createElement('canvas');
-      c.width = numCols * sw; c.height = numRows * sh;
-      const ctx = c.getContext('2d');
-      ctx.imageSmoothingEnabled = false;
-      el.src = '';
-      const [startR, startC] = roi ? [Math.max(0, Math.floor((roi - 1) / cols) - Math.floor(numRows / 2)), Math.max(0, (roi - 1) % cols - Math.floor(numCols / 2))] :
-        [Math.max(0, Math.floor(rows / 2) - Math.floor(numRows / 2)), Math.max(0, Math.floor(cols / 2) - Math.floor(numCols / 2))];
-      const clampedStartR = Math.max(0, Math.min(startR, rows - numRows)), clampedStartC = Math.max(0, Math.min(startC, cols - numCols));
-      const imgs = await Promise.all(
-        Array.from({ length: numRows * numCols }, (_, i) => {
-          const r = clampedStartR + Math.floor(i / numCols), c = clampedStartC + (i % numCols);
-          return r < rows && c < cols ? loadImg(`${path}${name}-${r * cols + c + 1}.${imageExtension}`) : null;
-        })
-      );
-      imgs.forEach((img, i) => img && ctx.drawImage(img, (i % numCols) * sw, Math.floor(i / numCols) * sh, sw, sh));
+      const { width: w, height: h } = await l(`${path}${name}-1.${imageExtension}`), sw = Math.round(w * (m ? sf : 1)), sh = Math.round(h * (m ? sf : 1)), nc = Math.min(Math.ceil(vw / sw), cols), nr = Math.min(Math.ceil(vh / sh), rows), c = document.createElement('canvas');
+      c.width = nc * sw; c.height = nr * sh;
+      const ctx = c.getContext('2d'); ctx.imageSmoothingEnabled = !1; el.src = '';
+      const cs = (v, mn, mx) => Math.max(mn, Math.min(v, mx)), sr = cs((roi ? Math.floor((roi - 1) / cols) - Math.floor(nr / 2) : Math.floor(rows / 2) - Math.floor(nr / 2)), 0, rows - nr), sc = cs((roi ? (roi - 1) % cols - Math.floor(nc / 2) : Math.floor(cols / 2) - Math.floor(nc / 2)), 0, cols - nc);
+      (await Promise.all(Array(nr * nc).fill().map((_, i) => {
+        const r = sr + Math.floor(i / nc), c = sc + (i % nc);
+        return r < rows && c < cols ? l(`${path}${name}-${r * cols + c + 1}.${imageExtension}`) : null;
+      }))).forEach((img, i) => img && ctx.drawImage(img, (i % nc) * sw, Math.floor(i / nc) * sh, sw, sh));
       el.src = c.toDataURL('image/webp');
     } catch (e) {}
   };
 
-  const handleResize = debounce(() => { const w = innerWidth, h = innerHeight; if (w !== prevW || h !== prevH) { prevW = w; prevH = h; elems.forEach(el => processImgs(el, w, h)); } }, 200);
-
-  const obs = new IntersectionObserver(entries => entries.forEach(entry => { if (entry.isIntersecting) { handleResize(); obs.unobserve(entry.target); } }));
-  window.addEventListener('load', handleResize);
-  elems.forEach(el => obs.observe(el));
-  window.addEventListener('resize', handleResize);
+  let pw = 0, ph = 0, r = d(() => {
+    const w = innerWidth, h = innerHeight;
+    if (w !== pw || h !== ph) pw = w, ph = h, elems.forEach(e => p(e, w, h));
+  }, 200);
+  const obs = new IntersectionObserver(es => es.forEach(e => e.isIntersecting && (r(), obs.unobserve(e.target))));
+  window.addEventListener('load', r); elems.forEach(el => obs.observe(el)); window.addEventListener('resize', r);
 }
-
 window.onload = pruner;
