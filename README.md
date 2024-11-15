@@ -104,7 +104,7 @@ After completing the steps with the example image of [*Banks of the Seine, Véth
 The `path` and optional parameters (`roi` and `scale`), along the `alt` attribute, were added in manually afterwards:
 
 ```html
-<img data-pruner='{"name": "banks-of-the-seine", "tile": "10 8", "roi": 5, "scale": "1.2 750", "path": "tools/tile-maker/processed/banks-of-the-seine/"}' alt="Banks of the Seine, Vétheuil, 1880 by Claude Monet"  loading="lazy">
+<img data-pruner='{"name": "banks-of-the-seine", "tile": "10 8", "roi": 5, "scale": "1.2 750", "path": "tools/tile-maker/processed/banks-of-the-seine/"}' alt="Banks of the Seine, Vétheuil, 1880 by Claude Monet" loading="lazy">
 ```
 
 *⭐️ Denotes which parameters are optional.*
