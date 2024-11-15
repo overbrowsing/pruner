@@ -84,8 +84,8 @@ Place your images to be processed in the [target folder](/tools/tile-maker/targe
 The inputs below generated the tiles and HTML snippet featured in the [example](/README.md#example):
 
 - Image: [banks-of-the-seine.jpg](/tools/tile-maker/target/banks-of-the-seine.jpg)
-- Dimensions: 2400 x 1500px
-- Columns: 10, Rows: 8
+- Dimensions: 1920 x 1080px
+- Columns: 8, Rows: 6
 
 ### Results
 
@@ -93,9 +93,9 @@ The printed results from the example:
 
 ```bash
 Processing complete for all images!
-Total tiles created: 80
-Average total size of tiles: 974.19 KB
-Columns: 10, Rows: 8
+Total tiles created: 48
+Average total size of tiles: 556.27 KB
+Columns: 8, Rows: 6
 ```
 
 ### Tiles
@@ -107,7 +107,7 @@ The exported example tiles can be be found [here](/tools/tile-maker/processed/ba
 Below is the exported example HTML snippet from the file [data-pruner.html](/tools/tile-maker/processed/banks-of-the-seine/data-pruner.html).
 
 ```html
-<img data-pruner='{"name": "banks-of-the-seine", "tile": "10 8", "path": "your-path-here/"}' alt="" loading="lazy">
+<img data-pruner='{"name": "banks-of-the-seine", "tile": "8 6", "path": "your-path-here/"}' alt="" loading="lazy">
 ```
 
 ## Contributing

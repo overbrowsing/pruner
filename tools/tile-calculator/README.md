@@ -47,7 +47,7 @@ Tile Calculator is a Python application that helps users determine the optimal t
 
 The inputs below generated the calculation for tiles featured in the [example](/README.md#example):
 
-- Dimensions: 2400 x 1500px
+- Dimensions: 1920 x 1080px
 
 ### Results
 
@@ -55,11 +55,11 @@ The printed results from the example:
 
 ```bash
 Tile calculation complete!
-Image dimensions = 2400 x 1500px
-Columns = 10, Rows = 8
-Total tiles = 80
-Tile dimensions = 240.00 x 187.50px
-Average pixel waste = 20.38%
+Image dimensions = 1920 x 1080px
+Columns = 8, Rows = 6
+Total tiles = 48
+Tile dimensions = 240.00 x 180.00px
+Average pixel waste = 18.22%
 ```
 
 ## Contributing
