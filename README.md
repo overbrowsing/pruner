@@ -95,7 +95,7 @@ In the `<img>` tag, instead of using the `src` attribute to link an image, we us
 
 ## Example
 
-After completing the steps with the example image of [*Banks of the Seine, Vétheuil*, by Claude Monet](https://www.nga.gov/collection/art-object-page.46652.html), beginning with the steps in [Tile Calculator](/tools/tile-calculator/README.md#example) documentation and then proceeding to the steps in the [Tile Maker](/tools/tile-maker/README.md#example) documentation the HTML snippet will be exported [here](/tools/tile-maker/processed/banks-of-the-seine/data-pruner.html) and tiles [here](/tools/tile-maker/processed/banks-of-the-seine/). The HTML snippet looks like this:
+After completing the steps with the example image of [*Banks of the Seine, Vétheuil*, by Claude Monet](https://www.nga.gov/collection/art-object-page.46652.html), beginning with the steps in [Tile Calculator](/tools/tile-calculator/README.md#example) documentation and then proceeding to the steps in the [Tile Maker](/tools/tile-maker/README.md#example) documentation, the tiles and HTML snippet and  will be exported to a folder within the [processed folder](/tools/tile-maker/processed/banks-of-the-seine/). The exported HTML snippet, [`data-pruner.html`](/tools/tile-maker/processed/banks-of-the-seine/data-pruner.html), will look like this:
 
 ```html
 <img data-pruner='{"name": "banks-of-the-seine", "tile": "10 8", "path": "your-path-here/"}' alt="" loading="lazy">
