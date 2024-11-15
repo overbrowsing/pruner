@@ -70,7 +70,7 @@ In the `<img>` tag, instead of using the `src` attribute to link an image, we us
 
 2. **Making Tiles**: Once you have your configuration from the Tile Calculator, use the [Tile Maker](/tools/tile-maker/README.md) to process your images and create the tiles. Tile Maker will output the tiles and an optional HTML snippet for easy installation.
 
-3. **Naming Images**: If you used the [Tile Maker](/tools/tile-maker/README.md), you can ignore the next two steps and proceed to [installation](/README.md#installation) as the tool handles naming and formatting of images automatically. For manual installation and tile creation, ensure that the parameter `imageName` matches the base name for the tile images (e.g., banks-of-the-seine-1.webp, banks-of-the-seine-2.webp, etc.) and that the images are named sequentially.
+3. **Naming Images**: If you used the [Tile Maker](/tools/tile-maker/README.md), you can ignore the next two steps and proceed to [installation](/README.md#installation) as the tool handles naming and formatting of images automatically. For manual installation and tile creation, ensure that the parameter `image` matches the base name for the tile images (e.g., banks-of-the-seine-1.webp, banks-of-the-seine-2.webp, etc.) and that the images are named sequentially.
 
 4. **Formatting Images**: Images need to be foramtted to WebP. This helps reduce image sizes—WebP lossy versions can be [25% to 34% smaller than JPEGs](https://developers.google.com/speed/webp/docs/webp_study#conclusion). This format meets the ["serve images in modern formats"](https://developer.chrome.com/docs/lighthouse/performance/uses-webp-images) opportuntiy within the Google Lighthouse test and follows best practices for [Sustainable Web Design](https://github.com/Sustainable-WWW/Sustainable-Web-Practices-Wiki/blob/main/Wiki/Image/Image_Formats.md). WebP is [widely supported across major browsers](https://caniuse.com/webp), unlike AVIF which is [newly available across major browsers](https://caniuse.com/avif). Don't worry! There is an option for progressive enhancement that enables developers to easily adjust a line of code in the pruner.js script to support additional image formats if they wish.
 
@@ -78,7 +78,7 @@ In the `<img>` tag, instead of using the `src` attribute to link an image, we us
 
 1. **Insert the HTML Snippet**: If you used the [Tile Maker](/tools/tile-maker/README.md), locate the exported HTML snippet in the image folder associated with the image name within the [processed folder](/tools/tile-maker/processed/). Copy this snippet into your web project where you want to display the images.
 
-2. **Update Parameters**: Update the `path` parameter in the HTML snippet to point to the location of your tiles. Ensure that you configure any optional parameters, such as `roi` and `scale`, as needed to suit your project. Don’t forget to include `alt` text as well!
+2. **Update Parameters**: Update the `path` parameter in the HTML snippet to point to the location of your tiles. Ensure that you configure any optional parameters (`roi` and `scale`) as needed to suit your project. Don’t forget to include `alt` text as well!
 
 3. **Include `pruner.js`**: To include the utility in your project. Add the either option before the closing `</html>` tag in your HTML file
     - **Option 1**: [Using locally](#download).
@@ -93,7 +93,7 @@ In the `<img>` tag, instead of using the `src` attribute to link an image, we us
       <script async src="https://unpkg.com/prunerjs@1.1.6/dist/pruner.min.js"></script>
       ```
 
-## Example Installation
+## Example
 
 After completing the steps with the example image of [*Banks of the Seine, Vétheuil*, by Claude Monet](https://www.nga.gov/collection/art-object-page.46652.html), beginning with the steps in [Tile Calculator](/tools/tile-calculator/README.md#example-calculation) documentation and then proceeding to the steps in the [Tile Maker](/tools/tile-maker/README.md#example-usage) documentation the HTML snippet will be exported [here](/tools/tile-maker/processed/banks-of-the-seine/data-pruner.html) and tiles [here](/tools/tile-maker/processed/banks-of-the-seine/). The HTML snippet looks like this:
 
@@ -107,7 +107,7 @@ The `path` and optional parameters (`roi` and `scale`), along the `alt` attribut
 <img data-pruner='{"name": "banks-of-the-seine", "tile": "10 8", "roi": 5, "scale": "1.2 750", "path": "tools/tile-maker/processed/banks-of-the-seine/"}' alt="Banks of the Seine, Vétheuil, 1880 by Claude Monet"  loading="lazy">
 ```
 
-⭐️ Denotes which parameters are optional.
+*⭐️ Denotes which parameters are optional.*
 
 |   | Parameter | Description         | Value                                            |
 |---|-----------|---------------------|--------------------------------------------------|

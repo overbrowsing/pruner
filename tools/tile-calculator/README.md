@@ -68,4 +68,4 @@ Contributions are welcome. Please feel free to [submit an issue](https://github.
 
 ## License
 
-`pruner.js` is released under the [MIT](/LICENSE) license. Feel free to use and modify it as needed.
+Tile Calculator is released under the [MIT](/LICENSE) license. Feel free to use and modify it as needed.
