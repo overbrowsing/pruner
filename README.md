@@ -52,7 +52,7 @@ In the `<img>` tag, instead of using the `src` attribute to link an image, we us
 
 ### Parameters
 
-⭐️ Denotes which parameters are optional.
+*⭐️ Denotes which parameters are optional.*
 
 |   | Parameter | Description         | Details                                                                                                                                                                                                                                               | [Example](#example)                              |
 |---|-----------|---------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
