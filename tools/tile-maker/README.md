@@ -73,8 +73,8 @@ Place your images to be processed in the [target folder](/tools/tile-maker/targe
         - **❓ Number of Rows**
         
       **❓ Do you want to export an HTML snippet? (y/n)**
-      - ***Yes*** — Finish processing and export the HTML snippet.
-      - ***No*** — Finish processing images.
+      - ***Yes*** — Process images, export the HTML snippet and view results.
+      - ***No*** — Process images and view results.
 
 3.	**View Results**
 
