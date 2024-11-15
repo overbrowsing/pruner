@@ -62,9 +62,9 @@ Place your images to be processed in the [target folder](/tools/tile-maker/targe
         - **❓ Height**
 
       **❓ Do you want to set the compression quality? (y/n)**
-      - ***No*** — Skip defining the compression (default is 80)
+      - ***No*** — Skip defining the compression quality (default is 80).
       - ***Yes*** — Enter the compression quality.
-        - **❓ Enter the compression quality (0 to 80)**:
+        - **❓ Enter the compression quality (0 to 80)**
 
       **❓ Enter the number of columns and rows to split the image into**
       - ***No*** — Skip resizing and proceed.
