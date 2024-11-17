@@ -32,10 +32,12 @@ You can include `pruner.js` in your project either by downloading the files or u
 
 ### CDN
 
-Link directly to the minified version using Unpkg (we recommend downloading the file to reduce HTTP requests):
+Link directly to the minified or unminified version using Unpkg (we recommend downloading the file to reduce HTTP requests):
 
 ```html
 <script async src="https://unpkg.com/prunerjs@1.1.6/dist/pruner.min.js"></script>
+or
+<script async src="https://unpkg.com/prunerjs@1.1.6/src/pruner.js"></script>
 ```
 
 ### Package Managers
