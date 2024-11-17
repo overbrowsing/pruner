@@ -94,7 +94,8 @@ The inputs below generated the tiles and HTML snippet featured in the [example](
 - Columns: 8, Rows: 6
 
 ```bash
-Do you want to process all images or just one? (all/one): all
+Do you want to process all images or just one? (all/one): one
+Enter the target image name (with extension): banks-of-the-seine.jpg
 Do you want to resize the image before processing (y/n): y
 Width (px): 1920
 Height (px): 1080
@@ -102,6 +103,7 @@ Do you want to set the compression quality? (y/n): y
 Enter the compression quality (0 to 80): 50
 Number of columns: 8
 Number of rows: 6
+Do you want to export the HTML snippet? (y/n): y
 ```
 
 ### Results
@@ -109,10 +111,11 @@ Number of rows: 6
 The printed results from the example:
 
 ```bash
-Processing complete for all images!
-Total tiles created: 48
-Average total size of tiles: 321.59 KB
-Columns: 8, Rows: 6
+Processing banks-of-the-seine.jpg complete!
+Tiles created = 48
+Total size of tiles = 321.59 KB
+Columns = 8, Rows = 6
+Tile dimensions = 240 x 180px
 ```
 
 ### Tiles
