@@ -23,21 +23,19 @@ The name was chosen based on the practice of [pruning in horticulture](https://e
 
 ## Install
 
-You can include `pruner.js` in your project either by downloading the files or using a CDN. While using a third-party CDN introduces an additional HTTP request, we have ensured that it is hosted using renewable energy.
-
 ### Download
 
-- **Minified**: Available in the [distributable (dist) folder](/dist/pruner.min.js) and [unpkg](https://unpkg.com/prunerjs@1.1.6/dist/pruner.min.js).
-- **Unminified**: Available in the [source (src) folder](/src/pruner.js) and [unpkg](https://unpkg.com/prunerjs@1.1.6/src/pruner.js).
+Download the minified or unminified version of `pruner.js`:
+
+- **Minified**: Available in the [distributable (dist) folder](/dist/pruner.min.js).
+- **Unminified**: Available in the [source (src) folder](/src/pruner.js).
 
 ### CDN
 
-Link directly to the minified or unminified version using Unpkg (we recommend downloading the file to reduce HTTP requests):
+U to the minified version of `pruner.js`:
 
 ```html
 <script async src="https://unpkg.com/prunerjs@1.1.6/dist/pruner.min.js"></script>
-or
-<script async src="https://unpkg.com/prunerjs@1.1.6/src/pruner.js"></script>
 ```
 
 ### Package Managers
@@ -66,37 +64,25 @@ In the `<img>` tag, instead of using the `src` attribute to link an image, we us
 
 ## How to Use
 
-### Tiles
+1. **Tile Calcualtor**: Use the [Tile Calculator](/tools/tile-calculator/README.md) to determine the optimal arrangement for splitting your image.
 
-1. **Calculating Tiles**: The best way to create tiles is by first calcualting the optimal arrangement by using the [Tile Calculator](/tools/tile-calculator/README.md). This tool will help you generate the best configuration for your project and will share the parameters needed for the next step.
+2. **Tile Maker**: Use the [Tile Maker](/tools/tile-maker/README.md) to split your image and export the necessary tiles and HTML snippet.
 
-2. **Making Tiles**: Once you have your configuration from the [Tile Calculator](/tools/tile-calculator/README.md), use the [Tile Maker](/tools/tile-maker/README.md) to process your images and create the tiles. Tile Maker will output the tiles and an optional HTML snippet for easy installation.
+3. **Insert the HTML Snippet**: If you used the [Tile Maker](/tools/tile-maker/README.md), locate the exported HTML snippet in the image folder associated with the image name within the [processed folder](/tools/tile-maker/processed/). Copy this snippet into your web project where you want to display the image.
 
-3. **Naming Images**: If you used the [Tile Maker](/tools/tile-maker/README.md), you can ignore the next two steps and proceed to [installation](/README.md#installation) as the tool handles naming and formatting of images automatically. For manual installation and tile creation, ensure that the parameter `image` matches the base name for the tile images (e.g., banks-of-the-seine-1.webp, banks-of-the-seine-2.webp, etc.) and that the images are named sequentially.
+4. **Update Parameters**: Update the `path` parameter in the HTML snippet to point to the location of your tiles. Adjust optional parameters like `roi` and `scale` as needed. Don't forget to include image `alt` text as well.
 
-4. **Formatting Images**: Images need to be foramtted to WebP. This helps reduce image sizes—WebP lossy versions can be [25% to 34% smaller than JPEGs](https://developers.google.com/speed/webp/docs/webp_study#conclusion). This format meets the ["serve images in modern formats"](https://developer.chrome.com/docs/lighthouse/performance/uses-webp-images) opportuntiy within the Google Lighthouse test and follows best practices for [sustainable web design](https://github.com/Sustainable-WWW/Sustainable-Web-Practices-Wiki/blob/main/Wiki/Image/Image_Formats.md). WebP is [widely supported across major browsers](https://caniuse.com/webp), unlike AVIF which is [newly available across major browsers](https://caniuse.com/avif). Don't worry! There is an option for progressive enhancement that enables developers to easily adjust a line of code in the pruner.js script to support additional image formats if they wish.
-
-### Installation
-
-1. **Insert the HTML Snippet**: If you used the [Tile Maker](/tools/tile-maker/README.md), locate the exported HTML snippet in the image folder associated with the image name within the [processed folder](/tools/tile-maker/processed/). Copy this snippet into your web project where you want to display the image.
-
-2. **Update Parameters**: Update the `path` parameter in the HTML snippet to point to the location of your tiles. Ensure that you configure any optional parameters (`roi` and `scale`) as needed to suit your project. Don’t forget to include `alt` text as well!
-
-3. **Include `pruner.js`**: To include the utility in your project. Add the either option before the closing `</html>` tag in your HTML file
-    - **Option 1**: [Using locally](#download).
+5. **Include `pruner.js`**: To include the utility in your project. Add the either option before the closing `</html>` tag in your HTML file
+    - **Option 1**: [Download](#download).
 
       ```html
       <script async src="/your-path-here/pruner.min.js"></script>
-      or
-      <script async src="/your-path-here/pruner.js"></script>
       ```
 
-    - **Option 2**: [Using a CDN](#cdn).
+    - **Option 2**: [CDN](#cdn).
 
       ```html
       <script async src="https://unpkg.com/prunerjs@1.1.6/dist/pruner.min.js"></script>
-      or
-      <script async src="https://unpkg.com/prunerjs@1.1.6/src/pruner.js"></script>
       ```
 
 ## Example
