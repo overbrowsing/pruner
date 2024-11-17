@@ -87,12 +87,16 @@ In the `<img>` tag, instead of using the `src` attribute to link an image, we us
 
       ```html
       <script async src="/your-path-here/pruner.min.js"></script>
+      or
+      <script async src="/your-path-here/pruner.js"></script>
       ```
 
     - **Option 2**: [Using a CDN](#cdn).
 
       ```html
       <script async src="https://unpkg.com/prunerjs@1.1.6/dist/pruner.min.js"></script>
+      or
+      <script async src="https://unpkg.com/prunerjs@1.1.6/src/pruner.js"></script>
       ```
 
 ## Example
