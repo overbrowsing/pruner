@@ -10,7 +10,7 @@ function pruner() {
     },
     l = (s) => cache[s] || (cache[s] = new Promise((r, e) => {
       const i = new Image();
-      i.crossOrigin = 'anon';
+      i.crossOrigin = 'ANON';
       i.onload = () => r(i);
       i.onerror = () => e(s);
       i.src = s;
