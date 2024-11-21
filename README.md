@@ -8,7 +8,7 @@
 
 `pruner.js` is a responsive image Javascript utility using viewport-based rendering. It works by splitting images into tiles and loading only the parts of the image visible within the viewport, like assembling a jigsaw puzzle. This method reduces server-side footprints compared to the current best practice of responsive images by eliminating the need for multiple image versions defined for specific breakpoints and reduces data transfer by minimising pixel waste—parts of the image outside the visible aperture.
 
-The utility is designed to function not only at defined breakpoints but also dynamically across varying viewport sizes, distinguishing it from traditional responsive image methods. The tile creation process begins with the [Tile Calculator](/tools/tile-calculator/) which determines the most efficient arrangement of tiles for processing images using the [Tile Maker](/tools/tile-maker/). This tool also generates a HTML snippet for easy installation, that also uses less HTML than the [`<picture>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture) element, and in some cases the [`srcset`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/srcset) image attribute, resulting in a simpler and more efficient process to responsive images.
+The utility is designed to function not only at defined breakpoints but also dynamically across varying viewport sizes, distinguishing it from traditional responsive image methods. The tile creation process begins with the [Tile Calculator](/tools/tile-calculator/README.md) which determines the most efficient arrangement of tiles for processing images using the [Tile Maker](/tools/tile-maker/README.md). This tool also generates a HTML snippet for easy installation, that also uses less HTML than the [`<picture>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture) element, and in some cases the [`srcset`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/srcset) image attribute, resulting in a simpler and more efficient process to responsive images.
 
 The name was chosen based on the practice of [pruning in horticulture](https://en.wikipedia.org/wiki/Pruning): the practice of targetted removal of unhealthy or unwanted parts of a plant to promote healthier growth. A name related to nature was fitting and thematic, aligning with the principles of [sustainable web design](https://sustainablewebdesign.org).
 
@@ -17,7 +17,7 @@ The name was chosen based on the practice of [pruning in horticulture](https://e
 - **Load Only What You See**: Servers only the parts of an image that are visible on the screen and reduces unnecessary data transfer by not loading hidden sections of images (waste pixels).
 - **Save Data**: Reduces the number of images needed for responsive images saving storage server-side.
 - **Better Responsive Images**: Provides dynamic viewport-based rendering of images across a range of viewports, rather than just a few predefined breakpoints like [`<picture>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture) or the [`srcset`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/srcset) image attribute.
-- **Easy to Use**: The [Tile Calculator](/tools/tile-calculator/README.md) automates the calculation, while the [Tile Maker](/tools/tile-maker/) handles formatting and compression of tiles, as well as the generation of a single line of HTML for easy installation.
+- **Easy to Use**: The [Tile Calculator](/tools/tile-calculator/README.md) automates the calculation, while the [Tile Maker](/tools/tile-maker/README.md) handles formatting and compression of tiles, as well as the generation of a single line of HTML for easy installation.
 - **Art Direction**: Allows you to set a focal point in the image and specify breakpoints for image scaling on smaller form factors.
 - **Client-Side Functionality**: Operates in the browser with a small piece of Javascript to dynamically create auto-scaling images based on the viewport size.
 
@@ -32,7 +32,7 @@ Download the minified or unminified version of `pruner.js`:
 
 ### CDN
 
-Use this script tag to include the minified version of `pruner.js` directly in your project:
+Use this script element to include the minified version of `pruner.js` directly in your project:
 
 ```html
 <script async src="https://unpkg.com/prunerjs@1.1.8/dist/pruner.min.js"></script>
@@ -48,7 +48,7 @@ npm install prunerjs --save
 
 ## How it Works
 
-In the `<img>` tag, instead of using the `src` attribute to link an image, we use the `data-pruner` attribute. This attribute contains parameters in JSON format for the utility to interpret, specifying how the script should display the image tiles, where to locate them, and including other useful features.
+In the `<img>` element, instead of using the `src` attribute to link an image, we use the `data-pruner` attribute. This attribute contains parameters in JSON format for the utility to interpret, specifying how the script should display the image tiles, where to locate them, and including other useful features.
 
 ### Parameters
 
@@ -72,7 +72,7 @@ In the `<img>` tag, instead of using the `src` attribute to link an image, we us
 
 4. **Update Parameters**: Update the `path` parameter in the HTML snippet to point to the location of your tiles. Adjust optional parameters like `roi` and `scale` as needed. Don't forget to include image `alt` text as well.
 
-5. **Include `pruner.js`**: To include the utility in your project. Add the either option before the closing `</html>` tag in your HTML file
+5. **Include `pruner.js`**: To include the utility in your project. Add either option before the closing `</html>` tag in your HTML file
     - **Option 1**: [Download](#download).
 
       ```html
@@ -87,13 +87,13 @@ In the `<img>` tag, instead of using the `src` attribute to link an image, we us
 
 ## Example
 
-After completing the steps with the example image of [*Banks of the Seine, Vétheuil*, by Claude Monet](https://nga.gov/collection/art-object-page.46652.html), beginning with the steps in [Tile Calculator](/tools/tile-calculator/README.md#example) documentation and then proceeding to the steps in the [Tile Maker](/tools/tile-maker/README.md#example) documentation, the tiles and HTML snippet and  will be exported to a folder within the [processed folder](/tools/tile-maker/processed/banks-of-the-seine/). The exported HTML snippet, [`data-pruner.html`](/tools/tile-maker/processed/banks-of-the-seine/data-pruner.html), will look like this:
+After completing the steps with the example image of [*Banks of the Seine, Vétheuil*, by Claude Monet](https://nga.gov/collection/art-object-page.46652.html), starting with the steps for the example in the [Tile Calculator](/tools/tile-calculator/README.md#example) documentation, followed by the steps for the example in the [Tile Maker](/tools/tile-maker/README.md#example) documentation, the tiles and HTML snippet and  will be exported to a folder within the [processed folder](/tools/tile-maker/processed/banks-of-the-seine/). The exported HTML snippet, [`data-pruner.html`](/tools/tile-maker/processed/banks-of-the-seine/data-pruner.html), will look like this:
 
 ```html
 <img data-pruner='{"name": "banks-of-the-seine", "tile": "8 6", "path": "your-path-here/"}' alt="" loading="lazy">
 ```
 
-The `path` and optional parameters (`roi` and `scale`), along the `alt` attribute, were added in manually afterwards:
+The `path` and optional parameters (`roi` and `scale`), along the `alt` attribute, were then updated afterwards:
 
 ```html
 <img data-pruner='{"name": "banks-of-the-seine", "tile": "8 6", "roi": 5, "scale": "1.2 750", "path": "tools/tile-maker/processed/banks-of-the-seine/"}' alt="Banks of the Seine, Vétheuil, 1880 by Claude Monet" loading="lazy">
