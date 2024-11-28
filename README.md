@@ -1,9 +1,8 @@
-# ✂️ pruner.js
+# pruner.js
 
 [![NPM version](https://img.shields.io/npm/v/prunerjs.svg)](https://www.npmjs.com/package/prunerjs)
 [![npm](https://img.shields.io/npm/dt/prunerjs.svg)](https://www.npmtrends.com/prunerjs)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://egghead.io/courses/how-to-contribute-to-an-open-source-project-on-github)
-[![CO2](https://img.shields.io/badge/CO₂-A_0.17g-8BC34A)](https://digitalbeacon.co/report/overbrowsing-compruner/public)
 
 ## Overview
 
