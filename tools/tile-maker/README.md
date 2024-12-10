@@ -1,4 +1,4 @@
-# 🧩 Tile Maker
+# Tile Maker
 
 ## Overview
 

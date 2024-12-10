@@ -1,4 +1,4 @@
-# 🖼️ Tile Calculator
+# Tile Calculator
 
 ## Overview
 
