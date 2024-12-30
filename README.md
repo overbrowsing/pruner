@@ -36,7 +36,7 @@ Download the minified or unminified version of `pruner.js`:
 Use this script element to include the minified version of `pruner.js` directly in your project:
 
 ```html
-<script async src="https://unpkg.com/prunerjs@1.1.8/dist/pruner.min.js"></script>
+<script async src="https://unpkg.com/prunerjs/dist/pruner.min.js"></script>
 ```
 
 ### Package Managers
@@ -83,7 +83,7 @@ In the `<img>` element, instead of using the `src` attribute to link an image, w
     - **Option 2**: [CDN](#cdn).
 
       ```html
-      <script async src="https://unpkg.com/prunerjs@1.1.8/dist/pruner.min.js"></script>
+      <script async src="https://unpkg.com/prunerjs/dist/pruner.min.js"></script>
       ```
 
 ## Example
