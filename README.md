@@ -11,7 +11,7 @@
 
 The utility is designed to function not only at defined breakpoints but also dynamically across varying viewport sizes, distinguishing it from traditional responsive image methods. The tile creation process begins with the [Tile Calculator](/tools/tile-calculator/README.md) which determines the most efficient arrangement of tiles for processing images using the [Tile Maker](/tools/tile-maker/README.md). This tool also generates a HTML snippet for easy installation, that also uses less HTML than the [`<picture>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture) element, and in some cases the [`srcset`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/srcset) image attribute, resulting in a simpler and more efficient process to responsive images.
 
-The name was chosen based on the practice of [pruning in horticulture](https://en.wikipedia.org/wiki/Pruning): the practice of targeted removal of unhealthy or unwanted parts of a plant to promote healthier growth. A name related to nature was fitting and thematic, aligning with the principles of sustainable web design.
+The name was chosen based on the practice of pruning in horticulture: the practice of targeted removal of unhealthy or unwanted parts of a plant to promote healthier growth. A name related to nature was fitting and thematic, aligning with the principles of sustainable web design.
 
 ## Features
 
