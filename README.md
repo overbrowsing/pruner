@@ -43,13 +43,13 @@ Use this script element to include the minified version of Pruner.js directly in
 You can also install Pruner.js using npm:
 
 ```bash
-npm install pruner
+npm install prunerjs
 ```
 
 Or using yarn:
 
 ```bash
-yarn add pruner
+yarn add prunerjs
 ```
 
 ## How it Works
