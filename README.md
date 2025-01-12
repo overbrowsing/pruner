@@ -89,7 +89,7 @@ Instead of the `src` attribute within the `<img>` tag, the `data-pruner` attribu
 
 ## Demo
 
-[**→ Open Demo**](https://overbrowsing.com/projects/pruner)
+[**→ Open Demo**](https://overbrowsing.com/pruner)
 
 The painting [*Banks of the Seine, Vétheuil*, by Claude Monet](https://nga.gov/collection/art-object-page.46652.html) was processed using the [Tile Maker](https://overbrowsing.com/projects/pruner) web application, which calculated that the image should be split into an 14x6 grid. Each tile measuring 137x180px, resulting in a total of 84 tiles and an average pixel waste of 12.47% across [common screen resolutions](https://gs.statcounter.com/screen-resolution-stats). The generated HTML `<img>` tag snippet for this image is as follows:
 
