@@ -97,7 +97,7 @@ The painting [*Banks of the Seine, Vétheuil*, by Claude Monet](https://www.nga.
 <img data-pruner='{"name": "banks-of-the-seine", "tile": "14 6", "roi": 5, "path": "YOUR-PATH-HERE/"}' alt="YOUR-ALT-TEXT-HERE">
 ```
 
-The `path` and the optional `scale` parameter along the `alt` attribute, were then updated afterwards:
+The `path` and the optional `scale` parameter, along with the `alt` attribute, were then updated afterwards.
 
 ```html
 <img data-pruner='{"name": "banks-of-the-seine", "tile": "14 6", "roi": 5, "scale": "1.2 750", "path": "assets/media/banks-of-the-seine/"}' alt="Banks of the Seine, Vétheuil, 1880 by Claude Monet">
