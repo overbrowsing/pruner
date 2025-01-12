@@ -70,7 +70,7 @@ Instead of the `src` attribute within the `<img>` tag, the `data-pruner` attribu
 
 ## How to Use
 
-1. **Tile Maker**: Use the [Tile Maker](/tools/tile-maker/README.md) web application to generate the tiles and HTML snippet.
+1. **Tile Maker**: Use the [Tile Maker](https://overbrowsing.com/projects/pruner) web application to generate the tiles and HTML snippet.
 
 2. **Update HTML Snippet**: Update the `path` parameter in the HTML snippet to point to your tiles, along with optional parameters like `roi` and `scale`. Remember to update the image `alt` text as well.
 
