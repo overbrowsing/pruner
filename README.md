@@ -60,19 +60,19 @@ Instead of the `src` attribute within the `<img>` tag, the `data-pruner` attribu
 
 *⭐️ Denotes which parameters are optional.*
 
-|   | Parameter | Description         | Details                                                                                                                                                                                                                                               | [Example](#example)                              |
-|---|-----------|---------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
-|   | `name`    | Image Name          | The base name of the image files.                                                                                                                                                                                                                     | `banks-of-the-seine` (banks-of-the-seine-n.webp) |
-|   | `tile`    | Tile Grid           | The number of columns and rows the image is split into.                                                                                                                                                                                               | `8 6` (8 columns and 6 rows)                     |
-| ⭐️ | `roi`     | Region of Interest  | This parameter lets you set a specific focal point within the image for art direction. The region of interest adjusts the image's focus based on the chosen tile number, ensuring that off-centre subjects are prominently displayed in the viewport. | `5` (banks-of-the-seine-5.webp)                  |
-| ⭐️ | `scale`   | Scale Factor        | Defines how much to enlarge the image when the viewport width is at or below the breakpoint in pixels. Formatted as "scale breakpoint" (e.g. 1.2 750).                                                                                                | `1.2 750` (120% 750w)                            |
-|   | `path`    | Directory for Tiles | The file path to the directory where the image tiles are stored. This parameter is essential for locating and retrieving the image files for display.                                                                                                 | `assets/media/banks-of-the-seine/`               |
+|   | Parameter | Description         | Details                                                                                                                                                                      | [Example](#example)                              |
+|---|-----------|---------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
+|   | `name`    | Image Name          | The base name of the tiles.                                                                                                                                                  | `banks-of-the-seine` (banks-of-the-seine-n.webp) |
+|   | `tile`    | Tile Grid           | The number of columns and rows the image is split into.                                                                                                                      | `14 6` (14 columns and 6 rows)                   |
+| ⭐️ | `roi`     | Region of Interest  | The region of interest adjusts the image's focus based on the chosen tile number, ensuring that off-centred subjects are prominently displayed in the viewport.              | `5` (banks-of-the-seine-5.webp)                  |
+| ⭐️ | `scale`   | Scale Factor        | The scale parameter defines how much to enlarge the image when the viewport width is at or below the breakpoint in pixels. Formatted as [scale] [breakpoint] (e.g. 1.2 750). | `1.2 750` (120% 750w)                            |
+|   | `path`    | Directory for Tiles | The file path to the directory where the tiles are saved. This parameter is required for locating and retrieving the image files for display.                                | `assets/media/banks-of-the-seine/`               |
 
 ## How to Use
 
 1. **Tile Maker**: Use the [Tile Maker](/tools/tile-maker/README.md) web application to generate the tiles and HTML snippet.
 
-2. **Update Parameters**: Update the `path` parameter in the HTML snippet to point to the location of your tiles. Adjust optional parameters such as `roi` and `scale` as needed. Don’t forget to update the image `alt` text as well.
+2. **Update HTML Snippet**: Update the `path` parameter in the HTML snippet to point to your tiles, along with optional parameters like `roi` and `scale`. Remember to update the image `alt` text as well.
 
 3. **Include Pruner.js**: To include the utility in your project. Add either option before the closing `</html>` tag in your HTML file.
     - **Option 1**: [Download](https://overbrowsing.com/projects/pruner).
@@ -92,7 +92,7 @@ Instead of the `src` attribute within the `<img>` tag, the `data-pruner` attribu
 The painting [*Banks of the Seine, Vétheuil*, by Claude Monet](https://nga.gov/collection/art-object-page.46652.html) was processed using the [Tile Maker](https://overbrowsing.com/projects/pruner) web application, which calculated that the image should be split into an 14x6 grid. Each tile measuring 137x180px, resulting in a total of 84 tiles and an average pixel waste of 12.47% across [common screen resolutions](https://gs.statcounter.com/screen-resolution-stats). The generated HTML `<img>` tag snippet for this image is as follows:
 
 ```html
-<img data-pruner='{"name": "banks-of-the-seine", "tile": "14 8", "roi": 5, "path": "YOUR-PATH-HERE/"}' alt="YOUR-ALT-TEXT-HERE">
+<img data-pruner='{"name": "banks-of-the-seine", "tile": "14 6", "roi": 5, "path": "YOUR-PATH-HERE/"}' alt="YOUR-ALT-TEXT-HERE">
 ```
 
 The `path` and the optional `scale` parameter along the `alt` attribute, were then updated afterwards:
@@ -106,7 +106,7 @@ The `path` and the optional `scale` parameter along the `alt` attribute, were th
 |   | Parameter | Description         | Value                              |
 |---|-----------|---------------------|------------------------------------|
 |   | `name`    | Image Name          | `banks-of-the-seine`               |
-|   | `tile`    | Tile Grid           | `8 6` (8 columns and 6 rows)       |
+|   | `tile`    | Tile Grid           | `14 6` (14 columns and 6 rows)     |
 | ⭐️ | `roi`     | Region of Interest  | `5` (banks-of-the-seine-5.webp)    |
 | ⭐️ | `scale`   | Scale Factor        | `1.2 750` (120% 750w)              |
 |   | `path`    | Directory for Tiles | `assets/media/banks-of-the-seine/` |
