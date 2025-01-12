@@ -57,13 +57,13 @@ function initialiseTileMaker() {
     <button id="upload-button" class="styled-button">Upload Image</button>
     <div id="controls" style="display: none;">
       <h2>1. Select Region of Interest</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean volutpat luctus nibh.</p>
+      <p>The region of interest adjusts the image's focus based on the chosen tile number, ensuring that off-centred subjects are prominently displayed in the viewport.</p>
       <div id="tile-image-container">
         <img id="tile-image-preview" src="" alt="Image Preview">
         <div id="tile-grid-overlay"></div>
       </div>
       <h2>2. Export Tiles</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean volutpat luctus nibh.</p>
+      <p>Adjust the settings below and export your image as tiles.</p>
       <details>
         <summary>Tile Settings</summary>
         <h3>Image Name</h3>
@@ -79,7 +79,7 @@ function initialiseTileMaker() {
       </details>
       <button id="export-button">Export</button>
       <h2>3. Copy HTML Snippet</h2>
-      <p>Update the 'path' parameter in the HTML snippet to point to the location of your tiles. Don't forget to include image 'alt' text as well.</p>
+      <p>Update the 'path' parameter in the HTML snippet to point to your tiles, along with optional parameters like 'roi' and 'scale'. Remember to update the image 'alt' text as well.</p>
       <pre id="html-snippet"></pre>
       <button id="copy-button">Copy</button>
       <h2>4. Install Pruner.js</h2>
