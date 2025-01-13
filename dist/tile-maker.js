@@ -202,7 +202,7 @@ function setupEventListeners() {
     elements.copyButton.textContent = 'Copied';
     setTimeout(function () {
       elements.copyButton.textContent = 'Copy';
-    }, 3000);
+    }, 1500);
   }
 
   function copyScriptSnippet() {
@@ -215,7 +215,7 @@ function setupEventListeners() {
     elements.copyScriptButton.textContent = 'Copied';
     setTimeout(function () {
       elements.copyScriptButton.textContent = 'Copy';
-    }, 3000);
+    }, 1500);
   }
 
   function exportTiles() {
