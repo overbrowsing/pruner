@@ -75,7 +75,8 @@ Instead of the `src` attribute within the `<img>` tag, the `data-pruner` attribu
 2. **Update HTML Snippet**: Update the `path` parameter in the HTML snippet to point to your tiles, along with optional parameters like `roi` and `scale`. Remember to update the image `alt` text as well.
 
 3. **Include Pruner.js**: To include the utility in your project. Add either option before the closing `</html>` tag in your HTML file.
-    - **Option 1**: [Download](https://overbrowsing.com/projects/pruner).
+
+    - **Option 1**: [Download](#download).
 
       ```html
       <script async src="/YOUR-PATH-HERE/pruner.min.js"></script>
