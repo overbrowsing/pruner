@@ -60,7 +60,7 @@ Instead of the `src` attribute within the `<img>` tag, the `data-pruner` attribu
 
 *⭐️ Denotes which parameters are optional.*
 
-|   | Parameter | Description         | Details                                                                                                                                                                      | [Example](#example)                              |
+|   | Parameter | Description         | Details                                                                                                                                                                      | [Demo](#demo)                                    |
 |---|-----------|---------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
 |   | `name`    | Image Name          | The base name of the tiles.                                                                                                                                                  | `banks-of-the-seine` (banks-of-the-seine-n.webp) |
 |   | `tile`    | Tile Grid           | The number of columns and rows the image is split into.                                                                                                                      | `14 6` (14 columns and 6 rows)                   |
